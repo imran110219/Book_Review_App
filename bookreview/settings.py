@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'Category',
     'Publication',
     'Author',
+    'Book',
 )
 
 MIDDLEWARE_CLASSES = (

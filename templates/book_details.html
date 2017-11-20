@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h1>Book Details</h1>
+  <img src='{{ instance.book_image.url }}' class='img-responsive' />
+  <h2>{{ instance.book_name }}</h2>
+  <h4>{{ instance.authors }}</h4>
+  <p>{{ instance.book_description }}</p>
+
+{% endblock content %}

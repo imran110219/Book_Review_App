@@ -21,7 +21,7 @@ from django.views.generic.base import TemplateView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    # url(r'^', include("Category.urls", namespace='home')),
+    url(r'^books/', include("Book.urls", namespace='books')),
     url(r'^categories/', include("Category.urls", namespace='categories')),
     url(r'^authors/', include("Author.urls", namespace='authors')),
     url(r'^publications/', include("Publication.urls", namespace='publications')),
