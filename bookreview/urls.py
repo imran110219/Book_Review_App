@@ -19,9 +19,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
 
+from Account.views import (login_view, register_view, logout_view)
+
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^books/', include("Book.urls", namespace='books')),
+    url(r'^register/', register_view, name='register'),
+    url(r'^login/', login_view, name='login'),
+    url(r'^logout/', logout_view, name='logout'),
+    url(r'^', include("Book.urls", namespace='books')),
     url(r'^categories/', include("Category.urls", namespace='categories')),
     url(r'^authors/', include("Author.urls", namespace='authors')),
     url(r'^publications/', include("Publication.urls", namespace='publications')),
