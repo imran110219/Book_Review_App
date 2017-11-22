@@ -9,13 +9,13 @@ def test_view(request):
   return render(request, "test.html",{})
 
 def author_list(request):
-  # queryset = Author.objects.all()
-  #
-  # context = {
-  #   "object_list": queryset,
-  #   "title": "Author List",
-  # }
-  return render(request, "test.htmlhtml", {})
+  queryset = Author.objects.all()
+
+  context = {
+    "object_list": queryset,
+    "title": "Author List",
+  }
+  return render(request, "author.html", context)
 
 
 def author_detail(request, id=None):

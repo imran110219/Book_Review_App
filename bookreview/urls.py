@@ -26,9 +26,9 @@ urlpatterns = [
     url(r'^register/', register_view, name='register'),
     url(r'^login/', login_view, name='login'),
     url(r'^logout/', logout_view, name='logout'),
-    url(r'^', include("Book.urls", namespace='books')),
+    url(r'^books/', include("Book.urls", namespace='books')),
     url(r'^categories/', include("Category.urls", namespace='categories')),
-    url(r'^author/', include("Author.urls", namespace='author')),
+    url(r'^authors/', include("Author.urls", namespace='authors')),
     url(r'^publications/', include("Publication.urls", namespace='publications')),
 ]
 

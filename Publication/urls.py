@@ -8,5 +8,5 @@ from .views import(
 urlpatterns = [
     # url(r'^$', home, name="home"),
     url(r'^(?P<id>[\w-]+)/$', publication_detail, name='detail'),
-    url(r'^$', publication_list, name="publication"),
+    url(r'^$', publication_list, name='publication'),
 ]

@@ -14,7 +14,7 @@ def publication_list(request):
   return render(request, "publication.html", context)
 
 def publication_detail(request, id=None):
-  instance = get_object_or_404(Publication, id=id)
+  instance = get_object_or_404(Publication, pk=id)
 
   context = {
     "instance": instance,

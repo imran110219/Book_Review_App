@@ -17,5 +17,5 @@ class Author(models.Model):
   def __str__(self):
     return str(self.author_name)
 
-  # def get_absolute_url(self):
-  #   return reverse("authors:detail", kwargs={"id": self.id})
+  def get_absolute_url(self):
+    return reverse("authors:detail", kwargs={"id": self.id})
