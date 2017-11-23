@@ -19,3 +19,6 @@ class Author(models.Model):
 
   def get_absolute_url(self):
     return reverse("authors:detail", kwargs={"id": self.id})
+
+  def get_name(self):
+    return self.author_name

@@ -2,9 +2,12 @@
 {% block content %}
 
   <h1>Book Details</h1>
-  <img src='{{ instance.book_image.url }}' class='img-responsive' />
+  <img src='{{ instance.book_image.url }}' class='img-responsive'/>
   <h2>{{ instance.book_name }}</h2>
-  <h4>{{ instance.authors }}</h4>
+  <h3>Author: </h3>
+  {% for obj in instance.authors.all %}
+    <h4>{{ obj.get_name }}</h4>
+  {% endfor %}
   <p>{{ instance.book_description }}</p>
 
 {% endblock content %}

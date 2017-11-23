@@ -22,16 +22,17 @@ from django.views.generic.base import TemplateView
 from Account.views import (login_view, register_view, logout_view)
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^register/', register_view, name='register'),
-    url(r'^login/', login_view, name='login'),
-    url(r'^logout/', logout_view, name='logout'),
-    url(r'^books/', include("Book.urls", namespace='books')),
-    url(r'^categories/', include("Category.urls", namespace='categories')),
-    url(r'^authors/', include("Author.urls", namespace='authors')),
-    url(r'^publications/', include("Publication.urls", namespace='publications')),
+  url(r'^', include("Book.urls", namespace='books')),
+  url(r'^admin/', include(admin.site.urls)),
+  url(r'^register/', register_view, name='register'),
+  url(r'^login/', login_view, name='login'),
+  url(r'^logout/', logout_view, name='logout'),
+  # url(r'^books/', include("Book.urls", namespace='books')),
+  url(r'^categories/', include("Category.urls", namespace='categories')),
+  url(r'^authors/', include("Author.urls", namespace='authors')),
+  url(r'^publications/', include("Publication.urls", namespace='publications')),
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+  urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+  urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

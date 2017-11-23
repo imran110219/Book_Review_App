@@ -27,9 +27,9 @@ class Book(models.Model):
     return reverse("books:detail", kwargs={"id": self.id})
 
 class BookCategory(models.Model):
-  book = models.ForeignKey(Book, on_delete=models.CASCADE)
-  category = models.ForeignKey(Category, on_delete=models.CASCADE, unique=True)
+  book = models.ForeignKey(Book, on_delete=models.CASCADE, )
+  category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 class AuthorBook(models.Model):
-  author = models.ForeignKey(Author, on_delete=models.CASCADE, unique=True)
+  author = models.ForeignKey(Author, on_delete=models.CASCADE)
   book = models.ForeignKey(Book, on_delete=models.CASCADE)

@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
 
 from Author.models import Author
 
@@ -10,6 +11,13 @@ def test_view(request):
 
 def author_list(request):
   queryset = Author.objects.all()
+
+  query = request.GET.get("q")
+
+  if query:
+    queryset = Author.objects.filter(
+      Q(author_name__icontains=query)
+    ).distinct()
 
   context = {
     "object_list": queryset,
