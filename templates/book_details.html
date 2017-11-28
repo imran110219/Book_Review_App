@@ -1,13 +1,48 @@
 {% extends "base.html" %}
 {% block content %}
 
-  <h1>Book Details</h1>
-  <img src='{{ instance.book_image.url }}' class='img-responsive'/>
-  <h2>{{ instance.book_name }}</h2>
-  <h3>Author: </h3>
-  {% for obj in instance.authors.all %}
-    <h4>{{ obj.get_name }}</h4>
-  {% endfor %}
-  <p>{{ instance.book_description }}</p>
+  <div>
+    <h1>Book Details</h1>
+    <img src='{{ book.book_image.url }}' class='img-responsive'/>
+    <h2>{{ book.book_name }}</h2>
+    <h3>Author: </h3>
+    {% for obj in book.authors.all %}
+      <h4>{{ obj.get_name }}</h4>
+    {% endfor %}
+    <p>{{ book.book_description }}</p>
+  </div>
+
+  <hr/>
+  <br/>
+
+  <div>
+    {% for review in reviews %}
+      <div class="review">
+        <p class="info">
+          Review {{ forloop.counter }} by {{ user }}
+        </p>
+        {{ review.review_description|linebreaks }}
+      </div>
+
+
+    {% empty %}
+      <p>There are no comments yet.</p>
+    {% endfor %}
+
+
+    {% if new_review %}
+      <h2>Your review has been added.</h2>
+    {% else %}
+
+      <hr>
+      <br/><br/><br/><br/>
+      <h2>Add a new review</h2>
+      <form action="." method="post">
+        {{ review_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Add review"></p>
+      </form>
+    {% endif %}
+  </div>
 
 {% endblock content %}

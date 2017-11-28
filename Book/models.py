@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.contrib.contenttypes.models import ContentType
 
 from Publication.models import Publication
 from Category.models import Category
@@ -25,6 +26,12 @@ class Book(models.Model):
 
   def get_absolute_url(self):
     return reverse("books:detail", kwargs={"id": self.id})
+
+  @property
+  def get_content_type(self):
+    instance = self
+    content_type = ContentType.objects.get_for_model(instance.__class__)
+    return content_type
 
 class BookCategory(models.Model):
   book = models.ForeignKey(Book, on_delete=models.CASCADE, )
