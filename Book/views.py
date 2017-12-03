@@ -37,24 +37,23 @@ def book_detail(request, id=None):
     review_form = ReviewForm(data=request.POST)
     if review_form.is_valid():
       new_review = review_form.save(commit=False)
-      # Assign the current post to the comment
       new_review.book = book
-      # Save the comment to the database
+      new_review.user = request.user
       new_review.save()
 
-    return HttpResponseRedirect('/book/', args=[book.id])
-
+    return HttpResponseRedirect('/books/' + str(book.id))
 
   else:
     review_form = ReviewForm()
-    context = {
-      'user': request.user,
-      'book': book,
-      'reviews': reviews,
-      'review_form': review_form
-    }
 
-    return render(request, 'book_details.html', context)
+  context = {
+    'user': request.user,
+    'book': book,
+    'reviews': reviews,
+    'review_form': review_form
+  }
+
+  return render(request, 'book_details.html', context)
 
 
 def home(request):

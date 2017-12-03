@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-  <div>
+  <div class="col-lg-3">
     <h1>Book Details</h1>
     <img src='{{ book.book_image.url }}' class='img-responsive'/>
     <h2>{{ book.book_name }}</h2>
@@ -12,14 +12,38 @@
     <p>{{ book.book_description }}</p>
   </div>
 
-  <hr/>
   <br/>
 
-  <div>
+  <div class="col-lg-9">
+    <h1>Review</h1>
+
+    {% if new_review %}
+      <h2>Your review has been added.</h2>
+    {% else %}
+      <!-- Comments Form -->
+      <div class="card my-4">
+        <h5 class="card-header">Leave a Review:</h5>
+        <div class="card-body">
+          <form action="." method="post">
+            <div class="form-group">
+              {{ review_form.review_description }}
+              {% csrf_token %}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    {% endif %}
+
+
     {% for review in reviews %}
       <div class="review">
         <p class="info">
-          Review {{ forloop.counter }} by {{ user }}
+          {% if  review.user.first_name and review.user.last_name %}
+            <h4>{{ review.user.first_name }} {{ review.user.last_name }}({{ forloop.counter }})</h4>
+          {% else %}
+            <h4>{{ review.user }}({{ forloop.counter }})</h4>
+          {% endif %}
         </p>
         {{ review.review_description|linebreaks }}
       </div>
@@ -29,20 +53,6 @@
       <p>There are no comments yet.</p>
     {% endfor %}
 
-
-    {% if new_review %}
-      <h2>Your review has been added.</h2>
-    {% else %}
-
-      <hr>
-      <br/><br/><br/><br/>
-      <h2>Add a new review</h2>
-      <form action="." method="post">
-        {{ review_form.as_p }}
-        {% csrf_token %}
-        <p><input type="submit" value="Add review"></p>
-      </form>
-    {% endif %}
   </div>
 
 {% endblock content %}
