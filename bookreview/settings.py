@@ -46,6 +46,7 @@ INSTALLED_APPS = (
   'Author',
   'Book',
   'Review',
+  'Comment',
 )
 
 MIDDLEWARE_CLASSES = (
