@@ -11,3 +11,6 @@ class Comment(models.Model):
 
   def __str__(self):
     return self.comments
+
+  def review_comment(self):  # replies
+    return Comment.objects.filter(review=self)

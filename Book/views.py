@@ -4,7 +4,9 @@ from django.contrib.contenttypes.models import ContentType
 
 from Book.models import Book
 from Review.models import Review
+from Comment.models import Comment
 from Review.forms import ReviewForm
+from Comment.forms import CommentForm
 
 
 # Create your views here.
@@ -32,25 +34,35 @@ def book_list(request):
 def book_detail(request, id=None):
   book = get_object_or_404(Book, id=id)
   reviews = Review.objects.filter(book=book)
+  comments = Comment.objects.all() #filter(review=reviews)
 
-  if request.method == 'POST':
+  review_form = ReviewForm()
+  comment_form = CommentForm()
+  if request.method == 'POST' and request.user.is_authenticated:
     review_form = ReviewForm(data=request.POST)
+    comment_form = CommentForm(data=request.POST)
     if review_form.is_valid():
       new_review = review_form.save(commit=False)
       new_review.book = book
       new_review.user = request.user
       new_review.save()
 
-    return HttpResponseRedirect('/books/' + str(book.id))
+    else:
+      new_comment = comment_form.save(commit=False)
+      # new_comment.review = Review.objects.filter(id=request.POST.review)
+      new_comment.user = request.user
+      new_comment.save()
 
-  else:
-    review_form = ReviewForm()
+
+    return HttpResponseRedirect('/books/' + str(book.id))
 
   context = {
     'user': request.user,
     'book': book,
     'reviews': reviews,
-    'review_form': review_form
+    'review_form': review_form,
+    'comments': comments,
+    'comment_form': comment_form,
   }
 
   return render(request, 'book_details.html', context)

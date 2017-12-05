@@ -42,3 +42,8 @@
 .mt-0 {
     margin-top: 0!important;
 }
+
+div.comments {
+    position: relative;
+    left: 40px;
+}

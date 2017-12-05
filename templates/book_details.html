@@ -17,24 +17,22 @@
   <div class="col-lg-9">
     <h1>Review</h1>
 
-    {% if new_review %}
-      <h2>Your review has been added.</h2>
-    {% else %}
-      <!-- Comments Form -->
-      <div class="card my-4">
-        <h5 class="card-header">Leave a Review:</h5>
-        <div class="card-body">
+
+    <div class="card my-4">
+      <h5 class="card-header">Leave a Review:</h5>
+      <div class="card-body">
+        {% if request.user.is_authenticated %}
           <form action="." method="post">
-            <div class="form-group">
-              {{ review_form.review_description }}
-              {% csrf_token %}
-            </div>
+            {% csrf_token %}
+            {{ review_form.review_description }}
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
-        </div>
-      </div>
-    {% endif %}
+        {% else %}
+          <p>You must login to give review</p>
+        {% endif %}
 
+      </div>
+    </div>
 
     {% for review in reviews %}
       <div class="review">
@@ -46,6 +44,28 @@
           {% endif %}
         </p>
         {{ review.review_description|linebreaks }}
+        <div class="comments">
+          <form action="." method="post">
+            {% csrf_token %}
+            <input type="hidden" name="review" value={{ review.id }} >
+            {{ comment_form.comments }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        {% for comment in comments %}
+          {% if comment.review == review %}
+            <div class="comments">
+              <p class="info">
+                {% if  comment.user.first_name and comment.user.last_name %}
+                  <h5>{{ comment.user.first_name }} {{ comment.user.last_name }}({{ forloop.counter }})</h5>
+                {% else %}
+                  <h5>{{ comment.user }}({{ forloop.counter }})</h5>
+                {% endif %}
+              </p>
+              {{ comment.comments|linebreaks }}
+            </div>
+          {% endif %}
+        {% endfor %}
       </div>
 
 
