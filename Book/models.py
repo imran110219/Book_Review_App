@@ -1,6 +1,8 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericRelation
+from star_ratings.models import Rating
 
 from Publication.models import Publication
 from Category.models import Category
@@ -17,6 +19,7 @@ class Book(models.Model):
   publication = models.ForeignKey(Publication, on_delete=models.CASCADE)
   authors = models.ManyToManyField(Author, through='AuthorBook')
   categories = models.ManyToManyField(Category, through='BookCategory')
+  ratings = GenericRelation(Rating, related_query_name='books')
 
   def __unicode__(self):
     return str(self.book_name)
@@ -32,6 +35,8 @@ class Book(models.Model):
     instance = self
     content_type = ContentType.objects.get_for_model(instance.__class__)
     return content_type
+
+# Book.objects.filter(ratings__isnull=False).order_by('ratings__average')
 
 class BookCategory(models.Model):
   book = models.ForeignKey(Book, on_delete=models.CASCADE, )

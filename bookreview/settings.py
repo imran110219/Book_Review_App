@@ -39,6 +39,7 @@ INSTALLED_APPS = (
 
   # third party
   'crispy_forms',
+  'star_ratings',
 
   # local apps
   'Category',
@@ -113,6 +114,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+STAR_RATINGS_RERATE = True
+
+STAR_RATINGS_ANONYMOUS = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, reverse
 from django.db.models import Q
 from django.contrib.contenttypes.models import ContentType
+from django.views.generic import TemplateView
 
 from Book.models import Book
 from Review.models import Review
@@ -34,7 +35,7 @@ def book_list(request):
 def book_detail(request, id=None):
   book = get_object_or_404(Book, id=id)
   reviews = Review.objects.filter(book=book)
-  comments = Comment.objects.all() #filter(review=reviews)
+  comments = Comment.objects.all()  # filter(review=reviews)
 
   review_form = ReviewForm()
   comment_form = CommentForm()
@@ -53,7 +54,6 @@ def book_detail(request, id=None):
       new_comment.user = request.user
       new_comment.save()
 
-
     return HttpResponseRedirect('/books/' + str(book.id))
 
   context = {
@@ -70,3 +70,4 @@ def book_detail(request, id=None):
 
 def home(request):
   return render(request, "home.html")
+

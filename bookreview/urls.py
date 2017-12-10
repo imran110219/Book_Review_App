@@ -27,7 +27,7 @@ urlpatterns = [
   url(r'^register/', register_view, name='register'),
   url(r'^login/', login_view, name='login'),
   url(r'^logout/', logout_view, name='logout'),
-  # url(r'^books/', include("Book.urls", namespace='books')),
+  url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings')),
   url(r'^categories/', include("Category.urls", namespace='categories')),
   url(r'^authors/', include("Author.urls", namespace='authors')),
   url(r'^publications/', include("Publication.urls", namespace='publications')),

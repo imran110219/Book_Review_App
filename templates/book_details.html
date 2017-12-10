@@ -1,21 +1,24 @@
 {% extends "base.html" %}
+{% load ratings %}
 {% block content %}
 
-  <div class="col-lg-3">
+  <div class="col-lg-4">
     <h1>Book Details</h1>
     <img src='{{ book.book_image.url }}' class='img-responsive'/>
     <h2>{{ book.book_name }}</h2>
+    {% ratings book %}
     <h3>Author: </h3>
     {% for obj in book.authors.all %}
       <h4>{{ obj.get_name }}</h4>
     {% endfor %}
     <p>{{ book.book_description }}</p>
+
   </div>
 
   <br/>
 
-  <div class="col-lg-9">
-    <h1>Review</h1>
+
+  <div class="col-lg-8">
 
 
     <div class="card my-4">
@@ -34,6 +37,7 @@
       </div>
     </div>
 
+
     {% for review in reviews %}
       <div class="review">
         <p class="info">
@@ -44,33 +48,49 @@
           {% endif %}
         </p>
         {{ review.review_description|linebreaks }}
-        <div class="comments">
-          <form action="." method="post">
-            {% csrf_token %}
-            <input type="hidden" name="review" value={{ review.id }} >
-            {{ comment_form.comments }}
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-        {% for comment in comments %}
-          {% if comment.review == review %}
-            <div class="comments">
-              <p class="info">
-                {% if  comment.user.first_name and comment.user.last_name %}
-                  <h5>{{ comment.user.first_name }} {{ comment.user.last_name }}({{ forloop.counter }})</h5>
-                {% else %}
-                  <h5>{{ comment.user }}({{ forloop.counter }})</h5>
-                {% endif %}
-              </p>
-              {{ comment.comments|linebreaks }}
-            </div>
-          {% endif %}
-        {% endfor %}
       </div>
 
+      <div class="comments">
 
-    {% empty %}
-      <p>There are no comments yet.</p>
+        <div class="card my-4">
+          <h5 class="card-header">Leave a Comment:</h5>
+          <div class="card-body">
+            {% if request.user.is_authenticated %}
+              <form action="." method="post" class="form-horizontal" role="form">
+                <div class="form-group">
+                  <div class="col-sm-11">
+                    <input class="form-control" name="comments" type="text" placeholder="Your comments"/>
+                  </div>
+                  {% csrf_token %}
+                  <input type="hidden" name="review" value={{ review.id }}>
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form>
+            {% else %}
+              <p>You must login to give comment</p>
+            {% endif %}
+          </div>
+        </div>
+
+        <ul class="commentList">
+          {% for comment in comments %}
+            {% if comment.review == review %}
+              <li>
+                <div>
+                  <img src="http://placekitten.com/45/45" class="img-responsive commenterImage"/>
+                </div>
+                <div class="commentText">
+                  <p class="">{{ comment.comments }}</p>
+                  <span class="date sub-text">on March 5th, 2014 by {{ comment.user }}({{ forloop.counter }})</span>
+                </div>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        {% empty %}
+        <p>There are no comments yet.</p>
+      </div>
+
     {% endfor %}
 
   </div>

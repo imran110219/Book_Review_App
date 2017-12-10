@@ -6,37 +6,41 @@
         display: inline;
       }
     </style>
-    <h1 class="mt-4">Book List</h1>
+    <h1>Book List</h1>
 
     <br>
-    <div>
       <ul>
         {% for obj in object_list %}
-          <li><a href='{{ obj.get_absolute_url }}'><strong>{{ obj.book_name }}</strong></a>
-            <br>
-            {% for obj in obj.authors.all %}
-              <p>{{ obj.get_name }} |</p>
-            {% endfor %}
-          </li>
+          <div class="square">
+            <div class="content">
+              <div class="table">
+                <div class="table-cell">
+                  <a href='{{ obj.get_absolute_url }}'><img src='{{ obj.book_image.url }}' class='img-responsive'/></a>
+{#                  <li><a href='{{ obj.get_absolute_url }}'><strong>{{ obj.book_name }}</strong></a>#}
+{#                    <br>#}
+{#                    {% for obj in obj.authors.all %}#}
+{#                      <p>{{ obj.get_name }} |</p>#}
+{#                    {% endfor %}#}
+{#                  </li>#}
+                </div>
+              </div>
+            </div>
+          </div>
         {% endfor %}
       </ul>
-    </div>
   </div>
 
   <!-- Sidebar Widgets Column -->
   <div class="col-md-4">
 
     <!-- Search Widget -->
-    <div class="card my-4">
-      <h3>Search</h3>
-      <form class="navbar-form navbar-left" id="searchform" action="{% url 'books:book' %}" method="get"
-                accept-charset="utf-8">
-            <div class="form-group">
-              <input type="text" class="form-control" name="q" placeholder="Search Books">
-            </div>
-            <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-          </form>
-    </div>
+    <form class="navbar-form navbar-left" id="searchform" action="{% url 'books:book' %}" method="get"
+          accept-charset="utf-8">
+      <div class="form-group">
+        <input type="text" class="form-control" name="q" placeholder="Search Books">
+      </div>
+      <button type="submit" class="btn btn-default">Go!</button>
+    </form>
   </div>
 
 {% endblock content %}
