@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+{#<h1>Reviews</h1>#}
+{##}
+{#<form method="post">#}
+{#  {% csrf_token %}#}
+{#  {{ form.as_p }}#}
+{##}
+{#  <input type=submit value="submit" />#}
+{#</form>#}
+
+  <div class="card my-4">
+      <h5 class="card-header">Reviews</h5>
+      <div class="card-body">
+        {% if request.user.is_authenticated %}
+          <form action="." method="post">
+            {% csrf_token %}
+            {{ form.review_description }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        {% else %}
+          <p>You must login to give review</p>
+        {% endif %}
+
+      </div>
+    </div>
+
+{% endblock %}

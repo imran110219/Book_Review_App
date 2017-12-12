@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
 
 from Account.views import (login_view, register_view, logout_view)
+from Review.views import ReviewUpdate, ReviewDelete
 
 urlpatterns = [
   url(r'^', include("Book.urls", namespace='books')),
@@ -31,6 +32,8 @@ urlpatterns = [
   url(r'^categories/', include("Category.urls", namespace='categories')),
   url(r'^authors/', include("Author.urls", namespace='authors')),
   url(r'^publications/', include("Publication.urls", namespace='publications')),
+  url(r'^reviews/(?P<id>\d+)/edit/$', ReviewUpdate.as_view(), name="edit-review"),
+  url(r'^reviews/(?P<pk>\d+)/delete/$', ReviewDelete.as_view(), name='delete'),
 ]
 
 if settings.DEBUG:

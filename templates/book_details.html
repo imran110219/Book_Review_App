@@ -40,14 +40,28 @@
 
     {% for review in reviews %}
       <div class="review">
-        <p class="info">
+        {#        <p class="info">#}
+        {#          {% if  review.user.first_name and review.user.last_name %}#}
+        {#            <h4>{{ review.user.first_name }} {{ review.user.last_name }}({{ forloop.counter }})</h4>#}
+        {#          {% else %}#}
+        {#            <h4>{{ review.user }}({{ forloop.counter }})</h4>#}
+        {#          {% endif %}#}
+        {#        </p>#}
+        {#        {{ review.review_description|linebreaks }}#}
+        <div>
+          <img src="http://placekitten.com/45/45" class="img-responsive commenterImage"/>
+        </div>
+        <div class="reviewText">
           {% if  review.user.first_name and review.user.last_name %}
-            <h4>{{ review.user.first_name }} {{ review.user.last_name }}({{ forloop.counter }})</h4>
+            <p><strong>{{ review.user.first_name }} {{ review.user.last_name }}({{ forloop.counter }})</strong> <span class="date sub-text">on {{ review.timestamp }}</span></p>
           {% else %}
-            <h4>{{ review.user }}({{ forloop.counter }})</h4>
+            <p><strong>{{ review.user }}({{ forloop.counter }})</strong> <span class="date sub-text">on {{ review.timestamp }}</span></p>
           {% endif %}
-        </p>
-        {{ review.review_description|linebreaks }}
+          <p class="">{{ review.review_description }}</p>
+          <a href="{% url "edit-review" id=review.id %}" class="badge badge-primary">Edit</a>
+          <a href="{% url "delete" pk=review.id %}" class="badge badge-danger">Delete</a>
+        </div>
+
       </div>
 
       <div class="comments">
@@ -81,7 +95,11 @@
                 </div>
                 <div class="commentText">
                   <p class="">{{ comment.comments }}</p>
-                  <span class="date sub-text">on March 5th, 2014 by {{ comment.user }}({{ forloop.counter }})</span>
+                  {% if  review.user.first_name and review.user.last_name %}
+                    <span class="date sub-text">on {{ comment.timestamp }} by {{ comment.user.first_name }} {{ comment.user.last_name }}({{ forloop.counter }})</span>
+                  {% else %}
+                    <span class="date sub-text">on {{ comment.timestamp }} by {{ comment.user }}({{ forloop.counter }})</span>
+                  {% endif %}
                 </div>
               </li>
             {% endif %}
