@@ -81,12 +81,87 @@
     {% block content %}{% endblock content %}
   </div>
 </div>
-<script type="text/javascript" src='{% static "js/jquery.min.js" %}'></script>
-<script type="text/javascript" src='{% static "js/bootstrap.min.js" %}'></script>
-<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.js' %}"></script>
 {#<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>#}
 {#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"#}
 {#        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"#}
 {#        crossorigin="anonymous"></script>#}
+
+{#<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>#}
+<script type="text/javascript" src='{% static "js/jquery.min.js" %}'></script>
+<script type="text/javascript" src='{% static "js/bootstrap.min.js" %}'></script>
+<script type="text/javascript" src='{% static "js/bootbox.min.js" %}'></script>
+<script type="text/javascript" src='{% static "js/custom.js" %}'></script>
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.js' %}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        {#        $("#review-edit-btn").click(function () {#}
+        {#            var revid = $(this).data('revid');#}
+        {#            $("#review_" + revid).load("review_edit.html");#}
+        {#        });#}
+{##}
+{#        $(document).on('click', '.edit', function () {#}
+{#            $id = $(this).attr('name');#}
+{#            window.location = "reviews/" + $id + "/edit/";#}
+{#        });#}
+{##}
+{#        var id = $(this).attr('revid');#}
+{#        alert(id);#}
+{#        $("#review-delete-btn").click(function () {#}
+{#            $id = $(this).attr('revid');#}
+{#            alert($id);#}
+{#            $.ajax({#}
+{#                url: '/books/reviews/' + $id + '/delete/',#}
+{#                type: 'POST',#}
+{#                data: {#}
+{#                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()#}
+{#                },#}
+{#                success: function (data) {#}
+{#                    $(".review").html(data);#}
+{#                    $(".review").hide();#}
+{#                    alert("Deleted!");#}
+{#                }#}
+{#            });#}
+{#        });#}
+
+        {#        $("#review-delete-btn").on('click', function (event) {#}
+        {#            event.preventDefault();#}
+        {##}
+        {#            // for referencing this later in this function#}
+        {#            var _button = $(this);#}
+        {#            var revid = $(this).data('revid');#}
+        {##}
+        {#            alert(revid);#}
+        {##}
+        {#            bootbox.confirm({#}
+        {#                title: "Destroy planet?",#}
+        {#                message: "Do you want to delete? This cannot be undone.",#}
+        {#                buttons: {#}
+        {#                    cancel: {#}
+        {#                        label: '<i class="fa fa-times"></i> Cancel'#}
+        {#                    },#}
+        {#                    confirm: {#}
+        {#                        label: '<i class="fa fa-check"></i> Confirm'#}
+        {#                    }#}
+        {#                },#}
+        {#                callback: function (result) {#}
+        {#                    // result will be a Boolean value#}
+        {#                    if (result) {#}
+        {#                        // this encodes the form data#}
+        {#                        var data = _button.closest('form').serialize();#}
+        {##}
+        {#                        $.post('{% url "delete" pk=revid %}', data).done(function (response, status, jqxhr) {#}
+        {#                            // status code 200 response#}
+        {#                        })#}
+        {#                            .fail(function (jqxhr, status, errorThrown) {#}
+        {#                                // any other status code, including 30x (redirects)#}
+        {#                            });#}
+        {#                    }#}
+        {#                }#}
+        {#            });#}
+        {#        });#}
+    });
+</script>
+
 </body>
 </html>

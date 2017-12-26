@@ -11,5 +11,5 @@ urlpatterns = [
   url(r'^$', home, name="home"),
   url(r'^books/(?P<id>[\w-]+)/$', book_detail, name='detail'),
   url(r'^books/$', book_list, name='book'),
-  # url(r'^books/', include("Review.urls", namespace='reviews')),
+  url(r'^books/', include("Review.urls", namespace='reviews')),
 ]

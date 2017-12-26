@@ -2,9 +2,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect, Http404, HttpResponse
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.template.loader import render_to_string
 from django.urls import reverse_lazy
+from django.http import JsonResponse
 
 from .models import Review
 from .models import Book
@@ -22,6 +24,7 @@ def review_list(request):
     "title": "List",
   }
   return render(request, "review_list.html", context)
+
 
 # @login_required #(login_url='/login/') #LOGIN_URL = '/login/'
 # def review_delete(request, id):
@@ -58,12 +61,13 @@ class ReviewUpdate(UpdateView):  # Note that we are using UpdateView and not For
   template_name = "review_edit.html"
 
   def get_object(self, *args, **kwargs):
-    review = get_object_or_404(Review, id=self.kwargs['id'])
+    review = get_object_or_404(Review, id=self.kwargs['pk'])
     return review
 
   def get_success_url(self, *args, **kwargs):
-    review = get_object_or_404(Review, id=self.kwargs['id'])
-    return reverse("books:detail", args = (review.book.id,))
+    review = get_object_or_404(Review, id=self.kwargs['pk'])
+    return reverse("books:detail", args=(review.book.id,))
+
 
 # @login_required
 class ReviewDelete(DeleteView):
@@ -71,5 +75,68 @@ class ReviewDelete(DeleteView):
   template_name = "confirm_delete.html"
 
   def get_success_url(self, *args, **kwargs):
-    review = get_object_or_404(Review, pk=self.kwargs['pk'])
-    return reverse("books:detail", args = (review.book.id,))
+    review = get_object_or_404(Review, id=self.kwargs['pk'])
+    return reverse("books:detail", args=(review.book.id,))
+
+# def save_review_form(request, form, template_name):
+#   data = dict()
+#   if request.method == 'POST':
+#     if form.is_valid():
+#       form.save()
+#       data['form_is_valid'] = True
+#       reviews = Review.objects.all()
+#       data['html_book_details'] = render_to_string('book_details.html', {
+#         'reviews': reviews
+#       })
+#     else:
+#       data['form_is_valid'] = False
+#   context = {'form': form}
+#   data['html_form'] = render_to_string(template_name, context, request=request)
+#   return JsonResponse(data)
+#
+#
+# def review_list(request):
+#   reviews = Review.objects.all()
+#   return render(request, 'review_list.html', {'reviews': reviews})
+#
+#
+# def review_create(request):
+#   form = ReviewForm()
+#   context = {'form': form}
+#   html_form = render_to_string('partial_review_create.html',
+#                                context,
+#                                request=request,
+#                                )
+#   return JsonResponse({'html_form': html_form})
+#
+#
+# def review_update(request, pk):
+#   reviews = Review.objects.get(pk=pk)
+#   context = {'reviews': reviews}
+#   return render(request, 'review_edit.html', context)
+#
+#   # def review_delete(request, id):
+#   #   review = Review.objects.get(id=id)
+#   #   book_id = review.book.id
+#   #   review.delete()
+#   #   return HttpResponseRedirect('/books/')
+#
+#
+# def review_delete(request, pk):
+#   review = get_object_or_404(Review, pk=pk)
+#   data = dict()
+#   if request.method == 'POST':
+#     review.delete()
+#     data['form_is_valid'] = True  # This is just to play along with the existing code
+#     reviews = Review.objects.all()
+#     data['html_book_details'] = render_to_string('book_details.html', {
+#       'reviews': reviews
+#     })
+#   else:
+#     context = {'review': review}
+#     data['html_form'] = render_to_string('partial_review_delete.html',
+#                                          context,
+#                                          request=request,
+#                                          )
+#
+#   return JsonResponse(data)
