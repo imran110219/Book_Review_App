@@ -23,6 +23,7 @@ from Account.views import (login_view, register_view, logout_view)
 
 urlpatterns = [
   url(r'^', include("Book.urls", namespace='books')),
+  url(r'api/books/', include("Book.api.urls", namespace='books-api')),
   url(r'^admin/', include(admin.site.urls)),
   url(r'^register/', register_view, name='register'),
   url(r'^login/', login_view, name='login'),
@@ -31,6 +32,8 @@ urlpatterns = [
   url(r'^categories/', include("Category.urls", namespace='categories')),
   url(r'^authors/', include("Author.urls", namespace='authors')),
   url(r'^publications/', include("Publication.urls", namespace='publications')),
+  url(r'api/publications/', include("Publication.api.urls", namespace='publications-api')),
+  url(r'^api-auth/', include('rest_framework.urls'))
 ]
 
 if settings.DEBUG:
