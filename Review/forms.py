@@ -6,9 +6,9 @@ class ReviewForm(forms.ModelForm):
   class Meta:
     model = Review
     widgets = {
-      'review_description': forms.Textarea(attrs={'rows':6, 'cols':100}),
+      'description': forms.Textarea(attrs={'rows':6, 'cols':100}),
     }
-    fields = ('review_description',)
+    fields = ('description',)
 
     def save(self, user=None):
       review = super(ReviewForm, self).save(commit=False)

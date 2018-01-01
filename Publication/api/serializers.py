@@ -14,8 +14,12 @@ class PublicationCreateUpdateSerializer(ModelSerializer):
   class Meta:
     model = Publication
     fields = [
-      'publication_name',
-      'publication_description',
+      'name',
+      'description',
+      'address',
+      'phone',
+      'proprietor',
+      'discount_range'
     ]
 
 class PublicationListSerializer(ModelSerializer):
@@ -25,23 +29,27 @@ class PublicationListSerializer(ModelSerializer):
     fields = [
       'url',
       'id',
-      'publication_name',
+      'name',
     ]
 
 class PublicationDetailSerializer(ModelSerializer):
-  publication_image = SerializerMethodField()
+  logo = SerializerMethodField()
   class Meta:
     model = Publication
     fields = [
       'id',
-      'publication_name',
-      'publication_description',
-      'publication_image'
+      'name',
+      'logo',
+      'description',
+      'address',
+      'phone',
+      'proprietor',
+      'discount_range'
     ]
 
-  def get_publication_image(self, obj):
+  def get_logo(self, obj):
       try:
-        publication_image =obj.publication_image.url
+        logo =obj.logo.url
       except:
-        publication_image = None
-      return publication_image
+        logo = None
+      return logo
