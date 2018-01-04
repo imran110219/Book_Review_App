@@ -17,7 +17,7 @@
         {% if request.user.is_authenticated %}
           <form action="." method="post">
             {% csrf_token %}
-            {{ form.review_description }}
+            {{ form.description }}
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         {% else %}

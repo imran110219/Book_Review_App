@@ -31,6 +31,7 @@ urlpatterns = [
   url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings')),
   url(r'^categories/', include("Category.urls", namespace='categories')),
   url(r'^authors/', include("Author.urls", namespace='authors')),
+  url(r'api/authors/', include("Author.api.urls", namespace='authors-api')),
   url(r'^publications/', include("Publication.urls", namespace='publications')),
   url(r'api/publications/', include("Publication.api.urls", namespace='publications-api')),
   url(r'^api-auth/', include('rest_framework.urls'))

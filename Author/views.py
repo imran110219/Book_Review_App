@@ -16,7 +16,7 @@ def author_list(request):
 
   if query:
     queryset = Author.objects.filter(
-      Q(author_name__icontains=query)
+      Q(name__icontains=query)
     ).distinct()
 
   context = {

@@ -15,13 +15,13 @@ class Category(models.Model):
   width_field = models.IntegerField(default=255)
 
 
-def __unicode__(self):
-  return str(self.category_name)
+  def __unicode__(self):
+    return str(self.name)
 
 
-def __str__(self):
-  return str(self.category_name)
+  def __str__(self):
+    return str(self.name)
 
 
-def get_absolute_url(self):
-  return reverse("categories:detail", kwargs={"id": self.id})
+  def get_absolute_url(self):
+    return reverse("categories:detail", kwargs={"id": self.id})

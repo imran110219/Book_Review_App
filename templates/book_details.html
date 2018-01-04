@@ -4,7 +4,7 @@
 
   <div class="col-lg-4">
     <h1>Book Details</h1>
-    <img src='{{ book.book_image.url }}' class='img-responsive'/>
+    <img src='{{ book.image.url }}' class='img-responsive'/>
     <h2>{{ book.book_name }}</h2>
     {% ratings book %}
     <h3>Author: </h3>
@@ -28,7 +28,7 @@
           {% if request.user.is_authenticated %}
             <form action="." method="post">
               {% csrf_token %}
-              {{ review_form.review_description }}
+              {{ review_form.description }}
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
           {% else %}
@@ -53,7 +53,7 @@
                 <p><strong>{{ review.user }}({{ forloop.counter }})</strong> <span
                         class="date sub-text">on {{ review.timestamp }}</span></p>
               {% endif %}
-              <p class="">{{ review.review_description }}</p>
+              <p class="">{{ review.description }}</p>
 {#              <a href="javascript:void(0)" class="badge badge-primary" id="review-edit-btn" data-revid="{{ review.id }}">Edit</a>#}
               <a href="{% url "books:reviews:review_update" pk=review.id %}" class="badge badge-primary">Edit</a>
 {#              <a class="badge badge-danger" id="review-delete-btn" revid="{{ review.pk }}">Delete</a>#}

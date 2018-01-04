@@ -7,6 +7,6 @@ from .views import (
 )
 
 urlpatterns = [
-  url(r'^reviews/(?P<pk>\d+)/delete/$', ReviewUpdate.as_view(), name='review_update'),
-  url(r'^reviews/(?P<pk>\d+)/edit/$', ReviewDelete.as_view(), name='review_delete'),
+  url(r'^reviews/(?P<pk>\d+)/edit/$', ReviewUpdate.as_view(), name='review_update'),
+  url(r'^reviews/(?P<pk>\d+)/delete/$', ReviewDelete.as_view(), name='review_delete'),
 ]
