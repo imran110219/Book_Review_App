@@ -17,7 +17,7 @@
   <div>
     <ul>
       {% for obj in object_list %}
-        <li><a href='{{ obj.get_absolute_url }}'>{{ obj.author_name }}</a></li>
+        <li><a href='{{ obj.get_absolute_url }}'>{{ obj.name }}</a></li>
       {% endfor %}
     </ul>
   </div>

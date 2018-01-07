@@ -2,8 +2,11 @@
 {% block content %}
 
   <h1>Publishers Details</h1>
-  <img src='{{ instance.publication_image.url }}' class='img-responsive' />
-  <h2>{{ instance.publication_name }}</h2>
-  <p>{{ instance.publication_description }}</p>
+  <img src='{{ instance.logo.url }}' class='img-responsive' />
+  <h2>{{ instance.name }}</h2>
+  <p>{{ instance.description }}</p>
+  <p>{{ instance.address }}</p>
+  <p>{{ instance.phone }}</p>
+  <p>{{ instance.proprietor }}</p>
 
 {% endblock content %}
