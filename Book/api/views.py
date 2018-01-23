@@ -2,7 +2,7 @@ from rest_framework.generics import (
   CreateAPIView,
   ListAPIView,
   RetrieveAPIView,
-  UpdateAPIView,
+  RetrieveUpdateAPIView,
   DestroyAPIView
 )
 
@@ -25,7 +25,7 @@ class BookDetailAPIView(RetrieveAPIView):
   queryset = Book.objects.all()
   serializer_class = BookDetailSerializer
 
-class BookUpdateAPIView(UpdateAPIView):
+class BookUpdateAPIView(RetrieveUpdateAPIView):
   queryset = Book.objects.all()
   serializer_class = BookCreateUpdateSerializer
 

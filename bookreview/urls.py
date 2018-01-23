@@ -19,17 +19,19 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
 
-from Account.views import (login_view, register_view, logout_view)
+from Account.views import (login_view, register_view, logout_view, update_profile)
 
 urlpatterns = [
   url(r'^', include("Book.urls", namespace='books')),
   url(r'api/books/', include("Book.api.urls", namespace='books-api')),
   url(r'^admin/', include(admin.site.urls)),
   url(r'^register/', register_view, name='register'),
+  url(r'^update/', update_profile, name='update'),
   url(r'^login/', login_view, name='login'),
   url(r'^logout/', logout_view, name='logout'),
   url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings')),
   url(r'^categories/', include("Category.urls", namespace='categories')),
+  url(r'api/categories/', include("Category.api.urls", namespace='categories-api')),
   url(r'^authors/', include("Author.urls", namespace='authors')),
   url(r'api/authors/', include("Author.api.urls", namespace='authors-api')),
   url(r'^publications/', include("Publication.urls", namespace='publications')),
