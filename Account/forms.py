@@ -1,4 +1,5 @@
 from django import forms
+from .models import Profile
 from django.contrib.auth import (
     authenticate,
     get_user_model,
@@ -45,3 +46,15 @@ class UserRegisterForm(forms.ModelForm):
             raise forms.ValidationError("Password must match")
 
         return password1
+
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['phone', 'address', 'image', 'fb_link', 'website']
