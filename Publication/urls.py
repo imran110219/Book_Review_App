@@ -4,7 +4,7 @@ from .views import(
     publication_list,
     publication_detail,
 )
-
+app_name = "Publication"
 urlpatterns = [
     # url(r'^$', home, name="home"),
     url(r'^(?P<id>[\w-]+)/$', publication_detail, name='detail'),
