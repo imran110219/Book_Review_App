@@ -8,7 +8,7 @@ from .views import (
   CategoryUpdateAPIView,
   CategoryDeleteAPIView,
 )
-
+app_name = "Category"
 urlpatterns = [
   url(r'^$', CategoryListAPIView.as_view(), name='list'),
   url(r'^create/$', CategoryCreateAPIView.as_view(), name='create'),

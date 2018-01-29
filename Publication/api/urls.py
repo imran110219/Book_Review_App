@@ -8,7 +8,7 @@ from .views import (
   PublicationUpdateAPIView,
   PublicationDeleteAPIView,
 )
-
+app_name = "Publication"
 urlpatterns = [
   url(r'^$', PublicationListAPIView.as_view(), name='list'),
   url(r'^create/$', PublicationCreateAPIView.as_view(), name='create'),

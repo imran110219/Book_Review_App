@@ -8,7 +8,7 @@ from .views import (
   BookUpdateAPIView,
   BookDeleteAPIView,
 )
-
+app_name = "Book"
 urlpatterns = [
   url(r'^$', BookListAPIView.as_view(), name='list'),
   url(r'^create/$', BookCreateAPIView.as_view(), name='create'),

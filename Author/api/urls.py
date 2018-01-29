@@ -8,7 +8,7 @@ from .views import (
   AuthorUpdateAPIView,
   AuthorDeleteAPIView,
 )
-
+app_name = "Author"
 urlpatterns = [
   url(r'^$', AuthorListAPIView.as_view(), name='list'),
   url(r'^create/$', AuthorCreateAPIView.as_view(), name='create'),

@@ -7,7 +7,7 @@ from Review.models import Review
 
 class Comment(models.Model):
   comments = models.TextField(max_length=500)
-  user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
+  user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
   review = models.ForeignKey(Review, on_delete=models.CASCADE)
   updated = models.DateTimeField(auto_now=True, auto_now_add=False)
   timestamp = models.DateTimeField(auto_now_add=True)
