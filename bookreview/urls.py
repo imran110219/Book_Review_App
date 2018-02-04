@@ -29,6 +29,7 @@ urlpatterns = [
   url(r'^update/', update_profile, name='update'),
   url(r'^login/', login_view, name='login'),
   url(r'^logout/', logout_view, name='logout'),
+  url(r'^oauth/', include('social_django.urls', namespace='social')),
   url(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
   url(r'^categories/', include("Category.urls", namespace='categories')),
   url(r'api/categories/', include("Category.api.urls", namespace='categories-api')),
