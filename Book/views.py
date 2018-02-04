@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, re
 from django.db.models import Q
 from django.contrib.contenttypes.models import ContentType
 from django.views.generic import TemplateView
+from django.contrib.auth.decorators import login_required
 
 from Book.models import Book
 from Review.models import Review
@@ -68,6 +69,7 @@ def book_detail(request, id=None):
   return render(request, 'book_details.html', context)
 
 
+@login_required
 def home(request):
   return render(request, "home.html")
 

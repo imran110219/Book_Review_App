@@ -96,3 +96,4 @@ class BookDetailSerializer(ModelSerializer):
     except:
       image = None
     return image
+

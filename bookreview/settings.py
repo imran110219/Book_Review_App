@@ -41,6 +41,7 @@ INSTALLED_APPS = (
   'crispy_forms',
   'star_ratings',
   'rest_framework',
+  'social_django',
 
   # local apps
   'Category',
@@ -61,6 +62,8 @@ MIDDLEWARE = (
   'django.contrib.messages.middleware.MessageMiddleware',
   'django.middleware.clickjacking.XFrameOptionsMiddleware',
   'django.middleware.security.SecurityMiddleware',
+
+  'social_django.middleware.SocialAuthExceptionMiddleware',
 )
 
 ROOT_URLCONF = 'bookreview.urls'
@@ -76,6 +79,9 @@ TEMPLATES = [
         'django.template.context_processors.request',
         'django.contrib.auth.context_processors.auth',
         'django.contrib.messages.context_processors.messages',
+
+        'social_django.context_processors.backends',
+        'social_django.context_processors.login_redirect',
       ],
     },
   },
@@ -144,3 +150,17 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_TWITTER_KEY = 'WnYYXi5RW6msfHq95MVug5rIw'
+SOCIAL_AUTH_TWITTER_SECRET = '3ifxlN8zhaiSs8jlzt9raC4ssZ9a8KCjN4w7D1jlWo7RODvYCx'
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'update'
