@@ -69,7 +69,4 @@ def book_detail(request, id=None):
   return render(request, 'book_details.html', context)
 
 
-@login_required
-def home(request):
-  return render(request, "home.html")
 

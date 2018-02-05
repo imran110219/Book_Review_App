@@ -22,7 +22,8 @@ from django.views.generic.base import TemplateView
 from Account.views import (login_view, register_view, logout_view, update_profile)
 
 urlpatterns = [
-  url(r'^', include("Book.urls", namespace='books')),
+  url(r'^', include("Account.urls", namespace='accounts')),
+  url(r'^books/', include("Book.urls", namespace='books')),
   url(r'api/books/', include("Book.api.urls", namespace='books-api')),
   url(r'^admin/', admin.site.urls),
   url(r'^register/', register_view, name='register'),
