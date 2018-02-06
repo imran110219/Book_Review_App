@@ -14,7 +14,7 @@ from .serializers import (
 )
 
 class BookCreateAPIView(CreateAPIView):
-  queryset = Book.objects.all()
+  queryset = Book.objects.all() #.prefetch_related('authors')
   serializer_class = BookCreateUpdateSerializer
 
 class BookListAPIView(ListAPIView):

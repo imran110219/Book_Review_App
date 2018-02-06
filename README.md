@@ -1,6 +1,6 @@
 # Book Review Application
 
-One Paragraph of project description goes here
+This application is designed for reviewing, rating books. 
 
 ## Getting Started
 
@@ -8,26 +8,24 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+* Python 3.6.4
+* Postgres
 
-```
-Give examples
-```
 
 ### Installing
 
 A step by step series of examples that tell you have to get a development env running
 
-Say what the step will be
+Download the python and install python.
 
 ```
-Give the example
+https://www.python.org/downloads/
 ```
 
-And repeat
+Download the Postgres and install it.
 
 ```
-until finished
+https://www.postgresql.org/download/
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
