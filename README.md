@@ -28,11 +28,32 @@ Download the Postgres and install it.
 https://www.postgresql.org/download/
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+Install pip
 
-## Running the tests
+```
+$ easy_install pip
+```
 
-Explain how to run the automated tests for this system
+Create Virtual Environment
+
+```
+$ pip install virtualenv
+$ cd django15_project
+$ virtualenv venv
+$ source venv/bin/activate
+```
+
+Install all package from requirements.txt
+
+```
+$ pip install -r requirements.txt
+```
+
+## Running the application
+
+```
+$ python manage.py runserver
+```
 
 ### Break down into end to end tests
 
@@ -70,7 +91,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Sadman Sobhan** - *Initial work* - [imran110219](https://github.com/imran110219)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
