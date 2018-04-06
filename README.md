@@ -38,9 +38,9 @@ Create Virtual Environment
 
 ```
 $ pip install virtualenv
-$ cd django15_project
+$ cd Book_Review_App
 $ virtualenv venv
-$ source venv/bin/activate
+$ venv\Scripts\activate
 ```
 
 Install all package from requirements.txt
