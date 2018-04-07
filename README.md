@@ -14,7 +14,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+A step by step series of examples that tell you have to get a development environment running
 
 Download the python and install python.
 
@@ -47,6 +47,22 @@ Install all package from requirements.txt
 
 ```
 $ pip install -r requirements.txt
+```
+
+### Setup Database
+
+Access postgres user
+
+```
+$ psql -U postgres
+$ CREATE DATABASE bookreview;
+```
+
+Run migration
+
+```
+python manage.py makemigrations
+python manage.py migrate
 ```
 
 ## Running the application
