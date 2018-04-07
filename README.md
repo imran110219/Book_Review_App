@@ -107,8 +107,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Sadman Sobhan** - *Initial work* - [imran110219](https://github.com/imran110219)
-* **Md Shahjahan** - *Initial work* - [shahed48](https://github.com/shahed48)
+* **Sadman Sobhan** - *Backend Developer* - [imran110219](https://github.com/imran110219)
+* **Md Shahjahan** - *Fullstack Developer* - [shahed48](https://github.com/shahed48)
 
 See also the list of [contributors](https://github.com/imran110219/Book_Review_App/settings/collaboration) who participated in this project.
 
