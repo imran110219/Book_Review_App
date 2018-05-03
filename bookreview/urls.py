@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
+from rest_framework_jwt.views import obtain_jwt_token
 
 from Account.views import (login_view, register_view, logout_view, update_profile)
 
@@ -38,7 +39,9 @@ urlpatterns = [
   url(r'api/authors/', include("Author.api.urls", namespace='authors-api')),
   url(r'^publications/', include("Publication.urls", namespace='publications')),
   url(r'api/publications/', include("Publication.api.urls", namespace='publications-api')),
-  url(r'^api-auth/', include('rest_framework.urls'))
+
+  url(r'^api-auth/', include('rest_framework.urls')),
+  url(r'^api/auth/token/', obtain_jwt_token),
 ]
 
 if settings.DEBUG:

@@ -30,61 +30,61 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-  'django.contrib.admin',
-  'django.contrib.auth',
-  'django.contrib.contenttypes',
-  'django.contrib.sessions',
-  'django.contrib.messages',
-  'django.contrib.staticfiles',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
 
-  # third party
-  'crispy_forms',
-  'star_ratings',
-  'rest_framework',
-  'social_django',
+    # third party
+    'crispy_forms',
+    'star_ratings',
+    'rest_framework',
+    'social_django',
 
-  # local apps
-  'Category',
-  'Publication',
-  'Author',
-  'Book',
-  'Review',
-  'Comment',
-  'Account',
+    # local apps
+    'Category',
+    'Publication',
+    'Author',
+    'Book',
+    'Review',
+    'Comment',
+    'Account',
 )
 
 MIDDLEWARE = (
-  'django.contrib.sessions.middleware.SessionMiddleware',
-  'django.middleware.common.CommonMiddleware',
-  'django.middleware.csrf.CsrfViewMiddleware',
-  'django.contrib.auth.middleware.AuthenticationMiddleware',
-  # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-  'django.contrib.messages.middleware.MessageMiddleware',
-  'django.middleware.clickjacking.XFrameOptionsMiddleware',
-  'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
 
-  'social_django.middleware.SocialAuthExceptionMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 )
 
 ROOT_URLCONF = 'bookreview.urls'
 
 TEMPLATES = [
-  {
-    'BACKEND': 'django.template.backends.django.DjangoTemplates',
-    'DIRS': [os.path.join(BASE_DIR, 'templates')],
-    'APP_DIRS': True,
-    'OPTIONS': {
-      'context_processors': [
-        'django.template.context_processors.debug',
-        'django.template.context_processors.request',
-        'django.contrib.auth.context_processors.auth',
-        'django.contrib.messages.context_processors.messages',
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
 
-        'social_django.context_processors.backends',
-        'social_django.context_processors.login_redirect',
-      ],
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
+            ],
+        },
     },
-  },
 ]
 
 WSGI_APPLICATION = 'bookreview.wsgi.application'
@@ -100,14 +100,14 @@ WSGI_APPLICATION = 'bookreview.wsgi.application'
 # }
 
 DATABASES = {
-  'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'bookreview',
-    'USER': 'postgres',
-    'PASSWORD': '12345678',
-    'HOST': 'localhost',
-    'PORT': '5432',
-  }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'bookreview',
+        'USER': 'postgres',
+        'PASSWORD': '12345678',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
 }
 
 # Internationalization
@@ -134,8 +134,8 @@ STAR_RATINGS_ANONYMOUS = False
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-  os.path.join(BASE_DIR, "static"),
-  # '/var/www/static/',
+    os.path.join(BASE_DIR, "static"),
+    # '/var/www/static/',
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
@@ -146,10 +146,22 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+    ),
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.IsAuthenticated',
     ]
 }
+
+'''
+
+curl -X POST -d "username=sadman&password=12345678" http://localhost:8000/api/auth/token/
+
+'''
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.github.GithubOAuth2',

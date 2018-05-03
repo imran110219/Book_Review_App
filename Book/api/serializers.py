@@ -2,9 +2,11 @@ from rest_framework.serializers import (
   ModelSerializer,
   SerializerMethodField,
   HyperlinkedIdentityField,
+  ListSerializer,
 )
 
 from Book.models import Book, AuthorBook
+from Author.models import Author
 
 from Author.api.serializers import AuthorListSerializer, AuthorDetailSerializer
 from Category.api.serializers import CategoryListSerializer, CategoryDetailSerializer
@@ -15,7 +17,7 @@ book_detail_url = HyperlinkedIdentityField(
 )
 
 class BookCreateUpdateSerializer(ModelSerializer):
-  authors = AuthorDetailSerializer(many=True, read_only=True)
+  authors = AuthorListSerializer(many=True, read_only=True)
   categories = CategoryDetailSerializer(many=True, read_only=True)
 
   def create(self, validated_data):
@@ -24,6 +26,8 @@ class BookCreateUpdateSerializer(ModelSerializer):
     for author in author_data:
       d = dict(author)
       AuthorBook.objects.create(book=book, author=d['author'])
+
+    book.save()
     return book
 
   def update(self, instance, validated_data):
