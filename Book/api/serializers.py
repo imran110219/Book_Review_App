@@ -17,7 +17,7 @@ book_detail_url = HyperlinkedIdentityField(
 )
 
 class BookCreateUpdateSerializer(ModelSerializer):
-  authors = AuthorListSerializer(many=True, read_only=True)
+  authors = AuthorListSerializer(many=True)
   categories = CategoryDetailSerializer(many=True, read_only=True)
 
   def create(self, validated_data):
