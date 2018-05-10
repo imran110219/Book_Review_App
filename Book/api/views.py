@@ -33,6 +33,7 @@ class BookDetailAPIView(RetrieveAPIView):
   serializer_class = BookDetailSerializer
 
 class BookUpdateAPIView(RetrieveUpdateAPIView):
+  permission_classes = [AllowAny,]
   queryset = Book.objects.all()
   serializer_class = BookCreateUpdateSerializer
 
