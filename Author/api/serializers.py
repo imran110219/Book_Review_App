@@ -11,14 +11,21 @@ author_detail_url = HyperlinkedIdentityField(
     )
 
 class AuthorCreateUpdateSerializer(ModelSerializer):
-  # image = SerializerMethodField()
+  image = SerializerMethodField()
   class Meta:
     model = Author
     fields = [
       'name',
-      # 'image',
+      'image',
       'biography',
     ]
+
+  def get_image(self, obj):
+      try:
+        image =obj.image.url
+      except:
+        image = None
+      return image
 
 class AuthorListSerializer(ModelSerializer):
   url = author_detail_url
