@@ -4,6 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import RedirectView
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.http import JsonResponse
@@ -16,15 +17,26 @@ from .forms import ReviewForm
 # Create your views here.
 
 def review_list(request):
-  if request.user.is_staff or request.user.is_superuser:
-    queryset_list = Review.objects.all()
+    if request.user.is_staff or request.user.is_superuser:
+        queryset_list = Review.objects.all()
 
-  context = {
-    "object_list": queryset_list,
-    "title": "List",
-  }
-  return render(request, "review_list.html", context)
+    context = {
+        "object_list": queryset_list,
+        "title": "List",
+    }
+    return render(request, "review_list.html", context)
 
+
+class ReviewLikeToggle(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        review = get_object_or_404(Review, id=self.kwargs['pk'])
+        user = self.request.user
+        if user.is_authenticated:
+            if user in review.likes.all():
+                review.likes.remove(user)
+            else:
+                review.likes.add(user)
+        return reverse("books:detail", args=(review.book.id,))
 
 # @login_required #(login_url='/login/') #LOGIN_URL = '/login/'
 # def review_delete(request, id):
@@ -55,28 +67,28 @@ def review_list(request):
 
 # @login_required
 class ReviewUpdate(UpdateView):  # Note that we are using UpdateView and not FormView
-  model = Review
-  # fields = ('review_description',)
-  form_class = ReviewForm
-  template_name = "review_edit.html"
+    model = Review
+    # fields = ('review_description',)
+    form_class = ReviewForm
+    template_name = "review_edit.html"
 
-  def get_object(self, *args, **kwargs):
-    review = get_object_or_404(Review, id=self.kwargs['pk'])
-    return review
+    def get_object(self, *args, **kwargs):
+        review = get_object_or_404(Review, id=self.kwargs['pk'])
+        return review
 
-  def get_success_url(self, *args, **kwargs):
-    review = get_object_or_404(Review, id=self.kwargs['pk'])
-    return reverse("books:detail", args=(review.book.id,))
+    def get_success_url(self, *args, **kwargs):
+        review = get_object_or_404(Review, id=self.kwargs['pk'])
+        return reverse("books:detail", args=(review.book.id,))
 
 
 # @login_required
 class ReviewDelete(DeleteView):
-  model = Review
-  template_name = "confirm_delete.html"
+    model = Review
+    template_name = "confirm_delete.html"
 
-  def get_success_url(self, *args, **kwargs):
-    review = get_object_or_404(Review, id=self.kwargs['pk'])
-    return reverse("books:detail", args=(review.book.id,))
+    def get_success_url(self, *args, **kwargs):
+        review = get_object_or_404(Review, id=self.kwargs['pk'])
+        return reverse("books:detail", args=(review.book.id,))
 
 # def save_review_form(request, form, template_name):
 #   data = dict()

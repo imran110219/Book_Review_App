@@ -55,7 +55,7 @@
                                         class="date sub-text">on {{ review.timestamp }}</span></p>
                             {% endif %}
                             <p class="">{{ review.description }}</p>
-
+                            <p>Likes : {{ review.likes.count }} <a href="{% url "books:reviews:like_toogle" pk=review.id %}">Like</a></p>
                             {% if  review.user == request.user %}
                                 {#              <a href="javascript:void(0)" class="badge badge-primary" id="review-edit-btn" data-revid="{{ review.id }}">Edit</a>#}
                                 <a href="{% url "books:reviews:review_update" pk=review.id %}" class="badge badge-primary">Edit</a>
