@@ -90,11 +90,15 @@ def update_profile(request):
     'profile_form': profile_form,
     "title": title
   }
-  return render(request, 'profile.html', context)
+  return render(request, 'profile_edit.html', context)
 
 @login_required
 def home(request):
   return render(request, "home.html")
+
+@login_required
+def profile(request):
+  return render(request, "profile.html")
 
 
 @login_required

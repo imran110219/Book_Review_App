@@ -57,7 +57,7 @@
           <li><a href='{% url "register" %}'>Register</a></li>
           <li><a href='{% url "login" %}'>Login</a></li>
         {% else %}
-          <li><a href='#'>{{ user.username }}</a></li>
+          <li><a href='{% url "accounts:profile" %}'>{{ user.username }}</a></li>
           <li><a href='{% url "logout" %}'>Logout</a></li>
         {% endif %}
         {#        <li class="dropdown">#}
