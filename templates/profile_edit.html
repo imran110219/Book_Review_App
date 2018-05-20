@@ -3,29 +3,29 @@
 
 
 {% block content %}
-    <div class="sidebar-nav">
+    <div class='col-sm-3' style="margin-top:50px;">
         <div class="well" style="width:200px; padding: 8px 0;">
             <ul class="nav nav-list">
-                <li class="nav-header">User Menu</li>
+{#                <li class="nav-header">User Menu</li>#}
                 <li><a href="index"><i class="icon-home"></i> Dashboard</a></li>
                 <li><a href="#"><i class="icon-envelope"></i> Messages <span class="badge badge-info">4</span></a></li>
-                <li><a href="#"><i class="icon-comment"></i> Comments <span class="badge badge-info">10</span></a></li>
+                <li><a href='{% url "books:reviews:review_lists" %}'><i class="icon-comment"></i> Reviews <span class="badge badge-info">10</span></a></li>
                 <li class="active"><a href="#"><i class="icon-user"></i> Members</a></li>
                 <li class="divider"></li>
-                <li><a href="#"><i class="icon-comment"></i> Settings</a></li>
+                <li><a href='{% url "accounts:profile-edit" %}'><i class="icon-comment"></i> Settings</a></li>
                 <li><a href="#"><i class="icon-share"></i> Logout</a></li>
             </ul>
         </div>
-        <div class='col-sm-6 col-sm-offset-3'>
-            {#            <div>#}
-            <h1>{{ title }}</h1>
-            <hr/>
-            <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
-                {{ user_form|crispy }}
-                {{ profile_form|crispy }}
-                <input type="submit" class="btn btn-default" value="{{ title }}"/>
-            </form>
-        </div>
+    </div>
+
+    <div class='col-sm-6'>
+        <h1>{{ title }}</h1>
+        <hr/>
+        <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+            {{ user_form|crispy }}
+            {{ profile_form|crispy }}
+            <input type="submit" class="btn btn-default" value="{{ title }}"/>
+        </form>
     </div>
 
 

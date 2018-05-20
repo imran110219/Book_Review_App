@@ -8,9 +8,15 @@ from django.views.generic import RedirectView
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.http import JsonResponse
+from django.db.models import Q
+from django.core import serializers
+from django.views.generic import TemplateView
+from django_datatables_view.base_datatable_view import BaseDatatableView
+from django.utils.html import escape
 
 from .models import Review
 from .models import Book
+from .models import Profile
 from .forms import ReviewForm
 
 
@@ -25,6 +31,17 @@ def review_list(request):
         "title": "List",
     }
     return render(request, "review_list.html", context)
+
+def profile_review_list(request):
+    if request.user.is_staff or request.user.is_superuser:
+        profile = get_object_or_404(Profile, user=request.user)
+        queryset_list = Review.objects.all().filter(profile=profile)
+
+    context = {
+        "object_list": queryset_list,
+        "title": "List",
+    }
+    return render(request, "profile_reviews.html", context)
 
 
 class ReviewLikeToggle(RedirectView):
