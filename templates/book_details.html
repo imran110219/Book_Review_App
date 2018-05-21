@@ -46,17 +46,17 @@
                             <img src="http://placekitten.com/45/45" class="img-responsive commenterImage"/>
                         </div>
                         <div class="reviewText">
-                            {% if  review.user.first_name and review.user.last_name %}
+                            {% if review.user.first_name and review.user.last_name %}
                                 <p>
-                                    <strong>{{ review.user.first_name }} {{ review.user.last_name }}({{ forloop.counter }})</strong>
+                                    <strong>{{ review.profile.first_name }} {{ review.profile.last_name }}({{ forloop.counter }})</strong>
                                     <span class="date sub-text">on {{ review.timestamp }}</span></p>
                             {% else %}
-                                <p><strong>{{ review.user }}({{ forloop.counter }})</strong> <span
+                                <p><strong>{{ review.profile }}({{ forloop.counter }})</strong> <span
                                         class="date sub-text">on {{ review.timestamp }}</span></p>
                             {% endif %}
                             <p class="">{{ review.description }}</p>
                             <p>Likes : {{ review.likes.count }} <a href="{% url "books:reviews:like_toogle" pk=review.id %}">Like</a></p>
-                            {% if  review.user == request.user %}
+                            {% if  review.profile.user == request.user %}
                                 {#              <a href="javascript:void(0)" class="badge badge-primary" id="review-edit-btn" data-revid="{{ review.id }}">Edit</a>#}
                                 <a href="{% url "books:reviews:review_update" pk=review.id %}" class="badge badge-primary">Edit</a>
                                 {#              <a class="badge badge-danger" id="review-delete-btn" revid="{{ review.pk }}">Delete</a>#}

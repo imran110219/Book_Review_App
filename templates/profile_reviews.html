@@ -24,7 +24,8 @@
                 <th>User</th>
                 <th>Likes</th>
                 <th>Book</th>
-                <th>Link</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -33,7 +34,8 @@
                     <td>{{ row.profile.user }}</td>
                     <td>{{ row.likes.count }}</td>
                     <td>{{ row.book }}</td>
-                    <td>{{ row.id }}</td>
+                    <td><a href="{% url "books:reviews:review_update" pk=row.id %}" >Edit</a></td>
+                    <td><a href="{% url "books:reviews:review_delete" pk=row.id %}" >Delete</a></td>
                 </tr>
             {% endfor %}
             </tbody>
