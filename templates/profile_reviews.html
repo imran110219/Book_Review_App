@@ -5,7 +5,7 @@
     <div class='col-sm-3' style="margin-top:50px;">
         <div class="well" style="width:200px; padding: 8px 0;">
             <ul class="nav nav-list">
-                {#                <li class="nav-header">User Menu</li>#}
+                <li class="nav-header">User Menu</li>
                 <li><a href="index"><i class="icon-home"></i> Dashboard</a></li>
                 <li><a href="#"><i class="icon-envelope"></i> Messages <span class="badge badge-info">4</span></a></li>
                 <li><a href='{% url "books:reviews:review_lists" %}'><i class="icon-comment"></i> Reviews <span
@@ -17,35 +17,39 @@
             </ul>
         </div>
     </div>
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-header">
-                <h4>User review</h4>
-            </div>
-            <div class="card-body" style="height: 50%;">
-                <div class="table-responsive">
-                    <table class="table table-striped table-sm">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>User</th>
-                            <th>Likes</th>
-                            <th>Book</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for obj in object_list %}
-                        <tr>
-                            <th scope="row"></th>
-                            <td>{{ obj.profile.user }}</td>
-                            <td>{{ obj.likes.count }}</td>
-                            <td>{{ obj.book }}</td>
-                        </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+    <div class="col-lg-8" style="margin-top:50px;">
+        <table id="example" class="display" style="width:100%">
+            <thead>
+            <tr>
+                <th>User</th>
+                <th>Likes</th>
+                <th>Book</th>
+                <th>Link</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in object_list %}
+                <tr id=forloop.counter> <!-- Needed for DataTables row identification -->
+                    <td>{{ row.profile.user }}</td>
+                    <td>{{ row.likes.count }}</td>
+                    <td>{{ row.book }}</td>
+                    <td>{{ row.id }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+{#            <tfoot>#}
+{#            <tr>#}
+{#                <th>User</th>#}
+{#                <th>Likes</th>#}
+{#                <th>Book</th>#}
+{#            </tr>#}
+{#            </tfoot>#}
+        </table>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
 {% endblock content %}
