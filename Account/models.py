@@ -7,6 +7,14 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    USER_TYPE_CHOICES = (
+        (1, 'user'),
+        (2, 'publisher'),
+        (3, 'author'),
+        (4, 'moderator'),
+        (5, 'admin'),
+    )
+    user_role = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES, default=5)
     phone = models.CharField(max_length=11, blank=True)
     address = models.CharField(max_length=30, blank=True)
     image = models.ImageField(height_field="height_field", width_field="width_field", blank=True)

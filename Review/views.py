@@ -11,7 +11,6 @@ from django.http import JsonResponse
 from django.db.models import Q
 from django.core import serializers
 from django.views.generic import TemplateView
-from django_datatables_view.base_datatable_view import BaseDatatableView
 from django.utils.html import escape
 
 from .models import Review
