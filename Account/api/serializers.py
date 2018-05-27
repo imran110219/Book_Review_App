@@ -4,23 +4,27 @@ from rest_framework.serializers import (
     HyperlinkedIdentityField,
 )
 
+from django.contrib.auth.models import User
 from Account.models import Profile
 
 user_detail_url = HyperlinkedIdentityField(
     view_name='users-api:detail'
 )
 
+class UserSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email')
 
-class UserCreateUpdateSerializer(ModelSerializer):
+
+class UserProfileCreateUpdateSerializer(ModelSerializer):
+    user = UserSerializer(required=True)
     image = SerializerMethodField()
 
     class Meta:
         model = Profile
         fields = [
-            'username',
-            'first_name',
-            'last_name',
-            'email',
+            'user',
             'user_role',
             'phone',
             'address',
@@ -37,7 +41,8 @@ class UserCreateUpdateSerializer(ModelSerializer):
         return image
 
 
-class UserListSerializer(ModelSerializer):
+class UserProfileListSerializer(ModelSerializer):
+    user = UserSerializer(required=True)
     url = user_detail_url
 
     class Meta:
@@ -45,21 +50,19 @@ class UserListSerializer(ModelSerializer):
         fields = [
             'url',
             'id',
-            'username',
+            'user',
         ]
 
 
-class UserDetailSerializer(ModelSerializer):
+class UserProfileDetailSerializer(ModelSerializer):
+    user = UserSerializer(required=True)
     image = SerializerMethodField()
 
     class Meta:
         model = Profile
         fields = [
             'id',
-            'username',
-            'first_name',
-            'last_name',
-            'email',
+            'user',
             'user_role',
             'phone',
             'address',

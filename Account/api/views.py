@@ -14,13 +14,13 @@ from rest_framework.permissions import (
 )
 
 from Account.models import Profile
-from .serializers import UserListSerializer, UserDetailSerializer, UserCreateUpdateSerializer
+from .serializers import UserProfileListSerializer, UserProfileDetailSerializer, UserProfileCreateUpdateSerializer
 
 
 class UserCreateAPIView(CreateAPIView):
     permission_classes = [AllowAny]
     queryset = Profile.objects.all()
-    serializer_class = UserCreateUpdateSerializer
+    serializer_class = UserProfileCreateUpdateSerializer
     # def post(self, request, *args, **kwargs):
     #   return self.create(request, *args, **kwargs)
 
@@ -28,19 +28,20 @@ class UserListAPIView(ListAPIView):
     # permission_classes = (IsAuthenticated,)
     permission_classes = [AllowAny]
     queryset = Profile.objects.all()
-    serializer_class = UserListSerializer
+    serializer_class = UserProfileListSerializer
 
 
 class UserDetailAPIView(RetrieveAPIView):
+    permission_classes = [AllowAny]
     queryset = Profile.objects.all()
-    serializer_class = UserDetailSerializer
+    serializer_class = UserProfileDetailSerializer
 
 
 class UserUpdateAPIView(RetrieveUpdateAPIView):
     queryset = Profile.objects.all()
-    serializer_class = UserCreateUpdateSerializer
+    serializer_class = UserProfileCreateUpdateSerializer
 
 
 class UserDeleteAPIView(RetrieveDestroyAPIView):
     queryset = Profile.objects.all()
-    serializer_class = UserDetailSerializer
+    serializer_class = UserProfileDetailSerializer
