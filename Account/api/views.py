@@ -38,6 +38,7 @@ class UserDetailAPIView(RetrieveAPIView):
 
 
 class UserUpdateAPIView(RetrieveUpdateAPIView):
+    permission_classes = [AllowAny]
     queryset = Profile.objects.all()
     serializer_class = UserProfileCreateUpdateSerializer
 
