@@ -1,0 +1,28 @@
+.home-content{
+    background: url('../images/home-back.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.login-area{
+    background-color: white; 
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.login-area h4{ text-align: center; }
+.social-login{ text-align: center; margin: 1rem 0;}
+.social-login a{ 
+    font-size: 25px; 
+    padding: 0.5rem; 
+    transition: color 0.3s ease-out; 
+    -moz-transition: color 0.3s ease-out; 
+    -webkit-transition: color 0.3s ease-out; 
+    -o-transition: color 0.3s ease-out; 
+    -ms-transition: color 0.3s ease-out;
+}
+.social-login a:hover, .social-login a::after{ cursor: pointer !important; color: black !important}
+
+.scroll-top{ position: fixed; bottom: 15px; right: 15px; display: none;}
+.scroll-top a { color: #33B5E5 !important}
