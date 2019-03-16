@@ -12,20 +12,28 @@ from .serializers import (
   BookDetailSerializer,
   BookCreateUpdateSerializer,
 )
+from rest_framework.permissions import (
+    AllowAny,
+    IsAuthenticated,
+    IsAdminUser,
+    IsAuthenticatedOrReadOnly
+)
 
 class BookCreateAPIView(CreateAPIView):
-  queryset = Book.objects.all() #.prefetch_related('authors')
+  queryset = Book.objects.all()
   serializer_class = BookCreateUpdateSerializer
 
 class BookListAPIView(ListAPIView):
   queryset = Book.objects.all()
   serializer_class = BookListSerializer
+  permission_classes = [AllowAny]
 
 class BookDetailAPIView(RetrieveAPIView):
   queryset = Book.objects.all()
   serializer_class = BookDetailSerializer
 
 class BookUpdateAPIView(RetrieveUpdateAPIView):
+  permission_classes = [AllowAny,]
   queryset = Book.objects.all()
   serializer_class = BookCreateUpdateSerializer
 

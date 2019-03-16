@@ -2,119 +2,125 @@
 {% load ratings %}
 {% block content %}
 
-  <div class="col-lg-4">
-    <h1>Book Details</h1>
-    <img src='{{ book.image.url }}' class='img-responsive'/>
-    <h2>{{ book.book_name }}</h2>
-    {% ratings book %}
-    <h3>Author: </h3>
-    {% for obj in book.authors.all %}
-      <h4>{{ obj.get_name }}</h4>
-    {% endfor %}
-    <p>{{ book.book_description }}</p>
+    <div class="col-lg-4">
+        <h1>Book Details</h1>
+        <img src='{{ book.image.url }}' class='img-responsive'/>
+        <h2>{{ book.book_name }}</h2>
+        {% ratings book %}
+        <h3>Author: </h3>
+        {% for obj in book.authors.all %}
+            <h4>{{ obj.get_name }}</h4>
+        {% endfor %}
+        <p>{{ book.book_description }}</p>
 
-  </div>
-
-  <br/>
-
-
-  <div class="col-lg-8">
-
-
-    <div class="row">
-      <div class="card col-lg-12">
-        <h5 class="card-header">Leave a Review:</h5>
-        <div class="card-body">
-          {% if request.user.is_authenticated %}
-            <form action="." method="post">
-              {% csrf_token %}
-              {{ review_form.description }}
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-          {% else %}
-            <p>You must login to give review</p>
-          {% endif %}
-        </div>
-      </div>
     </div>
 
-    {% for review in reviews %}
-      <div class="row">
-        <div class="col-md-12">
-          <div class="review" id="review_{{ review.id }}">
-            <div>
-              <img src="http://placekitten.com/45/45" class="img-responsive commenterImage"/>
-            </div>
-            <div class="reviewText">
-              {% if  review.user.first_name and review.user.last_name %}
-                <p><strong>{{ review.user.first_name }} {{ review.user.last_name }}({{ forloop.counter }})</strong>
-                  <span class="date sub-text">on {{ review.timestamp }}</span></p>
-              {% else %}
-                <p><strong>{{ review.user }}({{ forloop.counter }})</strong> <span
-                        class="date sub-text">on {{ review.timestamp }}</span></p>
-              {% endif %}
-              <p class="">{{ review.description }}</p>
-{#              <a href="javascript:void(0)" class="badge badge-primary" id="review-edit-btn" data-revid="{{ review.id }}">Edit</a>#}
-              <a href="{% url "books:reviews:review_update" pk=review.id %}" class="badge badge-primary">Edit</a>
-{#              <a class="badge badge-danger" id="review-delete-btn" revid="{{ review.pk }}">Delete</a>#}
-              <a href="{% url "books:reviews:review_delete" pk=review.id %}" class="badge badge-danger">Delete</a>
-            </div>
+    <br/>
 
-          </div>
+
+    <div class="col-lg-8">
+
+
+        <div class="row">
+            <div class="card col-lg-12">
+                <h5 class="card-header">Leave a Review:</h5>
+                <div class="card-body">
+                    {% if request.user.is_authenticated %}
+                        <form action="." method="post">
+                            {% csrf_token %}
+                            {{ review_form.description }}
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    {% else %}
+                        <p>You must login to give review</p>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="comments">
+        {% for review in reviews %}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="review" id="review_{{ review.id }}">
+                        <div>
+                            <img src="http://placekitten.com/45/45" class="img-responsive commenterImage"/>
+                        </div>
+                        <div class="reviewText">
+                            {% if review.user.first_name and review.user.last_name %}
+                                <p>
+                                    <strong>{{ review.profile.first_name }} {{ review.profile.last_name }}({{ forloop.counter }})</strong>
+                                    <span class="date sub-text">on {{ review.timestamp }}</span></p>
+                            {% else %}
+                                <p><strong>{{ review.profile }}({{ forloop.counter }})</strong> <span
+                                        class="date sub-text">on {{ review.timestamp }}</span></p>
+                            {% endif %}
+                            <p class="">{{ review.description }}</p>
+                            <p>Likes : {{ review.likes.count }} <a href="{% url "books:reviews:like_toogle" pk=review.id %}">Like</a></p>
+                            {% if  review.profile.user == request.user %}
+                                {#              <a href="javascript:void(0)" class="badge badge-primary" id="review-edit-btn" data-revid="{{ review.id }}">Edit</a>#}
+                                <a href="{% url "books:reviews:review_update" pk=review.id %}" class="badge badge-primary">Edit</a>
+                                {#              <a class="badge badge-danger" id="review-delete-btn" revid="{{ review.pk }}">Delete</a>#}
+                                <a href="{% url "books:reviews:review_delete" pk=review.id %}" class="badge badge-danger">Delete</a>
+                            {% endif %}
+                        </div>
 
-            <div class="card col-md-12">
-              <h5 class="card-header">Leave a Comment:</h5>
-              <div class="card-body">
-                {% if request.user.is_authenticated %}
-                  <form action="." method="post" class="form-horizontal" role="form">
-                    <div class="form-group">
-                      <div class="col-sm-11">
-                        <input class="form-control" name="comments" type="text" placeholder="Your comments"/>
-                      </div>
-                      {% csrf_token %}
-                      <input type="hidden" name="review" value={{ review.id }}>
-                      <button type="submit" class="btn btn-primary">Add</button>
                     </div>
-                  </form>
-                {% else %}
-                  <p>You must login to give comment</p>
-                {% endif %}
-              </div>
+                </div>
             </div>
 
-            <ul class="commentList">
-              {% for comment in comments %}
-                {% if comment.review == review %}
-                  <li>
-                    <div>
-                      <img src="http://placekitten.com/45/45" class="img-responsive commenterImage"/>
-                    </div>
-                    <div class="commentText">
-                      <p class="">{{ comment.comments }}</p>
-                      {% if  review.user.first_name and review.user.last_name %}
-                        <span class="date sub-text">on {{ comment.timestamp }} by {{ comment.user.first_name }} {{ comment.user.last_name }}({{ forloop.counter }})</span>
-                      {% else %}
-                        <span class="date sub-text">on {{ comment.timestamp }} by {{ comment.user }}({{ forloop.counter }})</span>
-                      {% endif %}
-                    </div>
-                  </li>
-                {% endif %}
-              {% endfor %}
-            </ul>
-            {% empty %}
-            <p>There are no comments yet.</p>
-          </div>
-        </div>
-      </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="comments">
 
-    {% endfor %}
+                        <div class="card col-md-12">
+                            <h5 class="card-header">Leave a Comment:</h5>
+                            <div class="card-body">
+                                {% if request.user.is_authenticated %}
+                                    <form action="." method="post" class="form-horizontal" role="form">
+                                        <div class="form-group">
+                                            <div class="col-sm-11">
+                                                <input class="form-control" name="comments" type="text"
+                                                       placeholder="Your comments"/>
+                                            </div>
+                                            {% csrf_token %}
+                                            <input type="hidden" name="review" value={{ review.id }}>
+                                            <button type="submit" class="btn btn-primary">Add</button>
+                                        </div>
+                                    </form>
+                                {% else %}
+                                    <p>You must login to give comment</p>
+                                {% endif %}
+                            </div>
+                        </div>
 
-  </div>
+                        <ul class="commentList">
+                            {% for comment in comments %}
+                                {% if comment.review == review %}
+                                    <li>
+                                        <div>
+                                            <img src="http://placekitten.com/45/45"
+                                                 class="img-responsive commenterImage"/>
+                                        </div>
+                                        <div class="commentText">
+                                            <p class="">{{ comment.comments }}</p>
+                                            {% if  review.user.first_name and review.user.last_name %}
+                                                <span class="date sub-text">on {{ comment.timestamp }} by {{ comment.user.first_name }} {{ comment.user.last_name }}({{ forloop.counter }})</span>
+                                            {% else %}
+                                                <span class="date sub-text">on {{ comment.timestamp }} by {{ comment.user }}({{ forloop.counter }})</span>
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                        {% empty %}
+                        <p>There are no comments yet.</p>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </div>
 
 {% endblock content %}

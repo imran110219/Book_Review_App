@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class='col-sm-3' style="margin-top:50px;">
+        <div class="well" style="width:200px; padding: 8px 0;">
+            <ul class="nav nav-list">
+                <li class="nav-header">User Menu</li>
+                <li><a href="index"><i class="icon-home"></i> Dashboard</a></li>
+                <li><a href="#"><i class="icon-envelope"></i> Messages <span class="badge badge-info">4</span></a></li>
+                <li><a href='{% url "books:reviews:review_lists" %}'><i class="icon-comment"></i> Reviews <span
+                        class="badge badge-info">10</span></a></li>
+                <li class="active"><a href="#"><i class="icon-user"></i> Members</a></li>
+                <li class="divider"></li>
+                <li><a href='{% url "accounts:profile-edit" %}'><i class="icon-comment"></i> Settings</a></li>
+                <li><a href="#"><i class="icon-share"></i> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-8" style="margin-top:50px;">
+        <table id="example" class="display" style="width:100%">
+            <thead>
+            <tr>
+                <th>User</th>
+                <th>Likes</th>
+                <th>Book</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in object_list %}
+                <tr id=forloop.counter> <!-- Needed for DataTables row identification -->
+                    <td>{{ row.profile.user }}</td>
+                    <td>{{ row.likes.count }}</td>
+                    <td>{{ row.book }}</td>
+                    <td><a href="{% url "books:reviews:review_update" pk=row.id %}" >Edit</a></td>
+                    <td><a href="{% url "books:reviews:review_delete" pk=row.id %}" >Delete</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+{#            <tfoot>#}
+{#            <tr>#}
+{#                <th>User</th>#}
+{#                <th>Likes</th>#}
+{#                <th>Book</th>#}
+{#            </tr>#}
+{#            </tfoot>#}
+        </table>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+{% endblock content %}

@@ -18,29 +18,34 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
+from rest_framework_jwt.views import obtain_jwt_token
 
 from Account.views import (login_view, register_view, logout_view, update_profile)
 
 urlpatterns = [
-  url(r'^', include("Account.urls", namespace='accounts')),
-  url(r'^books/', include("Book.urls", namespace='books')),
-  url(r'api/books/', include("Book.api.urls", namespace='books-api')),
-  url(r'^admin/', admin.site.urls),
-  url(r'^register/', register_view, name='register'),
-  url(r'^update/', update_profile, name='update'),
-  url(r'^login/', login_view, name='login'),
-  url(r'^logout/', logout_view, name='logout'),
-  url(r'^oauth/', include('social_django.urls', namespace='social')),
-  url(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
-  url(r'^categories/', include("Category.urls", namespace='categories')),
-  url(r'api/categories/', include("Category.api.urls", namespace='categories-api')),
-  url(r'^authors/', include("Author.urls", namespace='authors')),
-  url(r'api/authors/', include("Author.api.urls", namespace='authors-api')),
-  url(r'^publications/', include("Publication.urls", namespace='publications')),
-  url(r'api/publications/', include("Publication.api.urls", namespace='publications-api')),
-  url(r'^api-auth/', include('rest_framework.urls'))
+    url(r'^', include("Account.urls", namespace='accounts')),
+    url(r'^books/', include("Book.urls", namespace='books')),
+    url(r'^admin/', admin.site.urls),
+    url(r'^register/', register_view, name='register'),
+    url(r'^update/', update_profile, name='update'),
+    url(r'^login/', login_view, name='login'),
+    url(r'^logout/', logout_view, name='logout'),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
+    url(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
+    url(r'^categories/', include("Category.urls", namespace='categories')),
+    url(r'^authors/', include("Author.urls", namespace='authors')),
+    url(r'^publications/', include("Publication.urls", namespace='publications')),
+
+    # api url
+    url(r'^api-auth/', include('rest_framework.urls')),
+    url(r'^api/auth/token/', obtain_jwt_token),
+    url(r'api/users/', include("Account.api.urls", namespace='users-api')),
+    url(r'api/books/', include("Book.api.urls", namespace='books-api')),
+    url(r'api/categories/', include("Category.api.urls", namespace='categories-api')),
+    url(r'api/authors/', include("Author.api.urls", namespace='authors-api')),
+    url(r'api/publications/', include("Publication.api.urls", namespace='publications-api')),
 ]
 
 if settings.DEBUG:
-  urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-  urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
