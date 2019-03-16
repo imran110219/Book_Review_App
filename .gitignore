@@ -63,3 +63,11 @@ docs/_build/
 target/
 .idea/
 src/media_cdn/
+
+#VS Code
+.vscode/
+
+# migration
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
