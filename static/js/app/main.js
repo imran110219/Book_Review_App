@@ -54,6 +54,7 @@ $(window).on('scroll', function() {
 $(document).ready(function () {
     $('.sidenav').sidenav();
     $('select').formSelect();
+    $('.modal').modal();
 
     /** Review incomplete task **/
     
