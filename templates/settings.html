@@ -3,6 +3,22 @@
 {% block content %}
   <h2>Settings</h2>
 
+    <h3>Google</h3>
+  {% if google_login %}
+    <p>Connected as <a href="https://google.com/{{ google_login.extra_data.login }}/" target="_blank">{{ google_login.extra_data.login }}</a></p>
+    {% if can_disconnect %}
+      <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
+        {% csrf_token %}
+        <button type="submit">Disconnect from Google</button>
+      </form>
+    {% else %}
+      <button type="button" disabled>Disconnect from Google</button>
+      <p style="color: red">You must <a href="{% url 'accounts:password' %}">define a password</a> for your account before disconnecting from Google.</p>
+    {% endif %}
+  {% else %}
+    <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
+  {% endif %}
+
   <h3>GitHub</h3>
   {% if github_login %}
     <p>Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
@@ -13,7 +29,7 @@
       </form>
     {% else %}
       <button type="button" disabled>Disconnect from GitHub</button>
-      <p style="color: red">You must <a href="{% url 'password' %}">define a password</a> for your account before disconnecting from Github.</p>
+      <p style="color: red">You must <a href="{% url 'accounts:password' %}">define a password</a> for your account before disconnecting from Github.</p>
     {% endif %}
   {% else %}
     <a href="{% url 'social:begin' 'github' %}">Connect to GitHub</a>
@@ -29,7 +45,7 @@
       </form>
     {% else %}
       <button type="button" disabled>Disconnect from Twitter</button>
-      <p style="color: red">You must <a href="{% url 'password' %}">define a password</a> for your account before disconnecting from Twitter.</p>
+      <p style="color: red">You must <a href="{% url 'accounts:password' %}">define a password</a> for your account before disconnecting from Twitter.</p>
     {% endif %}
   {% else %}
     <a href="{% url 'social:begin' 'twitter' %}">Connect to Twitter</a>
@@ -45,7 +61,7 @@
       </form>
     {% else %}
       <button type="button" disabled>Disconnect from Facebook</button>
-      <p style="color: red">You must <a href="{% url 'password' %}">define a password</a> for your account before disconnecting from Facebook.</p>
+      <p style="color: red">You must <a href="{% url 'accounts:password' %}">define a password</a> for your account before disconnecting from Facebook.</p>
     {% endif %}
   {% else %}
     <a href="{% url 'social:begin' 'facebook' %}">Connect to Facebook</a>
