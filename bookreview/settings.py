@@ -175,9 +175,11 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
 
     'django.contrib.auth.backends.ModelBackend',
 )
+
 
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/settings/'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/settings/'
@@ -189,7 +191,11 @@ SOCIAL_AUTH_TWITTER_SECRET = '3ifxlN8zhaiSs8jlzt9raC4ssZ9a8KCjN4w7D1jlWo7RODvYCx
 SOCIAL_AUTH_FACEBOOK_KEY = '164757794148311'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = 'f77543e381481eb37dee124c0c7133b8'  # App Secret
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='1049433240158-2815mbsjipsc4audc8o354sotqenl8bo.apps.googleusercontent.com'  #Paste CLient Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'HyoWKAV4pTzDkXQtZUf4h-ck' #Paste Secret Key
+
 LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'update'
 
 JWT_AUTH = {
