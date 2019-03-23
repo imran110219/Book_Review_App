@@ -23,8 +23,9 @@ from rest_framework_jwt.views import obtain_jwt_token
 from Account.views import (login_view, register_view, logout_view, update_profile)
 
 urlpatterns = [
-    url(r'^', include("Account.urls", namespace='accounts')),
-    url(r'^books/', include("Book.urls", namespace='books')),
+    url(r'^', include("Book.urls", namespace='books')),
+    url(r'^user/', include("Account.urls", namespace='accounts')),
+    # url(r'^books/', include("Book.urls", namespace='books')),
     url(r'^admin/', admin.site.urls),
     url(r'^register/', register_view, name='register'),
     url(r'^update/', update_profile, name='update'),
