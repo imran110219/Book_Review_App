@@ -71,3 +71,6 @@ src/media_cdn/
 **/migrations/**
 !**/migrations
 !**/migrations/__init__.py
+
+# migration shell script
+migration.sh
