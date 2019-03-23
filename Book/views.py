@@ -20,7 +20,7 @@ def book_list(request):
 
   if query:
     queryset = Book.objects.filter(
-      Q(book_name__icontains=query) |
+      Q(name__icontains=query) |
       Q(authors__author_name__icontains=query) |
       Q(categories__category_name__icontains=query) |
       Q(publication__publication_name__icontains=query)
@@ -67,6 +67,10 @@ def book_detail(request, id=None):
   }
 
   return render(request, 'book_details.html', context)
+
+#Render Hompage
+def home(request):
+  return render(request, "home.html")
 
 
 
