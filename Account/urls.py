@@ -8,7 +8,8 @@ from .views import (
     password,
 )
 
-app_name = "Book"
+app_name = "Account"
+
 urlpatterns = [
     url(r'^$', home, name="home"),
     url(r'^profile/$', profile, name="profile"),
