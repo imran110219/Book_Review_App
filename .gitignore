@@ -74,3 +74,6 @@ src/media_cdn/
 
 # migration shell script
 migration.sh
+
+# media file
+media_cdn

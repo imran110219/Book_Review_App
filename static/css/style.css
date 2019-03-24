@@ -30,3 +30,18 @@
 /*Books section Css*/
 .sliding-section{ background:url('../images/books_back.jpg') repeat-x; min-height: 300px;}
 /* END */
+
+
+hr {
+    overflow: auto;
+}
+
+
+.demo {
+  color: #fff;
+  background: #263238;
+  height: 220px;
+  line-height: 50px;
+  border: 5px solid #fff;
+  text-align: center;
+}
