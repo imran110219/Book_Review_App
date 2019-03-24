@@ -3,49 +3,26 @@
 {{title}}
 {% endblock title %}
 {% block content %}
-  <div class="col-lg-8">
-    <style>
-      p {
-        display: inline;
-      }
-    </style>
-    <h1>Book List</h1>
+  <div class="sliding-section">
+    
+  </div>
 
-    <br>
-      <ul>
-        {% for obj in object_list %}
-          <div class="square">
-            <div class="content">
-              <div class="table">
-                <div class="table-cell">
-                  <a href='{{ obj.get_absolute_url }}'><img src='{{ obj.image.url }}' class='img-responsive'/></a>
-{#                  <li><a href='{{ obj.get_absolute_url }}'><strong>{{ obj.book_name }}</strong></a>#}
-{#                    <br>#}
-{#                    {% for obj in obj.authors.all %}#}
-{#                      <p>{{ obj.get_name }} |</p>#}
-{#                    {% endfor %}#}
-{#                  </li>#}
-                </div>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      </ul>
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <h4>{{title}}</h4>
+      </div>
+    </div>
+    <hr>
   </div>
 
   <!-- Sidebar Widgets Column -->
-  <div class="col-md-4">
-
-    <!-- Search Widget -->
-    <form class="navbar-form navbar-left" id="searchform" action="{% url 'books:book' %}" method="get"
-          accept-charset="utf-8">
+  <!-- <div class="col-md-4">
+    <form class="navbar-form navbar-left" id="searchform" action="{% url 'books:book' %}" method="get" accept-charset="utf-8">
       <div class="form-group">
         <input type="text" class="form-control" name="q" placeholder="Search Books">
       </div>
       <button type="submit" class="btn btn-default">Go!</button>
     </form>
-  </div>
-
-  <input type="hidden" value="{{context.title}}" id="PageTitle">
-
+  </div> -->
 {% endblock content %}

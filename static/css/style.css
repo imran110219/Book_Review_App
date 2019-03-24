@@ -22,14 +22,20 @@
     -o-transition: color 0.3s ease-out; 
     -ms-transition: color 0.3s ease-out;
 }
-.social-login a:hover, .social-login a::after{ cursor: pointer !important; color: black !important}
+.social-login a:hover, .social-login a::after{ cursor: pointer !important; color: black !important;}
 
 .scroll-top{ position: fixed; bottom: 15px; right: 15px; display: none;}
 .scroll-top a { color: #33B5E5 !important}
 
+/*Books section Css*/
+.sliding-section{ background:url('../images/books_back.jpg') repeat-x; min-height: 300px;}
+/* END */
+
+
 hr {
     overflow: auto;
 }
+
 
 .demo {
   color: #fff;
