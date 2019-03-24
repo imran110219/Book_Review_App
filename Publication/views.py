@@ -9,7 +9,7 @@ def publication_list(request):
 
   context = {
     "object_list": queryset,
-    "title": "List",
+    "title": "Publications",
   }
   return render(request, "publication.html", context)
 

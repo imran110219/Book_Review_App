@@ -28,7 +28,7 @@ def book_list(request):
 
   context = {
     "object_list": queryset,
-    "title": "Book List",
+    "title": "Books",
   }
   return render(request, "book.html", context)
 
@@ -70,7 +70,10 @@ def book_detail(request, id=None):
 
 #Render Hompage
 def home(request):
-  return render(request, "home.html")
+  context = {
+    "title": "Home"
+  }
+  return render(request, "home.html", context)
 
 
 
