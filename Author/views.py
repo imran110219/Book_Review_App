@@ -21,7 +21,7 @@ def author_list(request):
 
   context = {
     "object_list": queryset,
-    "title": "Author List",
+    "title": "Authors",
   }
   return render(request, "author.html", context)
 
