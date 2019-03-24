@@ -26,3 +26,16 @@
 
 .scroll-top{ position: fixed; bottom: 15px; right: 15px; display: none;}
 .scroll-top a { color: #33B5E5 !important}
+
+hr {
+    overflow: auto;
+}
+
+.demo {
+  color: #fff;
+  background: #263238;
+  height: 220px;
+  line-height: 50px;
+  border: 5px solid #fff;
+  text-align: center;
+}
