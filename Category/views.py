@@ -28,7 +28,7 @@ def category_list(request):
 
   context = {
     "object_list": queryset,
-    "title": "List",
+    "title": "Categories",
   }
   return render(request, "category.html", context)
 

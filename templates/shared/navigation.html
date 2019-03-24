@@ -15,13 +15,13 @@
                     <a class="" href="{% url 'books:book' %}" data-location="books">Books</a>
                 </li>
                 <li class="">
-                    <a class="" href="{% url 'categories:category' %}" data-location="community">Category</a>
+                    <a class="" href="{% url 'categories:category' %}" data-location="categories">Category</a>
                 </li>
                 <li class="">
-                    <a class="" href="{% url 'authors:author' %}" data-location="about">Author</a>
+                    <a class="" href="{% url 'authors:author' %}" data-location="authors">Author</a>
                 </li>
                 <li class="">
-                    <a class="" href="{% url 'publications:publication' %}" data-location="about">Publications</a>
+                    <a class="" href="{% url 'publications:publication' %}" data-location="publications">Publications</a>
                 </li>
                 {% if not request.user.is_authenticated %}
                 <li><a href='{% url "register" %}'>Register</a></li>
