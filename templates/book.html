@@ -1,10 +1,37 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}
 {{title}}
 {% endblock title %}
 {% block content %}
-  <div class="sliding-section">
-    
+  <div class="book-slider">
+    <div class="container">
+      <div class="owl-carousel">
+        <div class="carousel-slide-content">
+          <div class="book-slider-image">
+            <a href="#"><img src="{% static 'images/books/da-vinci-code.jpg' %}" alt="filename"></a>
+          </div>
+          <div class="book-slider-content">
+            <h3 class="amaranth black-shadow">Da Vinci Code</h3>
+            <br>
+            <p>Written by <b>Dan Brown</b></p>
+            <p>Published on 2010</p>
+          </div>
+        </div>
+
+        <div class="carousel-slide-content">
+          <div class="book-slider-image">
+            <a href="#"><img src="{% static 'images/books/angels-n-demons.jpg' %}" alt="filename"></a>
+          </div>
+          <div class="book-slider-content">
+            <h3 class="amaranth black-shadow">Angels &amp; Demon</h3>
+            <br>
+            <p>Written by <b>Dan Brown</b></p>
+            <p>Published on 2008</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="container">
