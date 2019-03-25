@@ -1,5 +1,20 @@
 'use strict'
 
+$(document).ready(function(){
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+        items:1,
+        loop:true,        
+        animateOut: 'zoomOut',
+        animateIn: 'zoomIn',
+        margin:10,
+        autoplay:true,
+        autoplayTimeout:3500,
+        autoplayHoverPause:true,
+        smartSpeed:450
+    });
+});
+
 function ChangeAuthor(e) {
     console.log($(e.target).val());
 }

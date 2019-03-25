@@ -1,3 +1,116 @@
+/*Application fonts*/
+@font-face { font-family: Anton; src: url(../fonts/Anton-Regular.ttf); font-style: normal;}
+
+@font-face { font-family: EbGaramond; src: url(../fonts/EBGaramond-Bold.ttf); font-style: normal;}
+@font-face { font-family: EbGaramond; src: url(../fonts/EBGaramond-Medium.ttf); font-style: normal;}
+@font-face { font-family: EbGaramond; src: url(../fonts/EBGaramond-Regular.ttf); font-style: normal;}
+
+@font-face { font-family: Patua; src: url(../fonts/PatuaOne-Regular.ttf); font-style: normal;}
+
+@font-face { font-family: Merienda; src: url(../fonts/Merienda-Bold.ttf); font-style: normal;}
+@font-face { font-family: Merienda; src: url(../fonts/Merienda-Regular.ttf); font-style: normal;}
+
+@font-face { font-family: Amaranth; src: url(../fonts/Amaranth-Bold.ttf); font-style: normal;}
+@font-face { font-family: Amaranth; src: url(../fonts/Amaranth-BoldItalic.ttf); font-style: normal;}
+@font-face { font-family: Amaranth; src: url(../fonts/Amaranth-Italic.ttf); font-style: italic;}
+@font-face { font-family: Amaranth; src: url(../fonts/Amaranth-Regular.ttf); font-style: normal;}
+
+@font-face { font-family: Piridi; src: url(../fonts/Pridi-Bold.ttf); font-style: normal;}
+@font-face { font-family: Piridi; src: url(../fonts/Pridi-Regular.ttf); font-style: normal;}
+@font-face { font-family: Piridi; src: url(../fonts/Pridi-Light.ttf); font-style: normal;}
+
+@font-face { font-family: Zcool; src: url(../fonts/ZCOOLXiaoWei-Regular.ttf); font-style: normal;}
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Thin), url("../fonts/roboto/Roboto-Thin.eot");
+  src: url("../fonts/roboto/Roboto-Thin.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Thin.woff2") format("woff2"), url("../fonts/roboto/Roboto-Thin.woff") format("woff"), url("../fonts/roboto/Roboto-Thin.ttf") format("truetype");
+  font-weight: 200; }
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Light), url("../fonts/roboto/Roboto-Light.eot");
+  src: url("../fonts/roboto/Roboto-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Light.woff2") format("woff2"), url("../fonts/roboto/Roboto-Light.woff") format("woff"), url("../fonts/roboto/Roboto-Light.ttf") format("truetype");
+  font-weight: 300; }
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Regular), url("../fonts/roboto/Roboto-Regular.eot");
+  src: url("../fonts/roboto/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("../fonts/roboto/Roboto-Regular.woff") format("woff"), url("../fonts/roboto/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400; }
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/roboto/Roboto-Medium.eot");
+  src: url("../fonts/roboto/Roboto-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Medium.woff2") format("woff2"), url("../fonts/roboto/Roboto-Medium.woff") format("woff"), url("../fonts/roboto/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500; }
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/roboto/Roboto-Bold.eot");
+  src: url("../fonts/roboto/Roboto-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("../fonts/roboto/Roboto-Bold.woff") format("woff"), url("../fonts/roboto/Roboto-Bold.ttf") format("truetype");
+  font-weight: 700; }
+
+/*Application Attributes font*/
+body {
+	font-family: "Roboto", sans-serif; 
+	margin: 0 auto; padding: 0; 
+}
+
+/* Alignment */
+.center{ text-align: center !important; }
+.left{ text-align: left !important; }
+.right{ text-align: right !important; }
+
+/*Font Classes*/
+.piridi{ font-family: Piridi; font-weight: normal;}
+.amaranth{ font-family: Amaranth; font-weight: normal;}
+.merienda{font-family: Merienda; font-weight: normal;}
+.anton{font-family: Anton; font-weight: normal;}
+.garamond{font-family: EbGaramond; font-weight: normal;}
+.patua{font-family: Patua; font-weight: normal;}
+
+/*Font Size*/
+.fs-2x{ font-size: 16px !important; }
+.fs-3x{ font-size: 18px !important; }
+.fs-4x{ font-size: 20px !important; }
+.fs-5x{ font-size: 22px !important; }
+.fs-6x{ font-size: 24px !important; }
+.fs-7x{ font-size: 26px !important; }
+.fs-8x{ font-size: 28px !important; }
+
+/*Text Shadow*/
+.black-shadow{ text-shadow: 2px 2px 5px #000000; }
+.white-shadow{ text-shadow: 2px 2px 5px #ffffff; }
+
+.book-slider { background: url('../images/books_back.jpg') repeat-x scroll 0; height: 400px; background-position: top;}
+
+.carousel-slide-content { height: 350px; margin-top: 25px; display: inline-flex; }
+.carousel-slide-content .row { margin: 0 !important; }
+.carousel-slide-content .book-slider-image { margin: 0 auto; }
+.carousel-slide-content .book-slider-image img { height: 350px; width: 270px; margin: 0 auto; }
+.carousel-slide-content .book-slider-content {
+	display: block;  
+	position: absolute;
+  right: 0;
+  margin-right: 5%;
+  margin-top: 2.5rem;
+  margin-left: 5%;
+  color: #ffffff;
+  width: 400px;
+  text-align: center;
+}
+
+@media(max-width: 900px) {
+	.carousel-slide-content .book-slider-content { width: 350px;}
+}
+
+@media(max-width: 768px) {
+	.carousel-slide-content {display: block;}
+	.carousel-slide-content .book-slider-content{ display: none; }
+	.carousel-slide-content .book-slider-image { margin: 0; }
+}
+
 .home-content{
     background: url('../images/home-back.jpg');
     background-attachment: fixed;
