@@ -36,7 +36,6 @@ hr {
     overflow: auto;
 }
 
-
 .demo {
   color: #fff;
   background: #263238;
@@ -45,3 +44,8 @@ hr {
   border: 5px solid #fff;
   text-align: center;
 }
+
+.vertical-center {
+    margin: auto;
+}
+
