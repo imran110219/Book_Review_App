@@ -45,3 +45,12 @@ function LoadBookList(params) {
 //         $(e.target).removeClass('fa-arrow-circle-down').addClass('fa-arrow-circle-up');
 //     }
 // }
+
+function FilterGroupStateChange(e){
+    var identifier = "#" + $(e.target).closest('a').data('target');
+    var selected_element = $(identifier);
+    if(selected_element.css('display') == 'none')
+        selected_element.slideDown();
+    else
+        selected_element.slideUp();
+}

@@ -35,12 +35,132 @@
   </div>
 
   <div class="container">
-    <div class="row">
-      <div class="col s12">
-        <h4>{{title}}</h4>
+    <div class="row mb0">
+      <div class="col s12 card mt15">
+        <h4 class="center amaranth mt15 mb15">{{title}}</h4>
       </div>
     </div>
-    <hr>
+
+    <div class="row card">
+      <div class="col m12 l4 s12">
+        <div class="filter-header">
+          <h5 class="zcool center ma0 fs-30">Filters</h5>
+        </div>
+        <div class="filter-section">
+          <b class="fs-16">Publication Year</b>
+          <div class="row ma0">
+            <div class="col s12">
+              <div class="year-filter">
+                <select id="FromYear">
+                  <option value="2001">2001</option>
+                  <option value="2001">2001</option>
+                </select>
+                <strong> - </strong>
+                <select id="ToYear">
+                  <option value="2010">2010</option>
+                  <option value="2011">2011</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="category-filter mt10 mb10">
+            <div class="filter-group">
+              <a href="javascript:void(0)" onclick="FilterGroupStateChange(event)" data-target="CategorySelects"><i class="fas fa-plus-square"></i></a>
+              <b>Categories</b>
+            </div>
+            <div class="filter-content" id="CategorySelects">
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span class="max-content-width">Khandaker abdullah jahanngir ullah</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Yellow</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Yellow</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Yellow</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Yellow</span>
+                  </label>
+                </p>
+            </div>
+          </div>
+
+          <div class="author-filter mt10 mb10">
+            <div class="filter-group">
+              <a href="javascript:void(0)" onclick="FilterGroupStateChange(event)" data-target="AuthorSelects"><i class="fas fa-plus-square"></i></a>
+              <b>Authors</b>
+            </div>
+            <div class="filter-content" id="AuthorSelects">
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span class="max-content-width">Khandaker abdullah jahanngir ullah</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Humayun Ahmed</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Jafor Iqbal</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Mir Mosharraf Hossain</span>
+                  </label>
+                </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book list area -->
+      <div class="col m12 l8 s12">
+        <div class="filter-header">
+          <div class="input-field col s6 m3">
+            <select class="fs-12">
+              <option value="name">Name</option>
+              <option value="rating">Rating</option>
+              <option value="year">Publication Year</option>
+            </select>
+            <label>Order by</label>
+          </div>
+          <div class="input-field col s6 m2">
+            <select>
+              <option value="asc">ASC</option>
+              <option value="desc">DESC</option>
+            </select>
+          </div>
+          <div class="input-field col s12 m7 search-books">
+            <input type="text" placeholder="Search Here" id="SearchBook">
+          </div>
+        </div>
+      </div>
+      <!-- END -->
+    </div>
   </div>
 
   <!-- Sidebar Widgets Column -->
