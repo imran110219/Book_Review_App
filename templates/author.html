@@ -1,15 +1,28 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}
     {{ title }}
 {% endblock title %}
 {% block content %}
 
-    <div class="sliding-section">
-    <span class="white-text text-darken-2 vertical-center">
-        <p class="flow-text">
-            This is an example quotation that uses the blockquote tag.
-        </p>
-    </span>
+    <div class="book-slider">
+        <div class="container">
+            <div class="owl-carousel">
+                <div class="carousel-slide-content">
+                    <p class="flow-text author white-text">
+                    “Sometimes, you read a book and it fills you with this weird evangelical zeal, and you become convinced that the shattered world will never be put back together unless and until all living humans read the book.” ― John Green
+                    </p>
+                </div>
+
+                {#                <div class="carousel-slide-content">#}
+                {#                    <p class="flow-text author">#}
+                {#                    <span class="white-text">#}
+                {#                    “Sometimes, you read a book and it fills you with this weird evangelical zeal, and you become convinced that the shattered world will never be put back together unless and until all living humans read the book.” ― John Green#}
+                {#                    </span>#}
+                {#                    </p>#}
+                {#                </div>#}
+            </div>
+        </div>
     </div>
 
     <div class="container">
