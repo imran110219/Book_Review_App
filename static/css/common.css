@@ -1,0 +1,73 @@
+/*Application Attributes font*/
+body {
+	font-family: "Roboto", sans-serif; 
+	margin: 0 auto; padding: 0; 
+}
+
+/*Card Shadow*/
+.card { box-shadow: 0px 0px 10px 2px #0005; }
+
+/*Font Classes*/
+.piridi{ font-family: Piridi; font-weight: normal;}
+.amaranth{ font-family: Amaranth; font-weight: normal;}
+.merienda{font-family: Merienda; font-weight: normal;}
+.anton{font-family: Anton; font-weight: normal;}
+.garamond{font-family: EbGaramond; font-weight: normal;}
+.patua{font-family: Patua; font-weight: normal;}
+.zcool{font-family: Zcool;}
+
+/*Font Size*/
+.fs-10{ font-size: 10px !important; }
+.fs-12{ font-size: 12px !important; }
+.fs-14{ font-size: 14px !important; }
+.fs-16{ font-size: 16px !important; }
+.fs-18{ font-size: 18px !important; }
+.fs-20{ font-size: 20px !important; }
+.fs-25{ font-size: 25px !important; }
+.fs-30{ font-size: 30px !important; }
+
+/*Text Shadow*/
+.black-shadow{ text-shadow: 2px 2px 5px #000000; }
+.white-shadow{ text-shadow: 2px 2px 5px #ffffff; }
+
+/*margin classes*/
+.mt0{margin-top: 0px !important;}
+.mt5{ margin-top: 5px !important;}
+.mt10{ margin-top: 10px !important;}
+.mt15{ margin-top: 15px !important;}
+.mt20{ margin-top: 20px !important;}
+.mt25{ margin-top: 25px !important;}
+.mt30{ margin-top: 30px !important;}
+
+.mb0{margin-bottom: 0px !important;}
+.mb5{ margin-bottom: 5px !important;}
+.mb10{ margin-bottom: 10px !important;}
+.mb15{ margin-bottom: 15px !important;}
+.mb20{ margin-bottom: 20px !important;}
+.mb25{ margin-bottom: 25px !important;}
+.mb30{ margin-bottom: 30px !important;}
+
+.mr0{margin-right: 0px !important;}
+.mr5{ margin-right: 5px !important;}
+.mr10{ margin-right: 10px !important;}
+.mr15{ margin-right: 15px !important;}
+.mr20{ margin-right: 20px !important;}
+.mr25{ margin-right: 25px !important;}
+.mr30{ margin-right: 30px !important;}
+
+.ml0{margin-left: 0px !important;}
+.ml5{ margin-left: 5px !important;}
+.ml10{ margin-left: 10px !important;}
+.ml15{ margin-left: 15px !important;}
+.ml20{ margin-left: 20px !important;}
+.ml25{ margin-left: 25px !important;}
+.ml30{ margin-left: 30px !important;}
+
+.ma0{ margin: 0px;}
+.ma5{ margin: 5px;}
+.ma10{ margin: 10px;}
+.ma15{ margin: 15px;}
+.ma20{ margin: 20px;}
+
+/*Width Content*/
+.max-content-width{width: max-content !important;}

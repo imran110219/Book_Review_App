@@ -21,8 +21,7 @@ function ResizeHome(){
 function SwitchActiveClass(){
     var title = $(document).attr('title').split('|')[1].toLowerCase().trim();
     $("#SiteNavigation li a").each(function(e){
-        $(this).closest('li').removeClass('active');       
-        console.log($(this).data('location') + " >> " + title); 
+        $(this).closest('li').removeClass('active');
         if($(this).data('location') == title){
             $(this).closest('li').addClass('active');
         }
