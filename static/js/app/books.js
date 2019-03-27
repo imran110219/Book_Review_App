@@ -15,6 +15,29 @@ $(document).ready(function(){
     });
 });
 
+window.onresize = function(event) {
+    BooksPageResponsive();
+};
+
+window.onload = function (event) {
+    BooksPageResponsive();
+};
+
+function BooksPageResponsive(){
+    var width = $(window).width();
+    console.log(width + " >> " + $("#BookContentRoot").hasClass('card'));
+    if(width < 976) {
+        $("#BookContentRoot").removeClass('card');
+        $("#BookContentFilter").removeClass('card').addClass('card');
+        $("#BookContentBody").removeClass('card').addClass('card');
+    }
+    else {
+        $("#BookContentFilter").removeClass('card');
+        $("#BookContentBody").removeClass('card');
+        $("#BookContentRoot").removeClass('card').addClass('card');
+    }
+}
+
 function ChangeAuthor(e) {
     console.log($(e.target).val());
 }
@@ -49,8 +72,12 @@ function LoadBookList(params) {
 function FilterGroupStateChange(e){
     var identifier = "#" + $(e.target).closest('a').data('target');
     var selected_element = $(identifier);
-    if(selected_element.css('display') == 'none')
+    if(selected_element.css('display') == 'none') {
         selected_element.slideDown();
-    else
+        $(e.target).removeClass('fa-plus-square').addClass('fa-minus-square');
+    }
+    else {
         selected_element.slideUp();
+        $(e.target).removeClass('fa-minus-square').addClass('fa-plus-square');
+    }
 }
