@@ -4,19 +4,29 @@ function ResizeHome(){
     $(".background-fixed img").css('width', $(document).width());
 }
 
-$("#SiteNavigation li").on('click', function(e) {
-    $("#SiteNavigation li").each(function(e){
-        $(this).removeClass('active');
+// $("#SiteNavigation li").on('click', function(e) {
+//     $("#SiteNavigation li").each(function(e){
+//         $(this).removeClass('active');
+//     });
+//     $(this).addClass('active');
+//     $("#responsive-menu li").each(function(e){
+//         $(this).removeClass('active');
+//     });
+//     var location = $(this).find('a').data('location');
+//     $('html, body').animate({
+//         scrollTop: $("#" + location).offset().top - 50
+//     }, 1000);
+// });
+
+function SwitchActiveClass(){
+    var title = $(document).attr('title').split('|')[1].toLowerCase().trim();
+    $("#SiteNavigation li a").each(function(e){
+        $(this).closest('li').removeClass('active');
+        if($(this).data('location') == title){
+            $(this).closest('li').addClass('active');
+        }
     });
-    $(this).addClass('active');
-    $("#responsive-menu li").each(function(e){
-        $(this).removeClass('active');
-    });
-    var location = $(this).find('a').data('location');
-    $('html, body').animate({
-        scrollTop: $("#" + location).offset().top - 50
-    }, 1000);
-});
+}
 
 function ScrollTop(e){
     $('html, body').animate({
@@ -26,6 +36,7 @@ function ScrollTop(e){
 
 window.onload = function (event) {
     ResizeHome();
+    SwitchActiveClass();
 };
 
 window.onresize = function(event) {
@@ -54,6 +65,7 @@ $(window).on('scroll', function() {
 $(document).ready(function () {
     $('.sidenav').sidenav();
     $('select').formSelect();
+    $('.modal').modal();
 
     /** Review incomplete task **/
     

@@ -1,46 +1,175 @@
 {% extends "base.html" %}
+{% load static %}
+{% block title %}
+{{title}}
+{% endblock title %}
 {% block content %}
-  <div class="col-lg-8">
-    <style>
-      p {
-        display: inline;
-      }
-    </style>
-    <h1>Book List</h1>
+  <div class="book-slider">
+    <div class="container">
+      <div class="owl-carousel">
+        <div class="carousel-slide-content">
+          <div class="book-slider-image">
+            <a href="#"><img src="{% static 'images/books/da-vinci-code.jpg' %}" alt="filename"></a>
+          </div>
+          <div class="book-slider-content">
+            <h3 class="amaranth black-shadow">Da Vinci Code</h3>
+            <br>
+            <p>Written by <b>Dan Brown</b></p>
+            <p>Published on 2010</p>
+          </div>
+        </div>
 
-    <br>
-      <ul>
-        {% for obj in object_list %}
-          <div class="square">
-            <div class="content">
-              <div class="table">
-                <div class="table-cell">
-                  <a href='{{ obj.get_absolute_url }}'><img src='{{ obj.image.url }}' class='img-responsive'/></a>
-{#                  <li><a href='{{ obj.get_absolute_url }}'><strong>{{ obj.book_name }}</strong></a>#}
-{#                    <br>#}
-{#                    {% for obj in obj.authors.all %}#}
-{#                      <p>{{ obj.get_name }} |</p>#}
-{#                    {% endfor %}#}
-{#                  </li>#}
-                </div>
+        <div class="carousel-slide-content">
+          <div class="book-slider-image">
+            <a href="#"><img src="{% static 'images/books/angels-n-demons.jpg' %}" alt="filename"></a>
+          </div>
+          <div class="book-slider-content">
+            <h3 class="amaranth black-shadow">Angels &amp; Demon</h3>
+            <br>
+            <p>Written by <b>Dan Brown</b></p>
+            <p>Published on 2008</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row mb0">
+      <div class="col s12 card mt15">
+        <h4 class="center amaranth mt15 mb15">{{title}}</h4>
+      </div>
+    </div>
+
+    <div class="row card">
+      <div class="col m12 l4 s12">
+        <div class="filter-header">
+          <h5 class="zcool center ma0 fs-30">Filters</h5>
+        </div>
+        <div class="filter-section">
+          <b class="fs-16">Publication Year</b>
+          <div class="row ma0">
+            <div class="col s12">
+              <div class="year-filter">
+                <select id="FromYear">
+                  <option value="2001">2001</option>
+                  <option value="2001">2001</option>
+                </select>
+                <strong> - </strong>
+                <select id="ToYear">
+                  <option value="2010">2010</option>
+                  <option value="2011">2011</option>
+                </select>
               </div>
             </div>
           </div>
-        {% endfor %}
-      </ul>
+          <div class="category-filter mt10 mb10">
+            <div class="filter-group">
+              <a href="javascript:void(0)" onclick="FilterGroupStateChange(event)" data-target="CategorySelects"><i class="fas fa-plus-square"></i></a>
+              <b>Categories</b>
+            </div>
+            <div class="filter-content" id="CategorySelects">
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span class="max-content-width">Khandaker abdullah jahanngir ullah</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Yellow</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Yellow</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Yellow</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Yellow</span>
+                  </label>
+                </p>
+            </div>
+          </div>
+
+          <div class="author-filter mt10 mb10">
+            <div class="filter-group">
+              <a href="javascript:void(0)" onclick="FilterGroupStateChange(event)" data-target="AuthorSelects"><i class="fas fa-plus-square"></i></a>
+              <b>Authors</b>
+            </div>
+            <div class="filter-content" id="AuthorSelects">
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span class="max-content-width">Khandaker abdullah jahanngir ullah</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Humayun Ahmed</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Jafor Iqbal</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Mir Mosharraf Hossain</span>
+                  </label>
+                </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book list area -->
+      <div class="col m12 l8 s12">
+        <div class="filter-header">
+          <div class="input-field col s6 m3">
+            <select class="fs-12">
+              <option value="name">Name</option>
+              <option value="rating">Rating</option>
+              <option value="year">Publication Year</option>
+            </select>
+            <label>Order by</label>
+          </div>
+          <div class="input-field col s6 m2">
+            <select>
+              <option value="asc">ASC</option>
+              <option value="desc">DESC</option>
+            </select>
+          </div>
+          <div class="input-field col s12 m7 search-books">
+            <input type="text" placeholder="Search Here" id="SearchBook">
+          </div>
+        </div>
+      </div>
+      <!-- END -->
+    </div>
   </div>
 
   <!-- Sidebar Widgets Column -->
-  <div class="col-md-4">
-
-    <!-- Search Widget -->
-    <form class="navbar-form navbar-left" id="searchform" action="{% url 'books:book' %}" method="get"
-          accept-charset="utf-8">
+  <!-- <div class="col-md-4">
+    <form class="navbar-form navbar-left" id="searchform" action="{% url 'books:book' %}" method="get" accept-charset="utf-8">
       <div class="form-group">
         <input type="text" class="form-control" name="q" placeholder="Search Books">
       </div>
       <button type="submit" class="btn btn-default">Go!</button>
     </form>
-  </div>
-
+  </div> -->
 {% endblock content %}

@@ -11,7 +11,6 @@ from .views import (
 app_name = "Account"
 
 urlpatterns = [
-    url(r'^$', home, name="home"),
     url(r'^profile/$', profile, name="profile"),
     url(r'^profile/edit/$', update_profile, name="profile-edit"),
     url(r'^settings/$', settings, name='settings'),

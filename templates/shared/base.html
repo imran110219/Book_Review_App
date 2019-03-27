@@ -7,14 +7,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="{% static 'images/favicon.ico' %}">
-    <title>{% block head_title %}Book Review{% endblock head_title %}</title>
+    <title>Book Review | {% block title %}{% endblock title %}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include 'stylesheets.html' %}
     <script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.js' %}"></script>
 </head>
 
 <body>

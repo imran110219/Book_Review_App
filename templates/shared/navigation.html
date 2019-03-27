@@ -8,20 +8,20 @@
                 <i class="fas fa-bars"></i>
             </a>
             <ul class="right hide-on-med-and-down" id="SiteNavigation">
-                <li class="active">
-                    <a class="" href="{% url 'accounts:home' %}" data-location="home">Home</a>
+                <li class="">
+                    <a class="" href="{% url 'books:home' %}" data-location="home">Home</a>
                 </li>
                 <li class="">
                     <a class="" href="{% url 'books:book' %}" data-location="books">Books</a>
                 </li>
                 <li class="">
-                    <a class="" href="{% url 'categories:category' %}" data-location="community">Category</a>
+                    <a class="" href="{% url 'categories:category' %}" data-location="categories">Category</a>
                 </li>
                 <li class="">
-                    <a class="" href="{% url 'authors:author' %}" data-location="about">Author</a>
+                    <a class="" href="{% url 'authors:author' %}" data-location="authors">Author</a>
                 </li>
                 <li class="">
-                    <a class="" href="{% url 'publications:publication' %}" data-location="about">Publications</a>
+                    <a class="" href="{% url 'publications:publication' %}" data-location="publications">Publications</a>
                 </li>
                 {% if not request.user.is_authenticated %}
                 <li><a href='{% url "register" %}'>Register</a></li>
@@ -36,8 +36,8 @@
 </div>
 
 <ul class="sidenav" id="responsive-menu">
-    <li class="active">
-        <a class="" href="{% url 'accounts:home' %}" data-location="home">Home</a>
+    <li class="">
+        <a class="" href="{% url 'books:home' %}" data-location="home">Home</a>
     </li>
     <li class="">
         <a class="" href="{% url 'books:book' %}" data-location="books">Books</a>

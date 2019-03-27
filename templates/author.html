@@ -1,25 +1,151 @@
 {% extends "base.html" %}
+{% block title %}
+    {{ title }}
+{% endblock title %}
 {% block content %}
 
-  <h1>Author List</h1>
-  <div>
-    <form class="navbar-form navbar-left" id="searchform" action="{% url 'authors:author' %}" method="get"
-          accept-charset="utf-8">
-      <div class="form-group">
-        <input type="text" class="form-control" name="q" placeholder="Search Authors">
-      </div>
-      <button type="submit" class="btn btn-default">Go!</button>
-    </form>
-  </div>
-  <br>
-  <br>
-  <br>
-  <div>
-    <ul>
-      {% for obj in object_list %}
-        <li><a href='{{ obj.get_absolute_url }}'>{{ obj.name }}</a></li>
-      {% endfor %}
-    </ul>
-  </div>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="card-panel teal blue-grey darken-4">
+                <p></p>
+                <span class="white-text">
+                    “Sometimes, you read a book and it fills you with this weird evangelical zeal, and you become
+                    convinced that the shattered world will never be put back together unless and until all living
+                    humans read the book.”
+                    ― John Green
+                </span>
+                <p></p>
+            </div>
+
+
+            <div class="col s12">
+                <h4 class="center-align">
+                    Author List
+                </h4>
+
+                <hr>
+
+                <div class="col s7">
+{#                    <div class="row">#}
+{#                        <div class="col s4">#}
+{#                            <div class="input-field">#}
+{#                                <select onchange="ChangeAuthor(event)">#}
+{#                                    <option value="1">William Sakespear</option>#}
+{#                                    <option value="2">Shelly</option>#}
+{#                                    <option value="3" selected>Dan Brown</option>#}
+{#                                    <option value="4">Mark Twain</option>#}
+{#                                    <option value="5">J.K. Rowling</option>#}
+{#                                    <option value="6">Humayun Ahmed</option>#}
+{#                                    <option value="7">Jafor Iqbal</option>#}
+{#                                    <option value="8">Syed Mujtaba Ali</option>#}
+{#                                </select>#}
+{#                                <label>Author Name</label>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="col s4">#}
+{#                            <div class="input-field">#}
+{#                                <select onchange="ChangePublisher(event)">#}
+{#                                    <option value="1">প্রথমা প্রকাশনী</option>#}
+{#                                    <option value="2">কথা প্রকাশনী</option>#}
+{#                                    <option value="3">দোয়েল প্রকাশনী</option>#}
+{#                                    <option value="4" selected>অনন্যা প্রকাশনী</option>#}
+{#                                    <option value="5">আগামী প্রকাশনী</option>#}
+{#                                    <option value="6">মাওলা ব্রাদার্স</option>#}
+{#                                    <option value="7">অন্যপ্রকাশ</option>#}
+{#                                </select>#}
+{#                                <label>Publisher Name</label>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+                </div>
+
+                <div class="col s5">
+                    <div>
+                        <form class="navbar-form navbar-left" id="searchform" action="{% url 'authors:author' %}"
+                              method="get"
+                              accept-charset="utf-8">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="q" placeholder="Search Authors">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr/>
+
+
+            <div class="row">
+                {% for obj in object_list %}
+
+                    <div class="demo col s3">
+                        <div class="col s12">
+
+                            <img src='{{ obj.image.url }}' alt="" class="circle responsive-img">
+                            {#                        <a href='{{ obj.get_absolute_url }}'><img src='{{ obj.image.url }}' class='img-responsive'/></a>#}
+                            <!-- notice the "circle" class -->
+
+                        </div>
+                        <a href='{{ obj.get_absolute_url }}'><span class="white-text">{{ obj.name }}</span></a>
+
+                    </div>
+
+                {% endfor %}
+
+
+            </div>
+
+        </div>
+
+        {% if object_list.has_other_pages %}
+            <ul class="pagination">
+                {% if object_list.has_previous %}
+                    <li class="waves-effect"><a href="?page={{ object_list.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in object_list.paginator.page_range %}
+                    {% if object_list.number == i %}
+                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% else %}
+                        <li class="waves-effect"><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if object_list.has_next %}
+                    <li class="waves-effect"><a href="?page={{ object_list.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+
+    </div>
+
+    {#    <h1>Author List</h1>#}
+    {#    <div>#}
+    {#        <form class="navbar-form navbar-left" id="searchform" action="{% url 'authors:author' %}" method="get"#}
+    {#              accept-charset="utf-8">#}
+    {#            <div class="form-group">#}
+    {#                <input type="text" class="form-control" name="q" placeholder="Search Authors">#}
+    {#            </div>#}
+    {#            <button type="submit" class="btn btn-default">Go!</button>#}
+    {#        </form>#}
+    {#    </div>#}
+    {#    <br>#}
+    {#    <br>#}
+    {#    <br>#}
+    {#    <div>#}
+    {#        <ul>#}
+    {#            {% for obj in object_list %}#}
+    {#                <li><a href='{{ obj.get_absolute_url }}'>{{ obj.name }}</a></li>#}
+    {#            {% endfor %}#}
+    {#        </ul>#}
+    {#    </div>#}
 
 {% endblock content %}

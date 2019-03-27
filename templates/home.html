@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block title %}
+  {{title}}
+{% endblock title %}
 {% block content %}
 <div class="home-content" id="home" style="z-index: 0 !important;">
     <div class="container" style="padding-top: 100px; padding-bottom: 30px;">
@@ -9,7 +11,7 @@
                 <div class="home-left-pane animated fadeInLeft delay-1s">
                     <h2>Welcome to Boipoka</h2>
                     <p>A large community and discussion site for <strong>book lovers</strong></p>
-                    <p>Dive in to know more</strong></p>
+                    <p>Dive in to know more</p>
                 </div>
             </div>
             <div class="col m6 l5 s12">
@@ -31,7 +33,7 @@
                     <div>
                         <a href="">Forgot password?</a>
                     </div>  
-                    <p>Not a member? <a href='{% url "register" %}' data-toggle="modal" data-target="#registerModal">Register</a></p>
+                    <p>Not a member? <button data-target="registerModal" class="btn modal-trigger">Register</button>
                     <p>or sign in with:</p>
                     <div class="social-login">
                         <a class="light-blue-text">
