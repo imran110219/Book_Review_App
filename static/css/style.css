@@ -117,3 +117,8 @@ hr {
   border: 5px solid #fff;
   text-align: center;
 }
+
+.vertical-center {
+    margin: auto;
+}
+
