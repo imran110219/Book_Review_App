@@ -92,3 +92,7 @@ body {
 .pr20{padding-right: 20px !important;}
 .pr25{padding-right: 25px !important;}
 .pr30{padding-right: 30px !important;}
+
+/*Display Classes*/
+.show{ display: block;}
+.hide{ display: none;}

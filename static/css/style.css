@@ -17,6 +17,21 @@
   text-align: center;
 }
 
+.filter-toggler{ 
+  position: absolute; 
+  left: 0; 
+  display: block;
+  padding: 10px;
+  z-index: 3;
+  font-size: 20px;
+  color: white;
+  background-color: #33B5E5;
+  margin-top: 7px;
+  width: 35px;
+}
+.sticky-close{ position: fixed; top: 64; }
+.responsive-filter{ position: absolute; left: 0 !important; z-index: 2; width: 60% !important; display: none;}
+
 .filter-header h5{ line-height: 90px !important;}
 .filter-header .input-field {margin-top: 2rem !important}
 .filter-header .input-field .select-wrapper input.select-dropdown{ 
@@ -29,7 +44,7 @@
 .search-books input#SearchBook{ width: 50%; transition: width 0.3s ease; }
 .search-books input#SearchBook:focus{ width: 75%; }
 
-.year-filter{display: inline-flex; line-height: 50px; text-align: center; width: 100%;}
+.year-filter {display: inline-flex; line-height: 50px; text-align: center; width: 100%;}
 .year-filter .select-wrapper{ width: 45% !important; }
 .year-filter strong{width: 10%; }
 .year-filter .select-wrapper input.select-dropdown{ 
