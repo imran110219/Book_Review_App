@@ -151,12 +151,12 @@
 /*End Books Page*/
 
 /*Start Authors Page*/
-p.author {
-    display: inline-block;
-    vertical-align: middle;
-    line-height: normal;
-}
 
+.author-slider {
+    background: url('../images/books_back.jpg') repeat-x scroll 0;
+    height: 400px;
+    background-position: top;
+}
 
 /*End Authors Page*/
 
@@ -229,4 +229,7 @@ hr {
     text-align: center;
 }
 
+/*Start Test Page*/
+
+/*End Test Page*/
 
