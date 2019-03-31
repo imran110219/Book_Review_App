@@ -38,20 +38,25 @@
   <div class="container">
     <div class="row mb0">
       <div class="col s12 card mt15">
-        <h4 class="center amaranth mt15 mb15">{{title}}</h4>
+        <h3 class="center amaranth mt15 mb15">{{title}}</h3>
       </div>
     </div>
 
-    <div class="row card">
-      <div class="col m12 l4 s12">
+    <div class="row card" id="BookContentRoot">
+      <a href="javascript:void(0)" onclick="ToggleFilter(event)" class="filter-toggler"><i class="fas fa-chevron-right"></i></a>
+      <!-- <a href="javascript:void(0)" onclick="CloseFilter(event)" class="filter-close"><i class="fas fa-times"></i></i></a> -->
+      <div class="col m12 l4 s12 animated" id="BookContentFilter">
         <div class="filter-header">
-          <h5 class="zcool center ma0 fs-30">Filters</h5>
+          <h5 class="zcool center ma0 fs-30 bold">Filters</h5>
         </div>
+        <!-- <a href="javascript:void(0)" style="float: right; margin-top: 4px" onclick="SwitchFilterState(event)" class="switch-filter-state pull-right section-header">
+          <i class="fas fa-arrow-circle-up"></i>
+        </a> -->
         <div class="filter-section">
           <b class="fs-16">Publication Year</b>
           <div class="row ma0">
-            <div class="col s12">
-              <div class="year-filter">
+            <div class="col s12 pr25">
+              <div class="year-filter mr15">
                 <select id="FromYear">
                   <option value="2001">2001</option>
                   <option value="2001">2001</option>
@@ -73,31 +78,31 @@
                 <p>
                   <label>
                     <input type="checkbox" class="filled-in" />
-                    <span class="max-content-width">Khandaker abdullah jahanngir ullah</span>
+                    <span class="max-content-width">Action</span>
                   </label>
                 </p>
                 <p>
                   <label>
                     <input type="checkbox" class="filled-in" />
-                    <span>Yellow</span>
+                    <span class="max-content-width">Comedy</span>
                   </label>
                 </p>
                 <p>
                   <label>
                     <input type="checkbox" class="filled-in" />
-                    <span>Yellow</span>
+                    <span class="max-content-width">Islamic</span>
                   </label>
                 </p>
                 <p>
                   <label>
                     <input type="checkbox" class="filled-in" />
-                    <span>Yellow</span>
+                    <span class="max-content-width">Liberation War 1971</span>
                   </label>
                 </p>
                 <p>
                   <label>
                     <input type="checkbox" class="filled-in" />
-                    <span>Yellow</span>
+                    <span class="max-content-width">Biography</span>
                   </label>
                 </p>
             </div>
@@ -112,34 +117,74 @@
                 <p>
                   <label>
                     <input type="checkbox" class="filled-in" />
-                    <span class="max-content-width">Khandaker abdullah jahanngir ullah</span>
+                    <span class="max-content-width">Anisur Rahman</span>
                   </label>
                 </p>
                 <p>
                   <label>
                     <input type="checkbox" class="filled-in" />
-                    <span>Humayun Ahmed</span>
+                    <span class="max-content-width">Humayun Ahmed</span>
                   </label>
                 </p>
                 <p>
                   <label>
                     <input type="checkbox" class="filled-in" />
-                    <span>Jafor Iqbal</span>
+                    <span class="max-content-width">Jafor Iqbal</span>
                   </label>
                 </p>
                 <p>
                   <label>
                     <input type="checkbox" class="filled-in" />
-                    <span>Mir Mosharraf Hossain</span>
+                    <span class="max-content-width">Dr. Khandokar Abdullah Jahangir</span>
                   </label>
                 </p>
             </div>
           </div>
+
+          <div class="publication-filter mt10 mb10">
+            <div class="filter-group">
+              <a href="javascript:void(0)" onclick="FilterGroupStateChange(event)" data-target="PublicationSelects"><i class="fas fa-plus-square"></i></a>
+              <b>Publishers</b>
+            </div>
+            <div class="filter-content" id="PublicationSelects">
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span class="max-content-width">Prothoma Prokashoni</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span class="max-content-width">Kotha Prokashoni</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span class="max-content-width">Captain Publishers</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span class="max-content-width">Bangladesh law book company</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span class="max-content-width">Parama Publishers & Distributors Ltd</span>
+                  </label>
+                </p>
+            </div>
+          </div>
+
         </div>
       </div>
 
       <!-- Book list area -->
-      <div class="col m12 l8 s12">
+      <div class="col m12 l8 s12" id="BookContentBody">
         <div class="filter-header">
           <div class="input-field col s6 m3">
             <select class="fs-12">

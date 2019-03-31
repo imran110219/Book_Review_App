@@ -5,7 +5,7 @@ body {
 }
 
 /*Card Shadow*/
-.card { box-shadow: 0px 0px 10px 2px #0005; }
+/* .card { box-shadow: 0px 0px 10px 2px #0005; } */
 
 /*Font Classes*/
 .piridi{ font-family: Piridi; font-weight: normal;}
@@ -25,6 +25,10 @@ body {
 .fs-20{ font-size: 20px !important; }
 .fs-25{ font-size: 25px !important; }
 .fs-30{ font-size: 30px !important; }
+
+/*Font Weight*/
+.bold{font-weight: bold !important};
+.regular{font-weight: normal !important;}
 
 /*Text Shadow*/
 .black-shadow{ text-shadow: 2px 2px 5px #000000; }
@@ -71,3 +75,24 @@ body {
 
 /*Width Content*/
 .max-content-width{width: max-content !important;}
+
+/*Padding Classes*/
+.pl0{padding-left: 0px !important;}
+.pl5{padding-left: 5px !important;}
+.pl10{padding-left: 10px !important;}
+.pl15{padding-left: 15px !important;}
+.pl20{padding-left: 20px !important;}
+.pl25{padding-left: 25px !important;}
+.pl30{padding-left: 30px !important;}
+
+.pr0{padding-right: 0px !important;}
+.pr5{padding-right: 5px !important;}
+.pr10{padding-right: 10px !important;}
+.pr15{padding-right: 15px !important;}
+.pr20{padding-right: 20px !important;}
+.pr25{padding-right: 25px !important;}
+.pr30{padding-right: 30px !important;}
+
+/*Display Classes*/
+.show{ display: block;}
+.hide{ display: none;}
