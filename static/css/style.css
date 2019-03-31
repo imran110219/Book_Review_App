@@ -1,3 +1,9 @@
+/*Site Navigation*/
+#SiteNavigation li a{
+    font-family: 'amaranth';
+}
+/*END*/
+
 /*Start Books Page*/
 .book-slider {
     background: url('../images/books_back.jpg') repeat-x scroll 0;
@@ -85,18 +91,25 @@
 
 .filter-toggler{ 
   position: absolute; 
-  left: 0; 
+  right: 0; 
   display: block;
-  padding: 10px;
+  padding: 10px 0;
   z-index: 3;
   font-size: 20px;
-  color: white;
-  background-color: #33B5E5;
-  margin-top: 7px;
-  width: 35px;
+  color: #0005;
+  min-width: 50px;
+  text-align: center;
 }
-.sticky-close{ position: fixed; top: 64; }
-.responsive-filter{ position: absolute; left: 0 !important; z-index: 2; width: 60% !important; display: none;}
+
+.filter-toggler i{line-height: 35px;}
+.sticky-close{ 
+    position: fixed; 
+    top: 64; 
+    color: #fff; 
+    background-color: #b71c1c !important; 
+    font-weight: bold !important;
+}
+/* .responsive-filter{ position: absolute; left: 0 !important; z-index: 2; width: 60% !important; display: none;} */
 
 .filter-header h5{ line-height: 90px !important;}
 .filter-header .input-field {margin-top: 2rem !important}
@@ -160,6 +173,10 @@
     padding: 0px 15px;
     margin-right: 15px;
     display: none;
+}
+
+@media (max-width: 992px) {    
+    .filter-header h5{  line-height: 55px !important; }
 }
 
 @media (max-width: 900px) {
@@ -248,10 +265,6 @@
     bottom: 15px;
     right: 15px;
     display: none;
-}
-
-.scroll-top a {
-    color: #33B5E5 !important
 }
 
 /*Books section Css*/

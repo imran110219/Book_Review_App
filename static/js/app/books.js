@@ -1,5 +1,7 @@
 'use strict'
 
+var filter_sticky = false;
+
 $(document).ready(function(){
     var owl = $('.owl-carousel');
     owl.owlCarousel({
@@ -21,28 +23,29 @@ window.onresize = function(event) {
 
 window.onload = function (event) {
     BooksPageResponsive();
+    StickyFilterToggle();
 };
 
 function BooksPageResponsive(){
     var width = $(window).width();
     if(width < 976) {
-        $("#BookContentRoot").removeClass('card').removeClass('responsive-filter');
-        $("#BookContentFilter").removeClass('card').addClass('card').addClass('responsive-filter');
+        $("#BookContentRoot").removeClass('card');
+        $("#BookContentFilter").removeClass('card').addClass('card');
         $("#BookContentBody").removeClass('card').addClass('card');
 
         if($("#BookContentFilter").css('display') == 'block') {
-            $('.filter-toggler').addClass('red darken-4');
+            $('.filter-toggler').addClass('red');
             $('.filter-toggler i').removeClass('fa-chevron-right').addClass('fa-times');
         }
         else{            
-            $('.filter-toggler').removeClass('red darken-4');
+            $('.filter-toggler').removeClass('red');
             $('.filter-toggler i').removeClass('fa-times').addClass('fa-chevron-right');
         }
         
         $('.filter-toggler').show();
     }
     else {
-        $("#BookContentFilter").removeClass('card').removeClass('responsive-filter');
+        $("#BookContentFilter").removeClass('card');
         $("#BookContentBody").removeClass('card');
         $("#BookContentRoot").removeClass('card').addClass('card');
         $('.filter-toggler').hide();
@@ -71,15 +74,19 @@ function LoadBookList(params) {
 
 function ToggleFilter(e){
     if($(e.target).closest('a').hasClass('red')){
-        $('.filter-toggler').removeClass('red darken-4');
-        $('.filter-toggler i').removeClass('fa-times').addClass('fa-chevron-right');
+        $('.filter-toggler').removeClass('red');
+        $('.filter-toggler i').removeClass('fa-times').addClass('fa-chevron-down');
     }
     else{
-        $('.filter-toggler').addClass('red darken-4');
-        $('.filter-toggler i').removeClass('fa-chevron-right').addClass('fa-times');
+        $('.filter-toggler').addClass('red');
+        $('.filter-toggler i').removeClass('fa-chevron-down').addClass('fa-times');
     }
-    
-    $("#BookContentFilter").toggle('slide', {direction: 'right'});
+
+    $('html, body').animate({
+        scrollTop: $("#BookContentFilter").offset().top-64
+    }, 1000);
+
+    $(".filter-section").toggle('slide', {direction: 'up'});
 }
 
 function FilterGroupStateChange(e){
@@ -104,14 +111,30 @@ function IsTotallyOutsideViewport(element){
 	return (document_top >= element_bottom);
 }
 
-$(window).on('scroll', function() {
-    var document_top = $(window).scrollTop() + 64;
-    var element_top = $(".filter-toggler").offset().top;
-    console.log($(".filter-toggler").hasClass('sticky-close'));
-    if(document_top > element_top){
-        if($(".filter-toggler").hasClass('sticky-close') == false)
-            $(".filter-toggler").addClass('sticky-close');
-    }
-    else
-        $(".filter-toggler").removeClass('sticky-close');
+$(document).on('scroll', function() {
+    StickyFilterToggle();
 });
+
+function StickyFilterToggle(){
+    if($(".books").get(0) !== undefined){
+        var document_top = $(window).scrollTop() + 64;
+        var element_top = $(".filter-header").offset().top;
+        var element_bottom = element_top + $("#BookContentFilter").height();
+        if(document_top > element_top && document_top <= element_bottom - 50){
+            if(filter_sticky == false){
+                $(".filter-toggler").addClass('sticky-close');
+                filter_sticky = true;
+            }
+
+            console.log(document_top + " >> " + (element_bottom - 50));
+        }
+        else if(document_top > element_bottom - 50 && filter_sticky){
+            $(".filter-toggler").removeClass('sticky-close');
+            filter_sticky = false;
+        }
+        else {
+            $(".filter-toggler").removeClass('sticky-close');
+            filter_sticky = false;
+        }
+    }
+}
