@@ -4,6 +4,9 @@ body {
 	margin: 0 auto; padding: 0; 
 }
 
+/*Site content back color*/
+.site-color{ color: #00695c !important;}
+
 /*Card Shadow*/
 /* .card { box-shadow: 0px 0px 10px 2px #0005; } */
 
@@ -96,3 +99,5 @@ body {
 /*Display Classes*/
 .show{ display: block;}
 .hide{ display: none;}
+
+.transparent{ background-color: transparent !important;}
