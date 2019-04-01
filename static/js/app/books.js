@@ -15,6 +15,11 @@ $(document).ready(function(){
         autoplayHoverPause:true,
         smartSpeed:450
     });
+
+    $('.grid').isotope({
+        itemSelector: '.grid-item',
+        layoutMode: 'fitRows'
+    });
 });
 
 window.onresize = function(event) {
