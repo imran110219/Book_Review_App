@@ -2,6 +2,7 @@
 #SiteNavigation li a{
     font-family: 'amaranth';
 }
+
 /*END*/
 
 /*Start Books Page*/
@@ -118,15 +119,6 @@
   line-height: 2.5rem !important; 
   font-size: 12px !important;
 }
-
-.year-filter .select-wrapper input.select-dropdown {
-    height: 2.5rem !important;
-    line-height: 2.5rem !important;
-    font-size: 12px !important;
-
-}
-
-
 .year-filter {display: inline-flex; line-height: 50px; text-align: center; width: 100%;}
 .year-filter .select-wrapper{ width: 45% !important; }
 .year-filter strong{width: 10%; }
@@ -134,18 +126,6 @@
   height: 2.5rem !important; 
   line-height: 2.5rem !important; 
   font-size: 12px !important;
-}
-.filter-group{ margin-top: 5px; margin-bottom: 5px;}
-.filter-group a { padding-right: 7px; font-size: 16px !important; color: rgba(0,0,0,0.87); font-size: 20px !important;}
-.filter-group b{ vertical-align: text-bottom; font-size: 16px; }
-.filter-content{
-  max-height: 300px;
-  overflow: auto;
-  box-shadow: inset 0px 0px 10px 0px #0005;
-  border-radius: 5px;
-  padding: 0px 15px;
-  margin-right: 15px;
-  display: none;
 }
 
 .filter-group {
@@ -174,6 +154,21 @@
     margin-right: 15px;
     display: none;
 }
+
+.content-area-books{display: inline-flex;}
+.single-book{max-width: 130px; margin: 10px 25px !important;}
+.single-book img{height: 180px; width: 130px;}
+.star-rating p{
+    line-height: 20px;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 15px 0 !important;
+    margin-bottom: 15px !important;
+    border-bottom: 1px solid !important;
+}
+.star-rating p i{ color: yellow;}
 
 @media (max-width: 992px) {    
     .filter-header h5{  line-height: 55px !important; }
