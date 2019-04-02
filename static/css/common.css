@@ -5,7 +5,7 @@ body {
 }
 
 /*Site content back color*/
-.site-color{ color: #00695c !important;}
+.site-color{ color: #009688 !important;}
 
 /*Card Shadow*/
 /* .card { box-shadow: 0px 0px 10px 2px #0005; } */
@@ -120,21 +120,21 @@ body {
 
 
 /************************************ OVERRIDDEN CSS ************************************/
-[type="checkbox"].filled-in:checked+span:not(.lever):after{
+/* [type="checkbox"].filled-in:checked+span:not(.lever):after{
 	border: 2px solid #00695c !important;
     background-color: #00695c !important;
-}
+} */
 .dropdown-content li{ min-height: 40px !important;}
-.select-dropdown.dropdown-content li.selected { background-color: rgba(0,0,0,0.2) !important;}
-.select-dropdown.dropdown-content li:hover { background-color: rgba(0,0,0,0.3) !important;}
+.select-dropdown.dropdown-content li.selected { background-color: rgba(0,0,0,0.1) !important;}
+.select-dropdown.dropdown-content li:hover { background-color: rgba(0,0,0,0.2) !important;}
 .dropdown-content li>a, .dropdown-content li>span{ 
 	color: rgba(0,0,0,0.93) !important; 
 	padding: 10px 14px !important; 
 	line-height: auto !important;
 }
 
-nav ul li.active { background-color: rgba(0,0,0,0.2) !important; }
-nav ul li:hover { background-color: rgba(0,0,0,0.3) !important; }
+nav ul li.active { background-color: rgba(0,0,0,0.1) !important; }
+nav ul li:hover { background-color: rgba(0,0,0,0.2) !important; }
 .sidenav { background-color: #333333 !important}
 .sidenav li a { color: #fff !important; font-family: 'amaranth';}
 .sidenav li.active{ background-color: rgba(0,0,0,0.2) !important; }
