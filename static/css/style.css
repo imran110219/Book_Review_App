@@ -285,6 +285,10 @@ hr {
 
 /*Start Test Page*/
 footer{ background-color: #353c46; }
+.footer-input{
+    color: rgba(255, 255, 255, 0.89) !important;
+    font-family: 'amaranth';
+}
 .social-links a{ 
     padding: 10px !important; 
     font-size: 35px; 
