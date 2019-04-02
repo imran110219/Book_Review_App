@@ -2,7 +2,9 @@
 #SiteNavigation li a{
     font-family: 'amaranth';
 }
-
+.authentication-modal{
+    max-height: 85% !important;
+}
 /*END*/
 
 /*Start Books Page*/
@@ -55,12 +57,12 @@
 .filter-header .input-field .select-wrapper input.select-dropdown {
     height: 2.5rem !important;
     line-height: 2.5rem !important;
-    font-size: 12px !important;
+    font-size: 14px !important;
 }
 
 .filter-header .input-field #SearchBook {
     height: 2.5rem !important;
-    font-size: 12px !important;
+    font-size: 14px !important;
 }
 
 .search-books {
@@ -117,7 +119,7 @@
 .filter-header .input-field .select-wrapper input.select-dropdown{ 
   height: 2.5rem !important; 
   line-height: 2.5rem !important; 
-  font-size: 12px !important;
+  font-size: 14px !important;
 }
 .year-filter {display: inline-flex; line-height: 50px; text-align: center; width: 100%;}
 .year-filter .select-wrapper{ width: 45% !important; }
@@ -125,7 +127,7 @@
 .year-filter .select-wrapper input.select-dropdown{ 
   height: 2.5rem !important; 
   line-height: 2.5rem !important; 
-  font-size: 12px !important;
+  font-size: 14px !important;
 }
 
 .filter-group {
@@ -163,8 +165,7 @@
     vertical-align: middle;
     text-align: center;
     font-weight: bold;
-    font-size: 20px;
-    padding: 15px 0 !important;
+    padding: 10px 0 !important;
     margin-bottom: 15px !important;
     border-bottom: 1px solid !important;
 }

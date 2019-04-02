@@ -117,7 +117,7 @@ body {
 .hide{ display: none;}
 
 .transparent{ background-color: transparent !important;}
-
+.sticky-footer{ position: fixed; bottom: 0; width: 100%;}
 
 /************************************ OVERRIDDEN CSS ************************************/
 /* [type="checkbox"].filled-in:checked+span:not(.lever):after{
@@ -141,3 +141,31 @@ nav ul li:hover { background-color: rgba(0,0,0,0.2) !important; }
 .sidenav li:hover{ background-color: rgba(0,0,0,0.3) !important; }
 
 .page-footer .footer-copyright{ background-color: rgba(256, 256, 256, 0.05) !important;}
+
+/*Tab color change*/
+.tabs .tab a{
+	color:#009688;
+	font-size: 20px;
+	font-weight: bold;
+	text-transform: none !important;
+} /*Black color to the text*/
+
+.tabs .tab a:hover {
+	background-color:rgba(0, 128, 128, 0.25);
+	color:#009688;
+} /*Text color on hover*/
+
+.tabs .tab a:focus, .tabs .tab a:focus.active{
+	background-color:rgba(0, 128, 128, 0.2);
+	color:#009688;
+} /*Background and text color when a tab is active*/
+
+.tabs .tab a:hover, .tabs .tab a.active{
+	background-color:rgba(0, 128, 128, 0.2);
+	color:#009688;
+}
+
+.tabs .indicator {
+	background-color:#009688;
+} /*Color of underline*/
+

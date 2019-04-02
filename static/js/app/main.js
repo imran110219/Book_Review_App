@@ -41,6 +41,15 @@ function ScrollTop(e){
     }, 1000);
 }
 
+function FooterPlacement(){
+    if($('body').height() <= $(window).height()){
+        $('footer').addClass('sticky-footer');
+    }
+    else{
+        $('footer').removeClass('sticky-footer');
+    }
+}
+
 window.onresize = function(event) {
     ResizeHome();
 };
@@ -68,8 +77,10 @@ $(document).ready(function () {
     $('.sidenav').sidenav();
     $('select').formSelect();
     $('.modal').modal();
+    $('.tabs').tabs();
     SwitchActiveClass();
     ResizeHome();
+    FooterPlacement();
     /** Review incomplete task **/
     
     // $("#review-edit-btn").click(function () {
