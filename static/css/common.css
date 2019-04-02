@@ -135,7 +135,9 @@ body {
 
 nav ul li.active { background-color: rgba(0,0,0,0.1) !important; }
 nav ul li:hover { background-color: rgba(0,0,0,0.2) !important; }
-.sidenav { background-color: #333333 !important}
+.sidenav { background-color: #263238 !important}
 .sidenav li a { color: #fff !important; font-family: 'amaranth';}
 .sidenav li.active{ background-color: rgba(0,0,0,0.2) !important; }
 .sidenav li:hover{ background-color: rgba(0,0,0,0.3) !important; }
+
+.page-footer .footer-copyright{ background-color: rgba(256, 256, 256, 0.05) !important;}

@@ -284,6 +284,17 @@ hr {
 }
 
 /*Start Test Page*/
+footer{ background-color: #353c46; }
+.social-links a{ 
+    padding: 10px !important; 
+    font-size: 35px; 
+    color: rgba(255, 255, 255, 0.89);
+}
+.social-links a:first-child{ padding-left: 0px !important; }
 
+.social-links a i.fa-facebook:hover{ color: rgba(59, 89, 125, 1) !important;}
+.social-links a i.fa-twitter-square:hover{ color: rgba(0, 172, 238, 1) !important;}
+.social-links a i.fa-linkedin:hover{ color: rgba(0, 119, 181, 1) !important;}
+.social-links a i.fa-github-square:hover{ color: rgba(99, 35, 144, 1) !important;}
 /*End Test Page*/
 
