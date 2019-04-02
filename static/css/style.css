@@ -156,8 +156,8 @@
 }
 
 .content-area-books{display: inline-flex;}
-.single-book{max-width: 130px; margin: 10px 25px !important;}
-.single-book img{height: 180px; width: 130px;}
+.single-book{max-width: 100px; margin: 10px 25px !important;}
+.single-book img{height: 130px; width: 100px;}
 .star-rating p{
     line-height: 20px;
     vertical-align: middle;
