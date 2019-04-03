@@ -37,6 +37,11 @@ body {
 .black-shadow{ text-shadow: 2px 2px 5px #000000; }
 .white-shadow{ text-shadow: 2px 2px 5px #ffffff; }
 
+/*Text Color Classes*/
+.text-white{ color: rgba(256, 256, 256, 0.9)}
+.text-black{ color: rgba(0, 0, 0, 0.9)}
+.text-teal{ color: rgba(0, 128, 128, 0.85)}
+
 /*margin classes*/
 .mt0{margin-top: 0px !important;}
 .mt5{ margin-top: 5px !important;}
