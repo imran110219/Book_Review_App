@@ -1,8 +1,7 @@
 {% load staticfiles %}
 {% load static %}
-<!--DOCTYPE html-->
+<!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,16 +15,18 @@
 </head>
 
 <body>
+    {% include 'register.html' %}
     {% include 'navigation.html' %}
     <div class="main-content">
         {% block content %}
         {% endblock %}
     </div>
-    <footer>
-        {% include 'footer.html'%}
-    </footer>
     {% include 'scrolltop.html'%}
     {% include 'scripts.html' %}
 </body>
+
+<footer class="page-footer blue-grey darken-4">
+    {% include 'footer.html'%}
+</footer>
 
 </html>

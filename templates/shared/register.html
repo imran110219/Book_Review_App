@@ -1,40 +1,112 @@
 <!-- Modal -->
-<div id="registerModal" class="modal">
+<div id="AuthenticationModal" class="modal authentication-modal">
   <div class="modal-content">
-    <div class="modal-header text-center">
-      <h4 class="modal-title w-100 font-weight-bold">Register</h4>
-      <a type="button" class="close" href="" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </a>
-    </div>
-    <div class="mx-3">
-      <div class="md-form mb-5">
-        <i class="fas fa-user prefix grey-text"></i>
-        <input type="text" id="orangeForm-name" class="form-control validate">
-        <label data-error="wrong" data-success="right" for="orangeForm-name">Name</label>
-      </div>
-      <div class="md-form mb-5">
-        <i class="fas fa-envelope prefix grey-text"></i>
-        <input type="email" id="orangeForm-email" class="form-control validate">
-        <label data-error="wrong" data-success="right" for="orangeForm-email">Email</label>
+    <div class="row">
+      <div class="col s12">
+        <ul class="tabs">
+          <li class="tab col s6"><a class="active" href="#Login">Sign In</a></li>
+          <li class="tab col s6"><a href="#Register">Sign Up</a></li>
+        </ul>
       </div>
 
-      <div class="md-form mb-4">
-        <i class="fas fa-lock prefix grey-text"></i>
-        <input type="password" id="orangeForm-pass" class="form-control validate">
-        <label data-error="wrong" data-success="right" for="orangeForm-pass">Password</label>
+      <!-- Login Form -->
+      <div id="Login" class="col s12">
+        <br>
+        <form>
+          <div class="row">
+            <div class="col s12 m6 l6">
+              <h6 class="pt15 pb15 bold">Sign in with your credentials</h6>
+              <div class="input-field">
+                <input id="email" type="email" class="validate">
+                <label for="email">Email Address</label>
+              </div>
+              <div class="input-field">
+                <input id="password" type="password" class="validate">
+                <label for="password">Password</label>
+              </div>
+              <div>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span class="max-content-width">Remember me</span>
+                  </label>
+                </p>
+              </div>
+              <div style="line-height: 55px;">
+                <a href="#" class="">Forgot password?</a>
+                <button class="btn btn-info btn-large right" type="submit">Login</button>
+              </div>
+            </div>
+            <div class="col s12 m6 l6">
+              <h6 class="pt15 pb15 bold center">You can also sign in with</h6>
+              <div class="social-login">
+                <a class="light-blue-text">
+                  <i class="fab fa-google"></i>
+                </a>
+                <a class="light-blue-text">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="light-blue-text">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a class="light-blue-text">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
-
-      <div class="md-form mb-4">
-        <i class="fas fa-lock prefix grey-text"></i>
-        <input type="password" id="orangeForm-repass" class="form-control validate">
-        <label data-error="wrong" data-success="right" for="orangeForm-repass">Confirm Password</label>
+      <!-- End Login Block  -->
+      <!-- Register New User Block -->
+      <div id="Register" class="col s12">
+        <br>
+        <form>
+          <h6 class="bold">* Please fill up this form to register this website</h6>
+          <div class="row">
+            <div class="col s12 m6 l6">
+              <div class="input-field">
+                <input id="register_user_name" type="text" class="validate">
+                <label for="register_user_name">Username</label>
+              </div>
+              <div class="input-field">
+                <input id="register_email_address" type="email" class="validate">
+                <label for="register_email_address">Email</label>
+              </div>
+              <div class="input-field">
+                <input id="register_password" type="text" class="validate">
+                <label for="last_name">Password</label>
+              </div>
+              <div class="input-field">
+                <input id="register_confirm_password" type="text" class="validate">
+                <label for="register_confirm_password">Retype Password</label>
+              </div>
+            </div>
+            <div class="col s12 m6 l6">
+                <div class="input-field">
+                  <input id="first_name" type="text" class="validate">
+                  <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field">
+                  <input id="last_name" type="text" class="validate">
+                  <label for="last_name">Last Name</label>
+                </div>
+                <div class="input-field">
+                  <input id="occupation" type="text" class="validate">
+                  <label for="occupation">What you do</label>
+                </div>
+                <div class="input-field">
+                  <input id="mobile_number" type="text" class="validate">
+                  <label for="mobile_number">Mobile Number</label>
+                </div>
+              </div>
+          </div>
+          <div class="center">
+            <button class="btn btn-info btn-large" type="submit">Register</button>
+          </div>
+        </form>
       </div>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <div class="modal-footer d-flex justify-content-center">
-      <button class="btn btn-info" onclick="Register(event)">Sign up</button>
+      <!-- End Register User block -->
     </div>
   </div>
 </div>
