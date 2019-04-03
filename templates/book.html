@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}
-    {{ title }}
+{{ title }}
 {% endblock title %}
 {% block content %}
 
@@ -23,196 +23,193 @@
         </div>
 
 
-                    <div class="carousel-slide-content">
-                        <div class="book-slider-image">
-                            <a href="#"><img src="{% static 'images/books/angels-n-demons.jpg' %}" alt="filename"></a>
-                        </div>
-                        <div class="book-slider-content">
-                            <h3 class="amaranth black-shadow">Angels &amp; Demon</h3>
-                            <br>
-                            <p>Written by <b>Dan Brown</b></p>
-                            <p>Published on 2008</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="carousel-slide-content">
+          <div class="book-slider-image">
+            <a href="#"><img src="{% static 'images/books/angels-n-demons.jpg' %}" alt="filename"></a>
+          </div>
+          <div class="book-slider-content">
+            <h3 class="amaranth black-shadow">Angels &amp; Demon</h3>
+            <br>
+            <p>Written by <b>Dan Brown</b></p>
+            <p>Published on 2008</p>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <div class="container">
-            <div class="row mb0">
-                <div class="col s12 card mt15">
-                    <h3 class="center amaranth mt15 mb15">{{ title }}</h3>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row mb0">
+      <div class="col s12 card mt15">
+        <h3 class="center amaranth mt15 mb15">{{ title }}</h3>
+      </div>
+    </div>
 
-            <div class="row card pb10" id="BookContentRoot">
-                <!-- <a href="javascript:void(0)" onclick="CloseFilter(event)" class="filter-close"><i class="fas fa-times"></i></i></a> -->
-                <div class="col m12 l4 s12 animated" id="BookContentFilter">
-                    <div class="filter-header">
-                        <a href="javascript:void(0)" onclick="ToggleFilter(event)" class="filter-toggler transparent"><i
-                                class="fas fa-chevron-down"></i></a>
-                        <h5 class="zcool center ma0 fs-30 bold">Filters</h5>
-                    </div>
-                    <!-- <a href="javascript:void(0)" style="float: right; margin-top: 4px" onclick="SwitchFilterState(event)" class="switch-filter-state pull-right section-header">
+    <div class="row card pb10" id="BookContentRoot">
+      <!-- <a href="javascript:void(0)" onclick="CloseFilter(event)" class="filter-close"><i class="fas fa-times"></i></i></a> -->
+      <div class="col m12 l4 s12 animated" id="BookContentFilter">
+        <div class="filter-header">
+          <a href="javascript:void(0)" onclick="ToggleFilter(event)" class="filter-toggler transparent"><i
+              class="fas fa-chevron-down"></i></a>
+          <h5 class="zcool center ma0 fs-30 bold">Filters</h5>
+        </div>
+        <!-- <a href="javascript:void(0)" style="float: right; margin-top: 4px" onclick="SwitchFilterState(event)" class="switch-filter-state pull-right section-header">
                           <i class="fas fa-arrow-circle-up"></i>
                         </a> -->
-                    <div class="filter-section">
-                        <b class="fs-16">Publication Year</b>
-                        <div class="row ma0">
-                            <div class="col s12 pr25">
-                                <div class="year-filter mr15">
-                                    <select id="FromYear">
-                                        <option value="2001">2001</option>
-                                        <option value="2001">2001</option>
-                                    </select>
-                                    <strong> - </strong>
-                                    <select id="ToYear">
-                                        <option value="2010">2010</option>
-                                        <option value="2011">2011</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="category-filter mt10 mb10">
-                            <div class="filter-group">
-                                <a href="javascript:void(0)" onclick="FilterGroupStateChange(event)"
-                                   data-target="CategorySelects"><i
-                                        class="fas fa-plus-square"></i></a>
-                                <b>Categories</b>
-                            </div>
-                            <div class="filter-content" id="CategorySelects">
-
-                                {% for category in categorylist %}
-
-                                    <p>
-                                        <label>
-                                            <input type="checkbox" class="filled-in"/>
-                                            <span class="max-content-width">{{ category.name }}</span>
-                                        </label>
-                                    </p>
-
-                                {% endfor %}
-
-                            </div>
-                        </div>
-
-                        <div class="author-filter mt10 mb10">
-                            <div class="filter-group">
-                                <a href="javascript:void(0)" onclick="FilterGroupStateChange(event)"
-                                   data-target="AuthorSelects"><i
-                                        class="fas fa-plus-square"></i></a>
-                                <b>Authors</b>
-                            </div>
-                            <div class="filter-content" id="AuthorSelects">
-
-                                {% for author in authorlist %}
-
-                                    <p>
-                                        <label>
-                                            <input type="checkbox" class="filled-in" id="author_checkbox" onclick="BookFilter(id, '{{ author.name }}');"/>
-                                            <span class="max-content-width">{{ author.name }}</span>
-                                        </label>
-                                    </p>
-
-                                {% endfor %}
-
-                            </div>
-                        </div>
-
-                        <div class="publication-filter mt10 mb10">
-                            <div class="filter-group">
-                                <a href="javascript:void(0)" onclick="FilterGroupStateChange(event)"
-                                   data-target="PublicationSelects"><i
-                                        class="fas fa-plus-square"></i></a>
-                                <b>Publishers</b>
-                            </div>
-                            <div class="filter-content" id="PublicationSelects">
-
-                                {% for publication in publicationlist %}
-
-                                    <p>
-                                        <label>
-                                            <input type="checkbox" class="filled-in"/>
-                                            <span class="max-content-width">{{ publication.name }}</span>
-                                        </label>
-                                    </p>
-
-                                {% endfor %}
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Book list area -->
-                <div class="col m12 l8 s12" id="BookContentBody">
-                    <div class="filter-header row mb0">
-                        <div class="input-field col s6 m3">
-                            <select class="fs-12">
-                                <option value="name">Name</option>
-                                <option value="rating">Rating</option>
-                                <option value="year">Publication Year</option>
-                            </select>
-                            <label>Order by</label>
-                        </div>
-                        <div class="input-field col s6 m2">
-                            <select>
-                                <option value="asc">ASC</option>
-                                <option value="desc">DESC</option>
-                            </select>
-                        </div>
-                        <div class="input-field col s12 m7 search-books">
-                            {% csrf_token %}
-                            <input type="text" placeholder="Search Here" id="SearchBook">
-                            <ul id="search-results">
-
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Generated Section by Javascript -->
-                    <div class="grid">
-                        <div class="grid-item">
-
-                            {% for book in booklist %}
-
-                            <div class="single-book card hvrbox">
-                                <img src="{{ book.image.url }}" alt=""
-                                     class="hvrbox-layer_bottom">
-                                <div class="hvrbox-layer_top">
-                                    <div class="star-rating center">
-                                        <p class="">4.5 <i class="fas fa-star"></i></p>
-                                        <button class="waves-effect waves-light btn-small fs-10 amaranth">View Deails
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {% endfor %}
-
-{#                            <div class="single-book card hvrbox">#}
-{#                                <img src="{% static 'images/books/da-vinci-code.jpg' %}" alt=""#}
-{#                                     class="hvrbox-layer_bottom">#}
-{#                                <div class="hvrbox-layer_top">#}
-{#                                    <div class="star-rating center">#}
-{#                                        <p class="">4.5 <i class="fas fa-star"></i></p>#}
-{#                                        <button class="waves-effect waves-light btn-small fs-10 amaranth">View Deails#}
-{#                                        </button>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-
-                        </div>
-                    </div>
-                    <!-- END -->
-                </div>
-                <!-- END -->
+        <div class="filter-section">
+          <b class="fs-16">Publication Year</b>
+          <div class="row ma0">
+            <div class="col s12 pr25">
+              <div class="year-filter mr15">
+                <select id="FromYear">
+                  <option value="2001">2001</option>
+                  <option value="2001">2001</option>
+                </select>
+                <strong> - </strong>
+                <select id="ToYear">
+                  <option value="2010">2010</option>
+                  <option value="2011">2011</option>
+                </select>
+              </div>
             </div>
+          </div>
+          <div class="category-filter mt10 mb10">
+            <div class="filter-group">
+              <a href="javascript:void(0)" onclick="FilterGroupStateChange(event)" data-target="CategorySelects"><i
+                  class="fas fa-plus-square"></i></a>
+              <b>Categories</b>
+            </div>
+            <div class="filter-content" id="CategorySelects">
+
+              {% for category in categorylist %}
+
+              <p>
+                <label>
+                  <input type="checkbox" class="filled-in" />
+                  <span class="max-content-width">{{ category.name }}</span>
+                </label>
+              </p>
+
+              {% endfor %}
+
+            </div>
+          </div>
+
+          <div class="author-filter mt10 mb10">
+            <div class="filter-group">
+              <a href="javascript:void(0)" onclick="FilterGroupStateChange(event)" data-target="AuthorSelects"><i
+                  class="fas fa-plus-square"></i></a>
+              <b>Authors</b>
+            </div>
+            <div class="filter-content" id="AuthorSelects">
+
+              {% for author in authorlist %}
+
+              <p>
+                <label>
+                  <input type="checkbox" class="filled-in" id="author_checkbox"
+                    onclick="BookFilter(id, '{{ author.name }}');" />
+                  <span class="max-content-width">{{ author.name }}</span>
+                </label>
+              </p>
+
+              {% endfor %}
+
+            </div>
+          </div>
+
+          <div class="publication-filter mt10 mb10">
+            <div class="filter-group">
+              <a href="javascript:void(0)" onclick="FilterGroupStateChange(event)" data-target="PublicationSelects"><i
+                  class="fas fa-plus-square"></i></a>
+              <b>Publishers</b>
+            </div>
+            <div class="filter-content" id="PublicationSelects">
+
+              {% for publication in publicationlist %}
+
+              <p>
+                <label>
+                  <input type="checkbox" class="filled-in" />
+                  <span class="max-content-width">{{ publication.name }}</span>
+                </label>
+              </p>
+
+              {% endfor %}
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Book list area -->
+      <div class="col m12 l8 s12" id="BookContentBody">
+        <div class="filter-header row mb0">
+          <div class="input-field col s6 m3">
+            <select class="fs-12">
+              <option value="name">Name</option>
+              <option value="rating">Rating</option>
+              <option value="year">Publication Year</option>
+            </select>
+            <label>Order by</label>
+          </div>
+          <div class="input-field col s6 m2">
+            <select>
+              <option value="asc">ASC</option>
+              <option value="desc">DESC</option>
+            </select>
+          </div>
+          <div class="input-field col s12 m7 search-books">
+            {% csrf_token %}
+            <input type="text" placeholder="Search Here" id="SearchBook">
+            <ul id="search-results">
+
+            </ul>
+          </div>
         </div>
 
-        <!-- Sidebar Widgets Column -->
-        <!-- <div class="col-md-4">
+        <!-- Generated Section by Javascript -->
+        <div class="grid">
+          <div class="grid-item">
+
+            {% for book in booklist %}
+
+            <div class="single-book card hvrbox">
+              <img src="{{ book.image.url }}" alt="" class="hvrbox-layer_bottom">
+              <div class="hvrbox-layer_top">
+                <div class="star-rating center">
+                  <p class="">4.5 <i class="fas fa-star"></i></p>
+                  <button class="waves-effect waves-light btn-small fs-10 amaranth">View Deails
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {% endfor %}
+
+            {#                            <div class="single-book card hvrbox">#}
+            {#                                <img src="{% static 'images/books/da-vinci-code.jpg' %}" alt=""#}
+            {#                                     class="hvrbox-layer_bottom">#}
+            {#                                <div class="hvrbox-layer_top">#}
+            {#                                    <div class="star-rating center">#}
+            {#                                        <p class="">4.5 <i class="fas fa-star"></i></p>#}
+            {#                                        <button class="waves-effect waves-light btn-small fs-10 amaranth">View Deails#}
+            {#                                        </button>#}
+            {#                                    </div>#}
+            {#                                </div>#}
+            {#                            </div>#}
+
+          </div>
+        </div>
+        <!-- END -->
+      </div>
+      <!-- END -->
+    </div>
+  </div>
+
+  <!-- Sidebar Widgets Column -->
+  <!-- <div class="col-md-4">
         <form class="navbar-form navbar-left" id="searchform" action="{% url 'books:book' %}" method="get" accept-charset="utf-8">
           <div class="form-group">
             <input type="text" class="form-control" name="q" placeholder="Search Books">
@@ -220,6 +217,6 @@
           <button type="submit" class="btn btn-default">Go!</button>
         </form>
       </div> -->
-    </div>
+</div>
 
 {% endblock content %}
