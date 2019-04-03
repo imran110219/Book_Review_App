@@ -143,3 +143,27 @@ function StickyFilterToggle(){
         }
     }
 }
+
+$(function () {
+
+    $('#SearchBook').keyup(function () {
+        $.ajax({
+            type: "POST",
+            url: "/books/search/",
+            data: {
+                'search_text': $('#SearchBook').val(),
+                'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val()
+            },
+            success: searchSuccess,
+            dataType: 'html'
+        });
+    });
+});
+
+function searchSuccess(data, textStatus, jqXHR) {
+    $('#search-results').html(data);
+}
+
+function BookFilter(id, value) {
+    alert(id, value);
+}
