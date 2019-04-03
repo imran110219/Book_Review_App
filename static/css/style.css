@@ -78,6 +78,14 @@
     width: 75%;
 }
 
+ul#search-results {
+    position: absolute;
+    right: 10px;
+    z-index: 2;
+    background-color: #0005;
+    margin: 0;
+}
+
 .year-filter {
     display: inline-flex;
     line-height: 50px;
