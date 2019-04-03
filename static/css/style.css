@@ -7,6 +7,10 @@
 }
 /*END*/
 
+/*Homepage CSS*/
+.home-top{ margin: auto;}
+/*END*/
+
 /*Start Books Page*/
 .book-slider {
     background: url('../images/books_back.jpg') repeat-x scroll 0;
@@ -223,6 +227,7 @@
     background: url('../images/home-back.jpg');
     background-attachment: fixed;
     background-size: cover;
+    height: 350px;
 }
 
 .login-area {
