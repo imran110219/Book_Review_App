@@ -24,7 +24,7 @@
                     <a class="" href="{% url 'publications:publication' %}" data-location="publications">Publications</a>
                 </li>
                 {% if not request.user.is_authenticated %}
-                <li><a href='{% url "login" %}'>Login</a></li>
+                <li><a href="#AuthenticationModal" class="modal-trigger">Login</a></li>
                 {% else %}
                 <li><a href='{% url "accounts:profile" %}'>{{ user.username }}</a></li>
                 <li><a href='{% url "logout" %}'>Logout</a></li>
@@ -51,7 +51,7 @@
         <a class="" href="{% url 'publications:publication' %}" data-location="publications">Publications</a>
     </li>
     {% if not request.user.is_authenticated %}
-    <li><a href='{% url "login" %}'>Login</a></li>
+    <li><a href="#AuthenticationModal" class="modal-trigger">Login</a></li>
     {% else %}
     <li><a href='{% url "accounts:profile" %}'>{{ user.username }}</a></li>
     <li><a href='{% url "logout" %}'>Logout</a></li>
