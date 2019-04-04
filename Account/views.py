@@ -7,6 +7,8 @@ from django.contrib.auth import (
 from django.shortcuts import render, redirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
+from Book.models import Book
+from Book.filters import BookFilter
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from .forms import UserLoginForm, UserRegisterForm, UserForm, ProfileForm
@@ -154,3 +156,10 @@ def password(request):
     else:
         form = PasswordForm(request.user)
     return render(request, 'password.html', {'form': form})
+
+# Test View
+
+def test_view(request):
+    book_list = Book.objects.all()
+    book_filter = BookFilter(request.GET, queryset=book_list)
+    return render(request, 'test.html', {'filter': book_filter})
