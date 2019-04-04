@@ -20,6 +20,8 @@ $(document).ready(function(){
         itemSelector: '.grid-item',
         layoutMode: 'fitRows'
     });
+
+    GenerateYearFilter();
 });
 
 window.onresize = function(event) {
@@ -167,3 +169,26 @@ function searchSuccess(data, textStatus, jqXHR) {
 function BookFilter(id, value) {
     alert(id, value);
 }
+
+function GenerateYearFilter(){
+    var date = new Date();
+    var current_year = date.getFullYear();
+    var options = '';
+
+    for(var i=current_year; i>= 1900; i--){
+        options += '<option value="' + i +'">'+ i + '</option>';
+    }
+    options += '<option value="1899">Earlier 1900</option>';
+
+    $("#FromYear").empty().append(options).trigger('contentChanged');
+    $("#ToYear").empty().append(options).trigger('contentChanged');
+
+}
+
+$('#FromYear').on('contentChanged', function() {
+    $(this).formSelect();
+});
+
+$('#ToYear').on('contentChanged', function() {
+    $(this).formSelect();
+});
