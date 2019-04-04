@@ -7,10 +7,6 @@ from Author.models import Author
 
 # Create your views here.
 
-def test_view(request):
-    return render(request, "test.html", {})
-
-
 def author_list(request):
     queryset = Author.objects.all()
 
