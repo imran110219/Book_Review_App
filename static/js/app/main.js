@@ -73,7 +73,8 @@ $(window).on('scroll', function() {
     //     console.log("Inn");
 });
 
-$(document).ready(function () {
+$(document).ready(function () {    
+    $(".dropdown-trigger").dropdown();
     $('.sidenav').sidenav();
     $('select').formSelect();
     $('.modal').modal();
