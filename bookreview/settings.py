@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'star_ratings',
     'rest_framework',
     'social_django',
+    'widget_tweaks',
 
     # local apps
     'Category',

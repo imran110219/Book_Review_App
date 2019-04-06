@@ -4,7 +4,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 
-from Book.models import Book
+from .models import Book
+from .filters import BookFilter
 from Author.models import Author
 from Category.models import Category
 from Publication.models import Publication
@@ -22,6 +23,8 @@ def book_list(request):
     categorylist = Category.objects.all()
     publicationlist = Publication.objects.all()
 
+    book_filter = BookFilter(request.GET, queryset=booklist)
+
     query = request.GET.get("q")
 
     if query:
@@ -37,6 +40,7 @@ def book_list(request):
         "categorylist": categorylist,
         "publicationlist": publicationlist,
         "authorlist": authorlist,
+        "filter": book_filter,
         "title": "Books",
     }
     return render(request, "book.html", context)

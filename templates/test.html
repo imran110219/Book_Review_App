@@ -1,13 +1,30 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 {% block content %}
-  <form method="get">
-    {{ filter.form.as_p }}
-    <button type="submit">Search</button>
-  </form>
-  <ul>
-  {% for book in filter.qs %}
-    <li>{{ book.name }}</li>
-  {% endfor %}
-  </ul>
+
+    <form method="get">
+        {#        {{ filter.form.as_p }}#}
+
+        {% for choice in filter.form.publication %}
+
+              <p>
+                <label>
+                  {{ choice.tag }}
+                  <span class="max-content-width">{{ choice.choice_label }}</span>
+                </label>
+              </p>
+
+              {% endfor %}
+                <button type="submit">Search</button>
+
+    </form>
+
+
+    <ul>
+        {% for book in filter.qs %}
+            <li>{{ book.name }}</li>
+        {% endfor %}
+    </ul>
+
 {% endblock %}
