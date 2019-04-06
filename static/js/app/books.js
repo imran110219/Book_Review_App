@@ -1,6 +1,89 @@
 'use strict'
 
 var filter_sticky = false;
+var categories = [], authors = [], publications = [];
+
+function LoadBooks() {
+    var filters = {
+        from_year: $("#FromYear").val(),
+        to_year: $("#ToYear").val(),
+        categories: categories,
+        authors: authors,
+        publications: publications,
+        sort_by: $("#SortBy").val(),
+        sort_order: $("#SortOrder").val(),
+        search_string: $("#SearchBook").val()
+    };
+
+    //Here you'll call ajax to get book data as a list and then on success response
+    //You'll iterate through those data to generate books html like below
+    // $.ajax({
+    //     type:'POST',
+    //     url: '',
+    //     //your_csrf_token,
+    //     data:{ filters: filters},
+    //     success: function(resp){
+
+    //     },
+    //     error: function(resp){
+    //         console.log(resp);
+    //     }
+    // });
+    //This is your ajax code
+    //you'll process below code inside success block
+    // Here books is a static images container
+
+    var books = [
+        { image_url: "/media/da-vinci-code.jpg" },
+        { image_url: "/media/angels-n-demons.jpg" },
+        { image_url: "/media/inferno.jpg" },
+    ];
+    var books_html = '';
+    $.each(books, function(i, book){        
+        var single_book = '<div class="grid-item" style="position: absolute; left: 0px; top: 0px;">';
+        single_book+='<div class="single-book card hvrbox">';
+        single_book+='<img src="'+ book.image_url +'" alt="" class="hvrbox-layer_bottom">';
+        // single_book+='<img src="{{'+ book.image.url +'}}" alt="" class="hvrbox-layer_bottom">';
+        single_book+='<div class="hvrbox-layer_top">';
+        single_book+='<div class="star-rating center">';
+        single_book+='<p class="">4.5 <i class="fas fa-star"></i></p>';
+        single_book+='<button class="waves-effect waves-light btn-small fs-10 amaranth">View Deails';
+        single_book+='</button></div></div></div></div>';
+
+        books_html += single_book;
+    });
+
+    $('.grid').empty().append(books_html);
+
+}
+
+function CategoryFilterChecked(e, value){
+    if($(e.target).is(":checked"))
+        categories.push(value);
+    else
+        categories.splice(categories.indexOf(value), 1);
+
+    LoadBooks();
+}
+
+function AuthorFilterChecked(e, value){
+    if($(e.target).is(":checked"))
+        authors.push(value);
+    else
+        authors.splice(authors.indexOf(value), 1);
+
+    LoadBooks();
+}
+
+function PublicationFilterChecked(e, value){
+    if($(e.target).is(":checked"))
+        publications.push(value);
+    else
+        publications.splice(publications.indexOf(value), 1);
+
+    LoadBooks();
+}
+
 
 $(document).ready(function(){
     var owl = $('.owl-carousel');
@@ -16,12 +99,13 @@ $(document).ready(function(){
         smartSpeed:450
     });
 
+    GenerateYearFilter();
+    LoadBooks();
+
     $('.grid').isotope({
         itemSelector: '.grid-item',
         layoutMode: 'fitRows'
     });
-
-    GenerateYearFilter();
 });
 
 window.onresize = function(event) {
@@ -57,26 +141,6 @@ function BooksPageResponsive(){
         $("#BookContentRoot").removeClass('card').addClass('card');
         $('.filter-toggler').hide();
     }
-}
-
-function ChangeAuthor(e) {
-    console.log($(e.target).val());
-}
-
-function ChangePublisher(e) {
-    console.log($(e.target).val());
-}
-
-function ChangeRating(e) {
-    console.log($(e.target).val());
-}
-
-function ChangeTags(e) {
-    console.log($(e.target).val());
-}
-
-function LoadBookList(params) {
-    
 }
 
 function ToggleFilter(e){
@@ -132,8 +196,6 @@ function StickyFilterToggle(){
                 $(".filter-toggler").addClass('sticky-close');
                 filter_sticky = true;
             }
-
-            console.log(document_top + " >> " + (element_bottom - 50));
         }
         else if(document_top > element_bottom - 50 && filter_sticky){
             $(".filter-toggler").removeClass('sticky-close');

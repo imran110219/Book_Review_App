@@ -85,7 +85,7 @@
 
               <p>
                 <label>
-                  <input type="checkbox" class="filled-in" />
+                  <input type="checkbox" class="filled-in" onclick="CategoryFilterChecked(event, '{{ category.id }}')" />
                   <span class="max-content-width">{{ category.name }}</span>
                 </label>
               </p>
@@ -107,8 +107,7 @@
 
               <p>
                 <label>
-                  <input type="checkbox" class="filled-in" id="author_checkbox"
-                    onclick="BookFilter(id, '{{ author.name }}');" />
+                  <input type="checkbox" class="filled-in" id="author_checkbox" onclick="AuthorFilterChecked(event, '{{ author.id }}')" />
                   <span class="max-content-width">{{ author.name }}</span>
                 </label>
               </p>
@@ -130,7 +129,7 @@
 
               <p>
                 <label>
-                  <input type="checkbox" class="filled-in" />
+                  <input type="checkbox" class="filled-in"  onclick="PublicationFilterChecked(event, '{{ publication.id }}')" />
                   <span class="max-content-width">{{ publication.name }}</span>
                 </label>
               </p>
@@ -147,7 +146,7 @@
       <div class="col m12 l8 s12" id="BookContentBody">
         <div class="filter-header row mb0">
           <div class="input-field col s6 m3">
-            <select class="fs-12">
+            <select class="fs-12" id="SortBy">
               <option value="name">Name</option>
               <option value="rating">Rating</option>
               <option value="year">Publication Year</option>
@@ -155,7 +154,7 @@
             <label>Order by</label>
           </div>
           <div class="input-field col s6 m2">
-            <select>
+            <select id="SortOrder">
               <option value="asc">ASC</option>
               <option value="desc">DESC</option>
             </select>
@@ -171,10 +170,8 @@
 
         <!-- Generated Section by Javascript -->
         <div class="grid">
+          {% for book in booklist %}
           <div class="grid-item">
-
-            {% for book in booklist %}
-
             <div class="single-book card hvrbox">
               <img src="{{ book.image.url }}" alt="" class="hvrbox-layer_bottom">
               <div class="hvrbox-layer_top">
@@ -185,22 +182,8 @@
                 </div>
               </div>
             </div>
-
-            {% endfor %}
-
-            {#                            <div class="single-book card hvrbox">#}
-            {#                                <img src="{% static 'images/books/da-vinci-code.jpg' %}" alt=""#}
-            {#                                     class="hvrbox-layer_bottom">#}
-            {#                                <div class="hvrbox-layer_top">#}
-            {#                                    <div class="star-rating center">#}
-            {#                                        <p class="">4.5 <i class="fas fa-star"></i></p>#}
-            {#                                        <button class="waves-effect waves-light btn-small fs-10 amaranth">View Deails#}
-            {#                                        </button>#}
-            {#                                    </div>#}
-            {#                                </div>#}
-            {#                            </div>#}
-
           </div>
+          {% endfor %}
         </div>
         <!-- END -->
       </div>
