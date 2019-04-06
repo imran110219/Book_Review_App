@@ -61,12 +61,12 @@
           <div class="row ma0">
             <div class="col s12 pr25">
               <div class="year-filter mr15">
-                <select id="FromYear">
+                <select id="FromYear" onchange="LoadBooks()">
                   <option value="2000">2001</option>
                   <option value="2001">2001</option>
                 </select>
                 <strong> - </strong>
-                <select id="ToYear">
+                <select id="ToYear" onchange="LoadBooks()">
                   <option value="2010">2010</option>
                   <option value="2011">2011</option>
                 </select>
@@ -146,7 +146,7 @@
       <div class="col m12 l8 s12" id="BookContentBody">
         <div class="filter-header row mb0">
           <div class="input-field col s6 m3">
-            <select class="fs-12" id="SortBy">
+            <select class="fs-12" id="SortBy" onchange="LoadBooks()">
               <option value="name">Name</option>
               <option value="rating">Rating</option>
               <option value="year">Publication Year</option>
@@ -154,7 +154,7 @@
             <label>Order by</label>
           </div>
           <div class="input-field col s6 m2">
-            <select id="SortOrder">
+            <select id="SortOrder" onchange="LoadBooks()">
               <option value="asc">ASC</option>
               <option value="desc">DESC</option>
             </select>

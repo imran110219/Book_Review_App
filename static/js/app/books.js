@@ -14,7 +14,7 @@ function LoadBooks() {
         sort_order: $("#SortOrder").val(),
         search_string: $("#SearchBook").val()
     };
-
+    console.log(filters);
     //Here you'll call ajax to get book data as a list and then on success response
     //You'll iterate through those data to generate books html like below
     // $.ajax({
@@ -83,7 +83,6 @@ function PublicationFilterChecked(e, value){
 
     LoadBooks();
 }
-
 
 $(document).ready(function(){
     var owl = $('.owl-carousel');
