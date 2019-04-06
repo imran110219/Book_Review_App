@@ -162,4 +162,5 @@ def password(request):
 def test_view(request):
     book_list = Book.objects.all()
     book_filter = BookFilter(request.GET, queryset=book_list)
+    temp = book_filter.form
     return render(request, 'test.html', {'filter': book_filter})
