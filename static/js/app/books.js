@@ -54,7 +54,13 @@ function LoadBooks() {
     });
 
     $('.grid').empty().append(books_html);
+    
+    $('.grid').isotope({
+        itemSelector: '.grid-item',
+        layoutMode: 'fitRows'
+    });
 
+    $('.grid').isotope('reloadItems').isotope();
 }
 
 function CategoryFilterChecked(e, value){
@@ -100,11 +106,6 @@ $(document).ready(function(){
 
     GenerateYearFilter();
     LoadBooks();
-
-    $('.grid').isotope({
-        itemSelector: '.grid-item',
-        layoutMode: 'fitRows'
-    });
 });
 
 window.onresize = function(event) {
