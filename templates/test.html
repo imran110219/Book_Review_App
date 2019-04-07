@@ -3,20 +3,80 @@
 
 {% block content %}
 
+
+
     <form method="get">
         {#        {{ filter.form.as_p }}#}
 
-        {% for choice in filter.form.publication %}
+        <div class="row">
+            <div class="col s6">
+                {#                <button type="submit" onclick="{{ filter.form.order.name }}">Name ASC</button>#}
+                {#                <button type="submit" onclick="alert('Hello world!')">Name ASC</button>#}
+{#                {{ filter.form.order }}#}
 
-              <p>
-                <label>
-                  {{ choice.tag }}
-                  <span class="max-content-width">{{ choice.choice_label }}</span>
-                </label>
-              </p>
+                <input class="select-dropdown dropdown-trigger" type="text" readonly="true" data-target="input_order">
 
-              {% endfor %}
-                <button type="submit">Search</button>
+                <ul id="input_order" class="dropdown-content select-dropdown" tabindex="0" style="">
+                    <li id={{ filter.form.order.0.id }} tabindex="0" class="">
+                        <span>{{ filter.form.order.0.id }}</span>
+                    </li>
+                    <li id="select-options-2b5fc97c-558c-f5b7-366d-aecdebf889641" tabindex="0" class="">
+                        <span>{{ filter.form.order.1.id }}</span>
+                    </li>
+                    <li id="select-options-2b5fc97c-558c-f5b7-366d-aecdebf889642" tabindex="0" class="">
+                        <span>{{ filter.form.order.2 }}</span>
+                    </li>
+                </ul>
+
+                </input>
+
+            </div>
+            <div class="col s6">Demo</div>
+            <div class="col s4">
+                <h5>Publication</h5>
+                {% for choice in filter.form.publication %}
+
+                    <p>
+                        <label>
+                            {{ choice.tag }}
+                            <span class="max-content-width">{{ choice.choice_label }}</span>
+                        </label>
+                    </p>
+
+                {% endfor %}
+            </div>
+
+            <div class="col s4">
+                <h5>Author</h5>
+                {% for choice in filter.form.authors %}
+
+                    <p>
+                        <label>
+                            {{ choice.tag }}
+                            <span class="max-content-width">{{ choice.choice_label }}</span>
+                        </label>
+                    </p>
+
+                {% endfor %}
+            </div>
+
+            <div class="col s4">
+                <h5>Category</h5>
+                {% for choice in filter.form.categories %}
+
+                    <p>
+                        <label>
+                            {{ choice.tag }}
+                            <span class="max-content-width">{{ choice.choice_label }}</span>
+                        </label>
+                    </p>
+
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <button type="submit">Search</button>
 
     </form>
 
