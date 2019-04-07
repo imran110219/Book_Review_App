@@ -8,7 +8,7 @@
     <div class="container" style="padding-top: 100px; padding-bottom: 30px;">
         <div class="row">
             <div class="col s12 valign-wrapper">
-                <div class="animated fadeInLeft home-top center">
+                <div class="animated fadeInDownBig home-top center">
                     <h3 class="mt0 mb0 ml0 mr0 text-white amaranth">Welcome, Reader</h3>
                     <p class="amaranth">A large community and discussion site for <strong>book lovers</strong></p>
                     <p class="amaranth">Dive in to know more</p>
@@ -20,14 +20,61 @@
 
 <div class="trending-book">
     <div class="container">
-        
+        <div class="row card">
+            <div class="col s12">
+                <h5 class="amaranth center bold mt15 mb15">Trending Books</h5>
+            </div>
+        </div>
+        <div class="row mb0">
+            <div class="col s12">
+                <div class="owl-carousel-trending-books owl-carousel owl-theme mt15">
+                    <div class="item">
+                        <a href="#"><img src="{% static 'images/books/da-vinci-code.jpg' %}" alt="filename"></a>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img src="{% static 'images/books/angels-n-demons.jpg' %}" alt="filename"></a>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img src="{% static 'images/books/da-vinci-code.jpg' %}" alt="filename"></a>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img src="{% static 'images/books/angels-n-demons.jpg' %}" alt="filename"></a>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img src="{% static 'images/books/da-vinci-code.jpg' %}" alt="filename"></a>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img src="{% static 'images/books/angels-n-demons.jpg' %}" alt="filename"></a>
+                    </div>
+                </div>
+                <div class="anchor right mt15 mb20">
+                    <a href="https://www.facebook.com/" class="amaranth bold">View all</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#LoginEmail").val('');
-        $("#LoginPassword").val('');
-    });
-</script>
+<div class="quotes">
+    <div class="container">
+        <div class="row mb0">
+            <div class="col s12" style="padding: 60px 0;">
+                <div class="owl-carousel-quotes owl-carousel owl-theme">
+                    <div class="quote-item valign-wrapper">
+                        <div class="home-top center">
+                            <p class="amaranth">“Start writing, no matter what. The water does not flow until the faucet is turned on.”</p>
+                            <p class="amaranth">— Louis L’Amour</p>
+                        </div>
+                    </div>
+                    <div class="quote-item valign-wrapper">
+                        <div class="home-top center">
+                            <p class="amaranth">“Start writing, no matter what. The water does not flow until the faucet is turned on.”</p>
+                            <p class="amaranth">— Louis L’Amour</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
 {% endblock %}
