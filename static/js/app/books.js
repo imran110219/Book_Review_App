@@ -53,7 +53,7 @@ function LoadBooks() {
         books_html += single_book;
     });
 
-    $('.grid').empty().append(books_html);
+    // $('.grid').empty().append(books_html);
     
     $('.grid').isotope({
         itemSelector: '.grid-item',
@@ -254,3 +254,9 @@ $('#FromYear').on('contentChanged', function() {
 $('#ToYear').on('contentChanged', function() {
     $(this).formSelect();
 });
+
+/* Start Test Page */
+function ShowParameter() {
+    alert("{{ filter.form.order.auto_id }}");
+}
+/* End Test Page */

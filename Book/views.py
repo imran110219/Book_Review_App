@@ -25,15 +25,15 @@ def book_list(request):
 
     book_filter = BookFilter(request.GET, queryset=booklist)
 
-    query = request.GET.get("q")
-
-    if query:
-        queryset = Book.objects.filter(
-            Q(name__icontains=query) |
-            Q(authors__author_name__icontains=query) |
-            Q(categories__category_name__icontains=query) |
-            Q(publication__publication_name__icontains=query)
-        ).distinct()
+    # query = request.GET.get("q")
+    #
+    # if query:
+    #     queryset = Book.objects.filter(
+    #         Q(name__icontains=query) |
+    #         Q(authors__author_name__icontains=query) |
+    #         Q(categories__category_name__icontains=query) |
+    #         Q(publication__publication_name__icontains=query)
+    #     ).distinct()
 
     context = {
         "booklist": booklist,
