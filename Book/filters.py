@@ -15,13 +15,15 @@ class BookFilter(django_filters.FilterSet):
         choices=(
             ('name', 'NameASC'),
             ('-name', 'NameDESC'),
-            # ('pagenumber', 'Page Number')
+            ('no_of_page', 'Page Number ASC'),
+            ('-no_of_page', 'Page Number DESC')
 
         ),
         fields={
             'name': 'name',
             'name': '-name',
-            # 'no_of_page': 'pagenumber'
+            'no_of_page': 'no_of_page',
+            'no_of_page': '-no_of_page',
         },
     )
 
@@ -36,4 +38,5 @@ class BookFilter(django_filters.FilterSet):
         fields = ['publication', 'authors', 'categories', ]
         order_by = [
             'name',
+            'no_of_page',
         ]

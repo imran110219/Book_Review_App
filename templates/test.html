@@ -10,25 +10,13 @@
 
         <div class="row">
             <div class="col s6">
-                {#                <button type="submit" onclick="{{ filter.form.order.name }}">Name ASC</button>#}
-                {#                <button type="submit" onclick="alert('Hello world!')">Name ASC</button>#}
-{#                {{ filter.form.order }}#}
 
-                <input class="select-dropdown dropdown-trigger" type="text" readonly="true" data-target="input_order">
+                <select name="{{ filter.form.order.name }}" id="{{ filter.form.order.auto_id }}">
+                    {% for choice in filter.form.order %}
+                        <option value="{{ choice.data.value }}">{{ choice.choice_label }}</option>
+                    {% endfor %}
+                </select>
 
-                <ul id="input_order" class="dropdown-content select-dropdown" tabindex="0" style="">
-                    <li id={{ filter.form.order.0.id }} tabindex="0" class="">
-                        <span>{{ filter.form.order.0.id }}</span>
-                    </li>
-                    <li id="select-options-2b5fc97c-558c-f5b7-366d-aecdebf889641" tabindex="0" class="">
-                        <span>{{ filter.form.order.1.id }}</span>
-                    </li>
-                    <li id="select-options-2b5fc97c-558c-f5b7-366d-aecdebf889642" tabindex="0" class="">
-                        <span>{{ filter.form.order.2 }}</span>
-                    </li>
-                </ul>
-
-                </input>
 
             </div>
             <div class="col s6">Demo</div>
