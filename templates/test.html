@@ -3,13 +3,11 @@
 
 {% block content %}
 
-
-
     <form method="get">
         {#        {{ filter.form.as_p }}#}
 
         <div class="row">
-            <div class="col s6">
+            <div class="col s12">
 
                 <select name="{{ filter.form.order.name }}" id="{{ filter.form.order.auto_id }}">
                     {% for choice in filter.form.order %}
@@ -19,7 +17,6 @@
 
 
             </div>
-            <div class="col s6">Demo</div>
             <div class="col s4">
                 <h5>Publication</h5>
                 {% for choice in filter.form.publication %}
@@ -65,6 +62,8 @@
 
 
         <button type="submit">Search</button>
+
+        <button type="button" onclick="ShowParameter()">Show</button>
 
     </form>
 
