@@ -84,14 +84,14 @@
                                 </div>
                                 <div class="filter-content" id="CategorySelects">
 
-                                    {% for category in filter.form.categories %} <!--categorylist-->
+                                    {% for category in categorylist %} <!--filter.form.categories-->
 
                                         <p>
                                             <label>
-{#                                                <input type="checkbox" class="filled-in"#}
-{#                                                       onclick="CategoryFilterChecked(event, '{{ category.id }}')"/>#}
-                                                {{ category.tag }}
-                                                <span class="max-content-width">{{ category.choice_label }}</span> <!--name-->
+                                                <input type="checkbox" class="filled-in"
+                                                       onclick="CategoryFilterChecked(event, '{{ category.id }}')"/>
+{#                                                {{ category.tag }}#}
+                                                <span class="max-content-width">{{ category.name }}</span> <!--choice_label-->
                                             </label>
                                         </p>
 
@@ -109,14 +109,14 @@
                                 </div>
                                 <div class="filter-content" id="AuthorSelects">
 
-                                    {% for author in filter.form.authors %} <!--authorlist-->
+                                    {% for author in authorlist %} <!--filter.form.authors-->
 
                                         <p>
                                             <label>
-{#                                                <input type="checkbox" class="filled-in" id="author_checkbox"#}
-{#                                                       onclick="AuthorFilterChecked(event, '{{ author.id }}')"/>#}
-                                                {{ author.tag }}
-                                                <span class="max-content-width">{{ author.choice_label }}</span> <!--name-->
+                                                <input type="checkbox" class="filled-in" id="author_checkbox"
+                                                       onclick="AuthorFilterChecked(event, '{{ author.id }}')"/>
+{#                                                {{ author.tag }}#}
+                                                <span class="max-content-width">{{ author.name }}</span> <!--choice_label-->
                                             </label>
                                         </p>
 
@@ -134,14 +134,14 @@
                                 </div>
                                 <div class="filter-content" id="PublicationSelects">
 
-                                    {% for publication in filter.form.publication %} <!--publicationlist-->
+                                    {% for publication in publicationlist %} <!--filter.form.publication-->
 
                                         <p>
                                             <label>
-{#                                                <input type="checkbox" class="filled-in"#}
-{#                                                       onclick="PublicationFilterChecked(event, '{{ publication.id }}')"/>#}
-                                                {{ publication.tag }}
-                                                <span class="max-content-width">{{ publication.choice_label }}</span> <!--name-->
+                                                <input type="checkbox" class="filled-in"
+                                                       onclick="PublicationFilterChecked(event, '{{ publication.id }}')"/>
+{#                                                {{ publication.tag }}#}
+                                                <span class="max-content-width">{{ publication.name }}</span> <!--choice_label-->
                                             </label>
                                         </p>
 
@@ -150,7 +150,7 @@
                                 </div>
                             </div>
 
-                            <button class="btn waves-effect waves-light" type="submit">Submit</button>
+{#                            <button class="btn waves-effect waves-light" type="submit">Submit</button>#}
 
                         </form>
 
@@ -186,7 +186,7 @@
 
                     <!-- Generated Section by Javascript -->
                     <div class="grid">
-                        {% for book in filter.qs %} <!--booklist-->
+                        {% for book in booklist %} <!--filter.qs-->
                             <div class="grid-item">
                                 <div class="single-book card hvrbox">
                                     <img src="{{ book.image.url }}" alt="" class="hvrbox-layer_bottom">
