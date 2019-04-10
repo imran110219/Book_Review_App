@@ -19,27 +19,19 @@ from Comment.forms import CommentForm
 # Create your views here.
 
 def book_list(request):
-
-    filters = ''
-    booklist = ''
-
     if request.method == "POST":
-        # filters = request.POST.getlist('filters[]')
         filters = json.loads(request.body)
-
-
-
+        booklist = Book.objects.filter(
+            publication__id__in=filters['publications']).filter(
+            authors__id__in=filters['authors']).filter(
+            categories__id__in=filters['categories'])
     else:
         filters = ''
+        booklist = Book.objects.all()
 
-        # booklist = Book.objects.all()
-
-    # booklist = Book.objects.filter(publication=)#filters['publication'])
     authorlist = Author.objects.all()
     categorylist = Category.objects.all()
     publicationlist = Publication.objects.all()
-
-    # book_filter = BookFilter(request.GET, queryset=booklist)
 
     # query = request.GET.get("q")
     #
@@ -105,6 +97,7 @@ def home(request):
         "title": "Home"
     }
     return render(request, "home.html", context)
+
 
 def book_search(request):
     print(request.POST['search_text'])
