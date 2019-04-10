@@ -16,7 +16,7 @@ class BookFilter(django_filters.FilterSet):
             ('name', 'NameASC'),
             ('-name', 'NameDESC'),
             ('no_of_page', 'Page Number ASC'),
-            ('-no_of_page', 'Page Number DESC')
+            ('-no_of_page', 'Page Number DESC'),
 
         ),
         fields={

@@ -14,21 +14,26 @@ function LoadBooks() {
         sort_order: $("#SortOrder").val(),
         search_string: $("#SearchBook").val()
     };
-    console.log(filters);
+    //console.log(filters);
     //Here you'll call ajax to get book data as a list and then on success response
     //You'll iterate through those data to generate books html like below
-    // $.ajax({
-    //     type:'POST',
-    //     url: '',
-    //     //your_csrf_token,
-    //     data:{ filters: filters},
-    //     success: function(resp){
-
-    //     },
-    //     error: function(resp){
-    //         console.log(resp);
-    //     }
-    // });
+    var jsonFilter = JSON.stringify(filters);
+    console.log(jsonFilter);
+    $.ajax({
+        type:'POST',
+        url: "/books/",
+        dataType: "json",
+        //your_csrf_token,
+        data: jsonFilter, //{ jsonFilter
+                // 'csrfmiddlewaretoken': '{{ csrf_token }}'
+        // },
+        success: function(data){
+            alert("done")
+        },
+        error: function(data){
+            console.log(data);
+        }
+    });
     //This is your ajax code
     //you'll process below code inside success block
     // Here books is a static images container
@@ -215,8 +220,8 @@ $(function () {
             type: "POST",
             url: "/books/search/",
             data: {
-                'search_text': $('#SearchBook').val(),
-                'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val()
+                'search_text': $('#SearchBook').val()
+                // 'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val()
             },
             success: searchSuccess,
             dataType: 'html'
@@ -256,6 +261,29 @@ $('#ToYear').on('contentChanged', function() {
 });
 
 /* Start Test Page */
+$('#book-filter-form').on('submit', function(){
+    event.preventDefault();
+    $.ajax({ data: $(this).serialize(),
+                type: $(this).attr('method'),
+                url: $(this).attr('action'),
+                // success: function(response) {
+                //      console.log(response);
+                //      if(response['success']) {
+                //          $("#feedbackmessage").html("<div class='alert alert-success'>
+                //                        Succesfully sent feedback, thank you!</div>");
+                //          $("#feedbackform").addClass("hidden");
+                //      }
+                //      if(response['error']) {
+                //          $("#feedbackmessage").html("<div class='alert alert-danger'>" +
+			     //               response['error']['comment'] +"</div>");
+                //      }
+                // },
+                // error: function (request, status, error) {
+                //      console.log(request.responseText);
+                // }
+       });
+});
+
 function ShowParameter() {
     alert("{{ filter.form.order.auto_id }}");
 }
