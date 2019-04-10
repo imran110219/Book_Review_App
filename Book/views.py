@@ -20,17 +20,24 @@ from Comment.forms import CommentForm
 
 def book_list(request):
 
+    filters = ''
+    booklist = ''
+
     if request.method == "POST":
         # filters = request.POST.getlist('filters[]')
-        filters = json.loads(request.raw_post_data)
+        filters = json.loads(request.body)
+
+
 
     else:
         filters = ''
 
-        booklist = Book.objects.all()
-        authorlist = Author.objects.all()
-        categorylist = Category.objects.all()
-        publicationlist = Publication.objects.all()
+        # booklist = Book.objects.all()
+
+    # booklist = Book.objects.filter(publication=)#filters['publication'])
+    authorlist = Author.objects.all()
+    categorylist = Category.objects.all()
+    publicationlist = Publication.objects.all()
 
     # book_filter = BookFilter(request.GET, queryset=booklist)
 

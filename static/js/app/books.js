@@ -14,17 +14,19 @@ function LoadBooks() {
         sort_order: $("#SortOrder").val(),
         search_string: $("#SearchBook").val()
     };
-    console.log(filters);
+    //console.log(filters);
     //Here you'll call ajax to get book data as a list and then on success response
     //You'll iterate through those data to generate books html like below
-    var jsonFilter = JSON.stringify({ 'filters': filters });
+    var jsonFilter = JSON.stringify(filters);
+    console.log(jsonFilter);
     $.ajax({
         type:'POST',
         url: "/books/",
         dataType: "json",
         //your_csrf_token,
-        data:{ filters: jsonFilter,
-                'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val()},
+        data: jsonFilter, //{ jsonFilter
+                // 'csrfmiddlewaretoken': '{{ csrf_token }}'
+        // },
         success: function(data){
             alert("done")
         },
@@ -218,8 +220,8 @@ $(function () {
             type: "POST",
             url: "/books/search/",
             data: {
-                'search_text': $('#SearchBook').val(),
-                'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val()
+                'search_text': $('#SearchBook').val()
+                // 'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val()
             },
             success: searchSuccess,
             dataType: 'html'
