@@ -9,6 +9,16 @@
 
 /*Homepage CSS*/
 .home-top{ margin: auto;}
+
+.owl-carousel-trending-books .owl-nav{display: none;}
+.owl-carousel-trending-books .owl-dots{ display: none;}
+.owl-carousel-trending-books .item a img{ height: 230px; width: 160px;}
+
+.quotes{
+    background-color: #78909c;
+    background-attachment: fixed;
+}
+.owl-carousel-quotes .owl-dots{ display: none;}
 /*END*/
 
 /*Start Books Page*/
