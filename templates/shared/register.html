@@ -61,24 +61,24 @@
       <!-- Register New User Block -->
       <div id="Register" class="col s12">
         <br>
-        <form>
+        <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
           <h6 class="bold">* Please fill up this form to register this website</h6>
           <div class="row">
             <div class="col s12 m6 l6">
               <div class="input-field">
-                <input id="register_user_name" type="text" class="validate">
+                <input name="{{ form.username }}" id="register_user_name" type="text" class="validate">
                 <label for="register_user_name">Username</label>
               </div>
               <div class="input-field">
-                <input id="register_email_address" type="email" class="validate">
+                <input name="{{ form.email }}" id="register_email_address" type="email" class="validate">
                 <label for="register_email_address">Email</label>
               </div>
               <div class="input-field">
-                <input id="register_password" type="text" class="validate">
+                <input name="{{ form.password1 }}" id="register_password" type="text" class="validate">
                 <label for="register_password">Password</label>
               </div>
               <div class="input-field">
-                <input id="register_confirm_password" type="text" class="validate">
+                <input name="{{ form.password2 }}" id="register_confirm_password" type="text" class="validate">
                 <label for="register_confirm_password">Retype Password</label>
               </div>
             </div>
