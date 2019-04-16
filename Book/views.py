@@ -1,9 +1,10 @@
-from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, reverse, render_to_response
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, reverse, render_to_response, HttpResponse
 from django.db.models import Q
 from django.contrib.contenttypes.models import ContentType
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 import json
+from django.http import JsonResponse
 
 from .models import Book
 from .filters import BookFilter
@@ -19,15 +20,19 @@ from Comment.forms import CommentForm
 # Create your views here.
 
 def book_list(request):
-    if request.method == "POST":
-        filters = json.loads(request.body)
-        booklist = Book.objects.filter(
-            publication__id__in=filters['publications']).filter(
-            authors__id__in=filters['authors']).filter(
-            categories__id__in=filters['categories'])
-    else:
-        filters = ''
-        booklist = Book.objects.all()
+
+    booklist = Book.objects.all()
+
+    # if request.method == "POST":
+    #     filters = json.loads(request.body)
+    #
+    #     if filters['categories']:
+    #         booklist = booklist.filter(categories__id__in=list(map(int, filters['categories'])))
+    #     if filters['authors']:
+    #         booklist = booklist.filter(authors__id__in=list(map(int, filters['authors'])))
+    #     if filters['publications']:
+    #         booklist = booklist.filter(publications__id__in=list(map(int, filters['publications'])))
+
 
     authorlist = Author.objects.all()
     categorylist = Category.objects.all()
@@ -54,6 +59,27 @@ def book_list(request):
 
     return render(request, "book.html", context)
 
+def filter_book_list(request):
+
+    booklist = Book.objects.all()
+
+    if request.method == "POST":
+        filters = json.loads(request.body)
+
+        if filters['categories']:
+            booklist = booklist.filter(categories__id__in=list(map(int, filters['categories'])))
+        if filters['authors']:
+            booklist = booklist.filter(authors__id__in=list(map(int, filters['authors'])))
+        if filters['publications']:
+            booklist = booklist.filter(publications__id__in=list(map(int, filters['publications'])))
+
+
+    books = booklist.values('id','name','image','ratings')
+
+    booklistjs = list(books)
+
+    return JsonResponse(booklistjs, safe=False)
+    # return booklist
 
 def book_detail(request, id=None):
     book = get_object_or_404(Book, id=id)
