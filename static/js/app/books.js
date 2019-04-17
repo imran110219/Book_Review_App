@@ -18,7 +18,7 @@ function LoadBooks() {
     //Here you'll call ajax to get book data as a list and then on success response
     //You'll iterate through those data to generate books html like below
     var jsonFilter = JSON.stringify(filters);
-    // console.log(jsonFilter);
+    console.log(jsonFilter);
     $.ajax({
         type: 'POST',
         url: 'filter/',
@@ -28,7 +28,7 @@ function LoadBooks() {
         // 'csrfmiddlewaretoken': '{{ csrf_token }}'
         // },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
 
             var books = [
                 {image_url: "/media/da-vinci-code.jpg"},
