@@ -71,7 +71,13 @@ def filter_book_list(request):
         if filters['authors']:
             booklist = booklist.filter(authors__id__in=list(map(int, filters['authors'])))
         if filters['publications']:
-            booklist = booklist.filter(publications__id__in=list(map(int, filters['publications'])))
+            booklist = booklist.filter(publication__id__in=list(map(int, filters['publications'])))
+
+        if filters['sort_by'] == 'name':
+            if filters['sort_order'] == 'asc':
+                booklist = booklist.order_by('name')
+            else:
+                booklist = booklist.order_by('-name')
 
 
     books = booklist.values('id','name','image','ratings')
