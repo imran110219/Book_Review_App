@@ -3,19 +3,31 @@
 
 
 {% block content %}
-  <div class='col-sm-6 col-sm-offset-3'>
-    <h1>{{ title }}</h1>
-    <hr/>
-    <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
-      {{ form|crispy }}
-      <input type="submit" class="btn btn-default" value="{{ title }}"/>
-    </form>
-    <br>
-    {% if title == 'Login' %}
-        <p><strong>-- OR --</strong></p>
-        <a href="{% url 'social:begin' 'twitter' %}">Login with Twitter</a><br>
-        <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a><br>
-        <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a><br>
-    {% endif %}
-  </div>
+    <div class='col-sm-6 col-sm-offset-3'>
+        <h1>{{ title }}</h1>
+        <hr/>
+        <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+                  {{ form|crispy }}
+{#            <table>#}
+{##}
+{#                <tr>#}
+{#                    <td>{{ form.username.label_tag }}</td>#}
+{#                    <td>{{ form.username }}</td>#}
+{#                </tr>#}
+{##}
+{#                <tr>#}
+{#                    <td>{{ form.password.label_tag }}</td>#}
+{#                    <td>{{ form.password }}</td>#}
+{#                </tr>#}
+{#            </table>#}
+            <input type="submit" class="btn btn-default" value="{{ title }}"/>
+        </form>
+        <br>
+        {% if title == 'Login' %}
+            <p><strong>-- OR --</strong></p>
+            <a href="{% url 'social:begin' 'twitter' %}">Login with Twitter</a><br>
+            <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a><br>
+            <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a><br>
+        {% endif %}
+    </div>
 {% endblock content %}
