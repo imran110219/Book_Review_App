@@ -291,4 +291,12 @@ function ShowParameter() {
     alert("{{ filter.form.order.auto_id }}");
 }
 
+function SetFocus(){
+    $("#search-results").css('width', '70%');
+}
+
+function RemoveFocus(){
+    $("#search-results").css('width', '46%');
+}
+
 /* End Test Page */

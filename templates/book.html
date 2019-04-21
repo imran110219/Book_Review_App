@@ -176,7 +176,7 @@
                         </div>
                         <div class="input-field col s12 m7 search-books">
 {#                            {% csrf_token %}#}
-                            <input type="text" placeholder="Search Here" id="SearchBook">
+                            <input type="text" placeholder="Search Here" id="SearchBook" onfocus="SetFocus()" onblur="RemoveFocus()">
                             <ul id="search-results">
 
                             </ul>

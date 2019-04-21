@@ -96,8 +96,29 @@ ul#search-results {
     position: absolute;
     right: 10px;
     z-index: 2;
-    background-color: #0005;
+    background-color: #fff;
     margin: 0;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    width: 46%;
+    transition: width 0.3s ease;
+    margin-right: 5px;
+}
+
+#search-results li{
+    text-align: left;
+    padding: 10px;
+    transition: background-color 0.2s ease;
+}
+
+#search-results li:hover{    
+    background-color: rgba(0,0,0,0.2);
+    color: #fff;
+}
+
+#search-results li a{
+    color: rgba(0,0,0,0.87);
 }
 
 .year-filter {
