@@ -47,7 +47,8 @@ def login_view(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('books:home'))
+                # return HttpResponseRedirect(reverse('books:home'))
+                return HttpResponse(json.dumps({"message": "success"}), content_type="application/json")
             else:
                 return HttpResponse(json.dumps({"message": "inactive"}), content_type="application/json")
         else:
@@ -56,30 +57,55 @@ def login_view(request):
         return render(request, 'register.html', {})
 
 
-def register_view(request):
-    # print(request.user.is_authenticated())
-    next = request.GET.get('next')
-    title = "Register"
-    form = UserRegisterForm(request.POST or None)
-    if form.is_valid():
-        user = form.save(commit=False)
-        password = form.cleaned_data.get('password1')
-        user.set_password(password)
-        user.save()
-
-        new_user = authenticate(username=user.username, password=password)
-        login(request, new_user)
-        if next:
-            return redirect(next)
-        return redirect("/")
-
-    context = {
-        "form": form,
-        "title": title
-    }
-    return render(request, "register.html", context)
+# def register_view(request):
+#     # print(request.user.is_authenticated())
+#     next = request.GET.get('next')
+#     title = "Register"
+#     form = UserRegisterForm(request.POST or None)
+#     if form.is_valid():
+#         user = form.save(commit=False)
+#         password = form.cleaned_data.get('password1')
+#         user.set_password(password)
+#         user.save()
+#
+#         new_user = authenticate(username=user.username, password=password)
+#         login(request, new_user)
+#         if next:
+#             return redirect(next)
+#         return redirect("/")
+#
+#     context = {
+#         "form": form,
+#         "title": title
+#     }
     # return render(request, "form.html", context)
 
+def register_view(request):
+    if request.method == 'POST':
+        register_user_name = request.POST.get('register_user_name')
+        register_email_address = request.POST.get('register_email_address')
+        register_password = request.POST.get('register_password')
+        register_confirm_password = request.POST.get('register_confirm_password')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        occupation = request.POST.get('occupation')
+        mobile_number = request.POST.get('mobile_number')
+
+        user, created = User.objects.get_or_create(username=register_user_name, email=register_email_address)
+        if created:
+            user.first_name = first_name
+            user.last_name = last_name
+            user.set_password(register_password)
+            user.save()
+
+            new_user = authenticate(username=register_user_name, password=register_password)
+            login(request, new_user)
+            return HttpResponse(json.dumps({"message": "success"}), content_type="application/json")
+        else:
+            return HttpResponse(json.dumps({"message": "duplicate"}), content_type="application/json")
+
+    else:
+        return render(request, 'register.html', {})
 
 def logout_view(request):
     logout(request)

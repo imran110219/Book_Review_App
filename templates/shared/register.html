@@ -71,29 +71,30 @@
                 <!-- Register New User Block -->
                 <div id="Register" class="col s12">
                     <br>
-                    <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+                    <form method='POST' action="{% url 'register' %}">{% csrf_token %}
                         <h6 class="bold">* Please fill up this form to register this website</h6>
                         <div class="row">
                             <div class="col s12 m6 l6">
                                 <div class="input-field">
-                                    <input name="{{ form.username }}" id="register_user_name" type="text"
+                                    <input name="register_user_name" id="register_user_name" type="text"
                                            class="validate">
                                     <label for="register_user_name">Username</label>
                                 </div>
                                 <div class="input-field">
-                                    <input name="{{ form.email }}" id="register_email_address" type="email"
+                                    <input name="register_email_address" id="register_email_address" type="email"
                                            class="validate">
                                     <label for="register_email_address">Email</label>
                                 </div>
                                 <div class="input-field">
-                                    <input name="{{ form.password1 }}" id="register_password" type="text"
+                                    <input name="register_password" id="register_password" type="password"
                                            class="validate">
                                     <label for="register_password">Password</label>
                                 </div>
                                 <div class="input-field">
-                                    <input name="{{ form.password2 }}" id="register_confirm_password" type="text"
+                                    <input name="register_confirm_password" id="register_confirm_password" type="password"
                                            class="validate">
                                     <label for="register_confirm_password">Retype Password</label>
+                                    <span id='message'></span>
                                 </div>
                             </div>
                             <div class="col s12 m6 l6">
@@ -116,7 +117,7 @@
                             </div>
                         </div>
                         <div class="center">
-                            <button class="btn btn-info btn-large" type="submit">Register</button>
+                            <button class="btn btn-info btn-large" type="button" onclick="RegisterUser()">Register</button>
                         </div>
                     </form>
                 </div>
