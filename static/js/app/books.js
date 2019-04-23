@@ -233,6 +233,7 @@ $(function () {
 
 function searchSuccess(data, textStatus, jqXHR) {
     $('#search-results').html(data);
+    SwitchSearchResultDropdownState();
 }
 
 function BookFilter(id, value) {
@@ -289,6 +290,24 @@ $('#book-filter-form').on('submit', function () {
 
 function ShowParameter() {
     alert("{{ filter.form.order.auto_id }}");
+}
+
+function SwitchSearchResultDropdownState(){
+    var search_string = $("#SearchBook").val();
+    if(search_string != "")
+        $("#search-results").slideDown();
+    else
+        $("#search-results").hide();
+}
+
+function SetFocus(event){
+    $("#search-results").css('width', '70%');
+    SwitchSearchResultDropdownState();
+}
+
+function RemoveFocus(event){
+    $("#search-results").css('width', '46%');
+    $("#search-results").slideUp();
 }
 
 /* End Test Page */
