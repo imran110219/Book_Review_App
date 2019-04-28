@@ -10,15 +10,15 @@ from Author.models import Author
 def author_list(request):
     queryset = Author.objects.all()
 
-    page = request.GET.get('page', 1)
-
-    paginator = Paginator(queryset, 12)
-    try:
-        queryset = paginator.page(page)
-    except PageNotAnInteger:
-        queryset = paginator.page(1)
-    except EmptyPage:
-        queryset = paginator.page(paginator.num_pages)
+    # page = request.GET.get('page', 1)
+    #
+    # paginator = Paginator(queryset, 12)
+    # try:
+    #     queryset = paginator.page(page)
+    # except PageNotAnInteger:
+    #     queryset = paginator.page(1)
+    # except EmptyPage:
+    #     queryset = paginator.page(paginator.num_pages)
 
     query = request.GET.get("q")
 
