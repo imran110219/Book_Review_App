@@ -8,8 +8,8 @@ from django.contrib.auth import (
 User = get_user_model()
 
 class UserLoginForm(forms.Form):
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(widget= forms.TextInput(attrs={'class':'validate'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'validate'}))
 
     def clean(self, *args, **kwargs):
         username = self.cleaned_data.get("username")

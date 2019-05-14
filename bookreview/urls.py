@@ -20,11 +20,12 @@ from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
 from rest_framework_jwt.views import obtain_jwt_token
 
-from Account.views import (login_view, register_view, logout_view, update_profile)
+from Account.views import (login_view, register_view, logout_view, update_profile, test_view)
 
 urlpatterns = [
-    url(r'^', include("Account.urls", namespace='accounts')),
-    url(r'^books/', include("Book.urls", namespace='books')),
+    url(r'^', include("Book.urls", namespace='books')),
+    url(r'^user/', include("Account.urls", namespace='accounts')),
+    # url(r'^books/', include("Book.urls", namespace='books')),
     url(r'^admin/', admin.site.urls),
     url(r'^register/', register_view, name='register'),
     url(r'^update/', update_profile, name='update'),
@@ -35,6 +36,9 @@ urlpatterns = [
     url(r'^categories/', include("Category.urls", namespace='categories')),
     url(r'^authors/', include("Author.urls", namespace='authors')),
     url(r'^publications/', include("Publication.urls", namespace='publications')),
+
+    # test url
+    url(r'^test/', test_view, name='test'),
 
     # api url
     url(r'^api-auth/', include('rest_framework.urls')),

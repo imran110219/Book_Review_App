@@ -1,61 +1,65 @@
 {% load static %}
 
 <div id="NavigationBar" class="navbar-fixed">
-    <nav>
+    <nav class="teal">
         <div class="container nav-wrapper">
-            <a href="{% url 'books:book' %}" class="brand-logo">Book Review</a>
+            <a href="{% url 'books:home' %}" class="brand-logo amaranth">Reviewer</a>
             <a href="javascript:void(0)" data-target="responsive-menu" class="sidenav-trigger">
                 <i class="fas fa-bars"></i>
             </a>
             <ul class="right hide-on-med-and-down" id="SiteNavigation">
-                <li class="active">
-                    <a class="" href="{% url 'accounts:home' %}" data-location="home">Home</a>
+                <li class="">
+                    <a class="" href="{% url 'books:home' %}" data-location="home">Home</a>
                 </li>
                 <li class="">
                     <a class="" href="{% url 'books:book' %}" data-location="books">Books</a>
                 </li>
                 <li class="">
-                    <a class="" href="{% url 'categories:category' %}" data-location="community">Category</a>
+                    <a class="" href="{% url 'categories:category' %}" data-location="categories">Category</a>
                 </li>
                 <li class="">
-                    <a class="" href="{% url 'authors:author' %}" data-location="about">Author</a>
+                    <a class="" href="{% url 'authors:author' %}" data-location="authors">Author</a>
                 </li>
                 <li class="">
-                    <a class="" href="{% url 'publications:publication' %}" data-location="about">Publications</a>
+                    <a class="" href="{% url 'publications:publication' %}" data-location="publications">Publications</a>
                 </li>
                 {% if not request.user.is_authenticated %}
-                <li><a href='{% url "register" %}'>Register</a></li>
-                <li><a href='{% url "login" %}'>Login</a></li>
-                {% else %}
-                <li><a href='{% url "accounts:profile" %}'>{{ user.username }}</a></li>
-                <li><a href='{% url "logout" %}'>Logout</a></li>
+                <li><a href="#AuthenticationModal" class="modal-trigger">Login</a></li>
+                {% else %} 
+                <li><a class="dropdown-trigger" href="#" data-target="UserDropdown">{{ user.username }}<i class="material-icons right fas fa-angle-down"></i></a></li>
                 {% endif %}
             </ul>
         </div><!-- /.container-fluid -->
     </nav>
 </div>
 
+<ul id="UserDropdown" class="dropdown-content" style="top: 64px !important;">
+    {% if request.user.is_authenticated %}
+    <li><a href='{% url "accounts:profile" %}'>Profile</a></li>
+    <li><a href='{% url "logout" %}'>Logout</a></li>
+    {% endif %}
+</ul>
+
 <ul class="sidenav" id="responsive-menu">
-    <li class="active">
-        <a class="" href="{% url 'accounts:home' %}" data-location="home">Home</a>
+    <li class="">
+        <a class="" href="{% url 'books:home' %}" data-location="home">Home</a>
     </li>
     <li class="">
         <a class="" href="{% url 'books:book' %}" data-location="books">Books</a>
     </li>
     <li class="">
-        <a class="" href="{% url 'categories:category' %}" data-location="community">Category</a>
+        <a class="" href="{% url 'categories:category' %}" data-location="categories">Category</a>
     </li>
     <li class="">
-        <a class="" href="{% url 'authors:author' %}" data-location="about">Author</a>
+        <a class="" href="{% url 'authors:author' %}" data-location="authors">Author</a>
     </li>
     <li class="">
-        <a class="" href="{% url 'publications:publication' %}" data-location="about">Publications</a>
+        <a class="" href="{% url 'publications:publication' %}" data-location="publications">Publications</a>
     </li>
     {% if not request.user.is_authenticated %}
-    <li><a href='{% url "register" %}'>Register</a></li>
-    <li><a href='{% url "login" %}'>Login</a></li>
+    <li><a href="#AuthenticationModal" class="modal-trigger">Login</a></li>
     {% else %}
-    <li><a href='{% url "accounts:profile" %}'>{{ user.username }}</a></li>
+    <li><a href='{% url "accounts:profile" %}'>Profile ({{ user.username }})</a></li>
     <li><a href='{% url "logout" %}'>Logout</a></li>
     {% endif %}
 </ul>

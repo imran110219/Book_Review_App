@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'star_ratings',
     'rest_framework',
     'social_django',
+    'widget_tweaks',
 
     # local apps
     'Category',
@@ -57,7 +58,7 @@ INSTALLED_APPS = (
 MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

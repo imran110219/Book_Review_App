@@ -1,66 +1,80 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block title %}
+  {{title}}
+{% endblock title %}
 {% block content %}
 <div class="home-content" id="home" style="z-index: 0 !important;">
     <div class="container" style="padding-top: 100px; padding-bottom: 30px;">
         <div class="row">
-            <div class="col m6 l7 s12">
-                <div class="home-left-pane animated fadeInLeft delay-1s">
-                    <h2>Welcome to Boipoka</h2>
-                    <p>A large community and discussion site for <strong>book lovers</strong></p>
-                    <p>Dive in to know more</strong></p>
+            <div class="col s12 valign-wrapper">
+                <div class="animated fadeInDownBig home-top center">
+                    <h3 class="mt0 mb0 ml0 mr0 text-white amaranth">Welcome, Reader</h3>
+                    <p class="amaranth">A large community and discussion site for <strong>book lovers</strong></p>
+                    <p class="amaranth">Dive in to know more</p>
                 </div>
             </div>
-            <div class="col m6 l5 s12">
-                <form class="login-area animated fadeInRight delay-1s" >
-                    <h4 class="">Sign in</h4>                    
-                    <div class="input-field">
-                        <input id="email" type="email" class="validate">
-                        <label for="email">Email Address</label>
-                    </div>
-                    <div class="input-field">
-                        <input id="password" type="password" class="validate">
-                        <label for="password">Password</label>
-                    </div>        
-                    <div class="input-field">
-                        <p>Remember me?</p>
-                    </div>
-                
-                    <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
-                    <div>
-                        <a href="">Forgot password?</a>
-                    </div>  
-                    <p>Not a member? <a href='{% url "register" %}' data-toggle="modal" data-target="#registerModal">Register</a></p>
-                    <p>or sign in with:</p>
-                    <div class="social-login">
-                        <a class="light-blue-text">
-                            <i class="fab fa-google"></i>
-                        </a>   
-                        <a class="light-blue-text">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="light-blue-text">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a class="light-blue-text">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>         
-                </form>
-            </div>
-        </div>
-        
+        </div>        
     </div>
 </div>
-{% include 'books.html' %}
-{% include 'about.html' %}
-{% include 'register.html' %}
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#LoginEmail").val('');
-        $("#LoginPassword").val('');
-    });
-</script>
+<div class="trending-book">
+    <div class="container">
+        <div class="row card">
+            <div class="col s12">
+                <h5 class="amaranth center bold mt15 mb15">Trending Books</h5>
+            </div>
+        </div>
+        <div class="row mb0">
+            <div class="col s12">
+                <div class="owl-carousel-trending-books owl-carousel owl-theme mt15">
+                    <div class="item">
+                        <a href="#"><img src="{% static 'images/books/da-vinci-code.jpg' %}" alt="filename"></a>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img src="{% static 'images/books/angels-n-demons.jpg' %}" alt="filename"></a>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img src="{% static 'images/books/da-vinci-code.jpg' %}" alt="filename"></a>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img src="{% static 'images/books/angels-n-demons.jpg' %}" alt="filename"></a>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img src="{% static 'images/books/da-vinci-code.jpg' %}" alt="filename"></a>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img src="{% static 'images/books/angels-n-demons.jpg' %}" alt="filename"></a>
+                    </div>
+                </div>
+                <div class="anchor right mt15 mb20">
+                    <a href="https://www.facebook.com/" class="amaranth bold">View all</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="quotes">
+    <div class="container">
+        <div class="row mb0">
+            <div class="col s12" style="padding: 60px 0;">
+                <div class="owl-carousel-quotes owl-carousel owl-theme">
+                    <div class="quote-item valign-wrapper">
+                        <div class="home-top center">
+                            <p class="amaranth">“Start writing, no matter what. The water does not flow until the faucet is turned on.”</p>
+                            <p class="amaranth">— Louis L’Amour</p>
+                        </div>
+                    </div>
+                    <div class="quote-item valign-wrapper">
+                        <div class="home-top center">
+                            <p class="amaranth">“Start writing, no matter what. The water does not flow until the faucet is turned on.”</p>
+                            <p class="amaranth">— Louis L’Amour</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
 {% endblock %}
