@@ -1,0 +1,17 @@
+/* This styleheet for User Profile */
+
+.user-profile-picture{
+    text-align: center;
+}
+
+.user-profile-picture img{
+    margin: 2rem 0;
+    border-radius: 5rem;
+    border: 0.1rem solid rgba(0,0,0,0.5);
+}
+
+.hover-profile-image{
+    position: absolute;
+    margin: 2rem 0;
+    border-radius: 5rem;
+}
