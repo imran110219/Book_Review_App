@@ -1,18 +1,22 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-
+{% load static%}
 
 {% block content %}
+    <link rel="stylesheet" href="{% static 'css/user-profile.css'%}">
+
     <div class="container">
         <div class="row">
             <div class="col l4 m12 s12 xs12">
                 <div class="left-user-pan card">
-                    <p>Welcome User</p>
+                    <div class="user-profile-picture">
+                        <img src="{% static 'images/demo-profile.jpg' %}" alt="profile-picture" height="150" width="150">
+                    </div>
                 </div>
             </div>
             <div class="col l8 m12 s12 xs12">
                 <div class="right-user-pan card">
-                    <p>User Profile</p>
+                    
                 </div>
             </div>
         </div>
