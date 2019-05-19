@@ -2,16 +2,64 @@
 
 .user-profile-picture{
     text-align: center;
+    height: 150px; 
+    width: 150px; 
+    display: inline-block;
 }
 
 .user-profile-picture img{
     margin: 2rem 0;
     border-radius: 5rem;
-    border: 0.1rem solid rgba(0,0,0,0.5);
+    height: 150px; 
+    width: 150px; 
 }
 
 .hover-profile-image{
     position: absolute;
-    margin: 2rem 0;
+    top: 0;
     border-radius: 5rem;
+    margin: 2rem 0;
+    height: 150px; 
+    width: 150px; 
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+}
+
+.hover-profile-image ul{ width: 100%;}
+.hover-profile-image ul li{line-height: 2.5rem;}
+.hover-profile-image ul li a{color: whitesmoke; font-family: 'amaranth'; font-size: 18px; letter-spacing: 1px;}
+
+.profile-page-head{ text-align: right;}
+.profile-page-head strong{ position: absolute; top: 10px; left: 10px;}
+.profile-page-head ul{ list-style: none; display: inline-flex; margin: 0 auto;}
+.profile-page-head ul li{padding: 10px;}
+.profile-page-head ul li a{color: teal;}
+
+.basic-info-header, .contact-info{min-height: 50px; margin: 0 10px;}
+.basic-info-header p, .contact-info p{    
+    padding: 10px 0 !important;
+    margin: 0 !important;
+}
+.basic-info-header a, .contact-info a, .submit-profile{
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    color: teal;
+}
+.submit-profile{
+    background-color: transparent;
+    border: none;
+    color: forestgreen !important;
+    top: 5px !important;
+    right: 5px !important;
+    display: none;
+}
+
+.submit-profile:hover, .submit-profile::after, .submit-profile:active{
+    cursor: pointer;
+    background-color: transparent !important; 
+}
+.basic-info-header hr, .contact-info hr{    
+    margin: 0 !important;
+    border: 0.05rem solid rgba(0,0,0,0.1) !important;
 }

@@ -73,6 +73,24 @@ $(window).on('scroll', function() {
     //     console.log("Inn");
 });
 
+toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": true,
+    "positionClass": "toast-bottom-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "500",
+    "timeOut": "2000",
+    "extendedTimeOut": "500",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+}
+
 $(document).ready(function () {    
     $(".dropdown-trigger").dropdown();
     $('.sidenav').sidenav();
