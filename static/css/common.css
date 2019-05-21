@@ -83,6 +83,7 @@ body {
 
 /*Width Content*/
 .max-content-width{width: max-content !important;}
+.full-width{width: 100%;}
 
 /*Padding Classes*/
 .pl0{padding-left: 0px !important;}
