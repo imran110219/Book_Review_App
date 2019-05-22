@@ -20,37 +20,43 @@
                             <input type="file" id="ProfilePictureUrl" accept="image/jpg, image/jpeg" hidden />
                         </div>
                     </div>
+                    <div class="user-name-panel ml10 mr10">
+                        <h5 class="amaranth">Jhon Doe</h5>
+                        <p class="amaranth">Owner at Creative Tim</p>
+                        <div class="about-user mt30">
+                            <label>About</label>
+                            <p class="ml10 mr10 fs-10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                        </div>
+                    </div>
+                    <div style="clear: both" class="mt30"></div>
+                    <div class="user-action-menu pt20">
+                        <ul>
+                            <li class="li-active" rel="BasicInfo">About User</li>
+                            <li rel="Readings">Readings</li>
+                            <li rel="Mailbox">Mailbox</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="col l8 m12 s12 xs12">
                 <div class="right-user-pan card">
                     <div class="profile-page-head">
-                        <strong>Profile</strong>
+                        <strong id="user-tab-page-title">Profile</strong>
                         <ul>
                             <li><a href="javascript:void(0)"><i class="far fa-bell"></i><sup></sup></a></li>
                             <li><a href="javascript:void(0)"><i class="far fa-envelope"></i><sup></sup></a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="profile-basic-info card">
-                    <div class="basic-info">
-                        <div class="basic-info-header">
-                            <p><strong>Basic Information</strong></p>
-                            <button class="submit-basic-info submit-profile" onclick="Submit(event, 'edit-basic-info')"><i class="fas fa-check fa-2x"></i></button>
-                            <a href="javascript:void(0)" class="edit-basic-info"><i class="far fa-edit"></i></a>                            
-                            <hr>
-                        </div>
-                    </div>
+                <!-- Here pages will be switched -->
+                <div id="BasicInfo">
+                    {% include 'profile-basic-info.html'%}
                 </div>
-                <div class="profile-contact-info card">
-                    <div class="contact-info">
-                        <div class="contact-info-header">
-                            <p><strong>Contact Information</strong></p>
-                            <button class="submit-contact-info submit-profile" onclick="Submit(event, 'edit-contact-info')"><i class="fas fa-check fa-2x"></i></button>
-                            <a href="javascript:void(0)" class="edit-contact-info"><i class="far fa-edit"></i></a>                            
-                            <hr>
-                        </div>
-                    </div>
+                <div id="Readings" style="display: none;">
+                    {% include 'profile-readings.html'%}
+                </div>
+                <div id="Mailbox" style="display: none;">
+                    {% include 'profile-mailbox.html'%}
                 </div>
             </div>
         </div>
