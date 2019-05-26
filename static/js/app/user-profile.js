@@ -40,23 +40,137 @@ $(document).ready(function () {
         if(view_id === 'BasicInfo'){ 
             $('#Readings').hide(); $('#Mailbox').hide();
             $('#BasicInfo').fadeIn(200).show();
-            $('#user-tab-page-title').text('Profile');
+            // $('#user-tab-page-title').text('Profile');
         }
         else if(view_id === 'Readings'){
+            LoadReadingsGrid();
+            LoadWishlistGrid();
             $('#BasicInfo').hide(); $('#Mailbox').hide();
             $('#Readings').fadeIn(200).show(); 
-            $('#user-tab-page-title').text('Readings');
+            // $('#user-tab-page-title').text('Readings');
         }
         else{
             $('#BasicInfo').hide(); $('#Readings').hide();
             $('#Mailbox').fadeIn(200).show();
-            $('#user-tab-page-title').text('Mailbox');
+            // $('#user-tab-page-title').text('Mailbox');
         }
     }
 });
+
+function ToggleProfilePage(e){
+    // $('.profile-body').removeClass();
+}
 
 function Submit(e, target_edit_class){
     $('.' + target_edit_class).show();
     $(e.target).closest('button').hide();
     toastr.success('Have fun storming the castle!', 'Miracle Max Says');
+}
+
+function LoadWishlistGrid(){
+    $("#WishList").kendoGrid({
+        dataSource: {
+            type: "odata",
+            transport: {
+                read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
+            },
+            schema: {
+                model: {
+                    fields: {
+                        OrderID: { type: "number" },
+                        Freight: { type: "number" },
+                        ShipName: { type: "string" },
+                        OrderDate: { type: "date" },
+                        ShipCity: { type: "string" }
+                    }
+                }
+            },
+            pageSize: 10,
+            serverPaging: true,
+            serverFiltering: true,
+            serverSorting: true
+        },
+        scrollable: true,
+        height: 400,
+        sortable: true,
+        pageable: true,
+        columns: [{
+                field:"OrderID",
+                filterable: false,
+                width: 100
+            },
+            {
+                field: "Freight",
+                width: 150
+            },
+            {
+                field: "OrderDate",
+                title: "Order Date",
+                format: "{0:MM/dd/yyyy}",
+                width: 150
+            }, {
+                field: "ShipName",
+                title: "Ship Name",
+                width: 250
+            }, {
+                field: "ShipCity",
+                title: "Ship City",
+                width: 150
+            }
+        ]
+    });
+}
+
+function LoadReadingsGrid(){
+    $("#TotalReadings").kendoGrid({
+        dataSource: {
+            type: "odata",
+            transport: {
+                read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
+            },
+            schema: {
+                model: {
+                    fields: {
+                        OrderID: { type: "number" },
+                        Freight: { type: "number" },
+                        ShipName: { type: "string" },
+                        OrderDate: { type: "date" },
+                        ShipCity: { type: "string" }
+                    }
+                }
+            },
+            pageSize: 10,
+            serverPaging: true,
+            serverFiltering: true,
+            serverSorting: true
+        },
+        scrollable: true,
+        height: 400,
+        sortable: true,
+        pageable: true,
+        columns: [{
+                field:"OrderID",
+                filterable: false,
+                width: 100
+            },
+            {
+                field: "Freight",
+                width: 150
+            },
+            {
+                field: "OrderDate",
+                title: "Order Date",
+                format: "{0:MM/dd/yyyy}",
+                width: 150
+            }, {
+                field: "ShipName",
+                title: "Ship Name",
+                width: 250
+            }, {
+                field: "ShipCity",
+                title: "Ship City",
+                width: 150
+            }
+        ]
+    });
 }

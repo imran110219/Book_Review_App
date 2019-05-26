@@ -8,7 +8,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col l4 m12 s12 xs12">
+            <div class="col l3 m3 s12 xs12 profile-over">
                 <div class="left-user-pan card center">
                     <div class="user-profile-picture">
                         <img src="{% static 'images/demo-profile.jpg' %}" alt="profile-picture"/>
@@ -38,10 +38,17 @@
                     </div>
                 </div>
             </div>
-            <div class="col l8 m12 s12 xs12">
+            <div class="col l12 m12 s12 xs12 profile-body">
                 <div class="right-user-pan card">
                     <div class="profile-page-head">
-                        <strong id="user-tab-page-title">Profile</strong>
+                        <strong id="user-tab-page-title">
+                            <b>
+                                <a href="javascript:void(0)" style="color: teal; padding: 5px;" onclick="ToggleProfilePage(event)">
+                                    <i class="fas fa-bars"></i>
+                                </a>
+                            </b>
+                            <span>Profile</span>
+                        </strong>
                         <ul>
                             <li><a href="javascript:void(0)"><i class="far fa-bell"></i><sup></sup></a></li>
                             <li><a href="javascript:void(0)"><i class="far fa-envelope"></i><sup></sup></a></li>

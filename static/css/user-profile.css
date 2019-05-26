@@ -36,13 +36,6 @@
 .profile-page-head ul li a{color: #009688;}
 
 .basic-info-header, .contact-info{min-height: 50px;}
-.basic-info-header p, .contact-info p{    
-    padding: 10px 0 !important;
-    margin: 0 !important;
-    background-color: #009688;
-    color: white;
-}
-.basic-info-header p strong, .contact-info p strong{padding-left: 10px;}
 .basic-info-header a, .contact-info a, .submit-profile{
     position: absolute;
     top: 10px;
@@ -73,7 +66,7 @@
     padding: 1rem;
     box-shadow: inset 0 0 2px #9e9e9e;
     font-family: amaranth;
-    font-size: 20px;
+    font-size: 16px;
     color: rgba(0,0,0,0.75);
     transition: ease-out 0.2s;
 }
@@ -88,3 +81,14 @@
     background-color: #009688;
     color: white !important;
 }
+
+.user-profile-title-card{
+    padding: 10px 0 !important;
+    margin: 0 !important;
+    background-color: #009688;
+    color: white;
+}
+.user-profile-title-card strong{padding-left: 10px;}
+
+.profile-over{position: absolute; z-index: 4;display: none;}
+
