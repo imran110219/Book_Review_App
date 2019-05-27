@@ -90,5 +90,21 @@
 }
 .user-profile-title-card strong{padding-left: 10px;}
 
-.profile-over{position: absolute; z-index: 4;display: none;}
+.profile-over{z-index: 4;display: none;}
+
+.sticky-left{position: absolute;}
+
+.profile-body{
+    width: 100%;
+    float: right !important;
+    transition: width 0.1s linear;
+}
+
+.profile-pan-show {
+    width: 75% !important;
+}
+
+.profile-pan-sticky {
+    width: 100% !important;
+}
 

@@ -57,8 +57,48 @@ $(document).ready(function () {
     }
 });
 
-function ToggleProfilePage(e){
-    // $('.profile-body').removeClass();
+//Global Variables
+var previous_width = $(window).width();
+
+$(window).resize(function () { 
+    ToggleProfilePage();
+});
+
+function ToggleProfilePage(e) {
+    var width = $(window).width();
+    if(width < 993){
+        previous_width = width;
+        if($('.profile-body').hasClass('profile-pan-show')){
+            $('.profile-body').removeClass('profile-pan-show');
+        }
+
+        if(!$('.profile-body').hasClass('profile-pan-sticky')){
+            $('.profile-body').addClass('profile-pan-sticky');
+        }
+
+        if(typeof(e) !== 'undefined')
+            $('.profile-over').slideToggle('slow');
+    }
+    else {                        
+        if(typeof(e) !== 'undefined'){
+            if($('.profile-body').hasClass('profile-pan-show')){
+                $('.profile-over').hide();
+                $('.profile-body').removeClass('profile-pan-show');
+            }
+            else {            
+                $('.profile-body').addClass('profile-pan-show');
+                $('.profile-over').slideToggle('slow');
+            }
+        }
+        else {
+            if(previous_width < 993){
+                $('.profile-over').hide();
+                $('.profile-body').removeClass('profile-pan-sticky').removeClass('profile-pan-show');
+                previous_width = width;
+            }
+        }   
+    }
+    
 }
 
 function Submit(e, target_edit_class){
