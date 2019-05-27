@@ -50,9 +50,64 @@
                             <span>Profile</span>
                         </strong>
                         <ul>
-                            <li><a href="javascript:void(0)"><i class="far fa-bell"></i><sup></sup></a></li>
-                            <li><a href="javascript:void(0)"><i class="far fa-envelope"></i><sup></sup></a></li>
+                            <li>
+                                <a href="javascript:void(0)" class="notification-tab" onclick="ToggleNotificationPane(event, 'message')">
+                                    <i class="far fa-envelope"></i>
+                                    <sup></sup>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="notification-tab" onclick="ToggleNotificationPane(event, 'notification')">
+                                    <i class="far fa-bell"></i>
+                                    <sup class="notification-count"></sup>
+                                </a>
+                            </li>
                         </ul>
+                        <div class="notification-pane card">
+                            <p class="notification-pane-title">Notifications</p>
+                            <ul>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="single-notification valign-wrapper">
+                                            <img src="{%static 'images/books/chariot-of-life.jpg'%}" alt="chariot-of-life">
+                                            <span>
+                                                <strong>This book is the best selling book of this time and it has the best rating also</strong>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="single-notification valign-wrapper">
+                                            <img src="{%static 'images/books/chariot-of-life.jpg'%}" alt="chariot-of-life">
+                                            <span>
+                                                <strong>This book is the best selling book of this time and it has the best rating also</strong>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="single-notification valign-wrapper">
+                                            <img src="{%static 'images/books/chariot-of-life.jpg'%}" alt="chariot-of-life">
+                                            <span>
+                                                <strong>This book is the best selling book of this time and it has the best rating also</strong>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="single-notification valign-wrapper">
+                                            <img src="{%static 'images/books/chariot-of-life.jpg'%}" alt="chariot-of-life">
+                                            <span>
+                                                <strong>This book is the best selling book of this time and it has the best rating also</strong>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <!-- Here pages will be switched -->

@@ -59,6 +59,7 @@ $(document).ready(function () {
 
 //Global Variables
 var previous_width = $(window).width();
+var previous_option = '';
 
 $(window).resize(function () { 
     ToggleProfilePage();
@@ -97,8 +98,27 @@ function ToggleProfilePage(e) {
                 previous_width = width;
             }
         }   
+    }    
+}
+
+function ToggleNotificationPane(event, option){
+    $('.notification-pane-title').text(option == 'notification'? 'Notifications': 'Messages');
+    if(option !== previous_option){
+        //Do your logic here to create notification pane and
+        //Update content in notification-pane div
+        if($('.notification-pane').css('display') === 'none'){
+            $('.notification-pane').animate({
+                opacity: 'toggle'
+            });
+        }
     }
-    
+    else {
+        //Create notification and add to notification-pane div then animate
+        $('.notification-pane').animate({
+            opacity: 'toggle'
+        });
+    }
+    previous_option = option;
 }
 
 function Submit(e, target_edit_class){

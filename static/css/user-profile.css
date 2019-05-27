@@ -1,5 +1,4 @@
 /* This styleheet for User Profile */
-
 .user-profile-picture{
     text-align: center;
     height: 150px; 
@@ -25,6 +24,52 @@
     opacity: 0;
 }
 
+/*Notification Pan*/
+.notification-pane{
+    display: none;
+    position: absolute;
+    z-index: 4;
+    right: 0;
+}
+.notification-pane-title{
+    text-align: left;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgba(0,0,0,0.7);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    margin: 0 !important;
+}
+.notification-pane ul{
+    display: block !important;
+    max-height: 350px;
+    width: 350px;
+    overflow: auto;
+}
+.notification-pane ul li{
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    transition: background-color 0.2s ease-in-out;
+}
+.notification-pane ul li:hover{
+    background-color: rgba(0,0,0,0.2);
+}
+.single-notification{text-align: left;display: inline-flex;}
+.single-notification img{
+    height: 50px;
+    width: 50px;
+    border-radius: 2rem;
+}
+.single-notification span strong{
+    position: relative !important; 
+    top: 0px;
+    color: rgba(0,0,0,0.5);
+    font-weight: normal;
+    font-family: 'amaranth';
+    font-size: 12px;
+}
+
+/*END*/
+
 .hover-profile-image ul{ width: 100%;}
 .hover-profile-image ul li{line-height: 2.5rem;}
 .hover-profile-image ul li a{color: whitesmoke; font-family: 'amaranth'; font-size: 18px; letter-spacing: 1px;}
@@ -32,8 +77,9 @@
 .profile-page-head{ text-align: right;}
 .profile-page-head strong{ position: absolute; top: 10px; left: 10px;}
 .profile-page-head ul{ list-style: none; display: inline-flex; margin: 0 auto;}
-.profile-page-head ul li{padding: 10px;}
+.profile-page-head ul li{padding: 10px 15px;}
 .profile-page-head ul li a{color: #009688;}
+.profile-page-head ul li a i{font-size: 18px;}
 
 .basic-info-header, .contact-info{min-height: 50px;}
 .basic-info-header a, .contact-info a, .submit-profile{
@@ -76,12 +122,10 @@
     transition: ease-in 0.2s;
     cursor: pointer;
 }
-
 .li-active{
     background-color: #009688;
     color: white !important;
 }
-
 .user-profile-title-card{
     padding: 10px 0 !important;
     margin: 0 !important;
@@ -89,22 +133,15 @@
     color: white;
 }
 .user-profile-title-card strong{padding-left: 10px;}
-
 .profile-over{z-index: 4;display: none;}
-
 .sticky-left{position: absolute;}
-
 .profile-body{
     width: 100%;
     float: right !important;
     transition: width 0.1s linear;
 }
+.profile-pan-show{width: 75% !important;}
+.profile-pan-sticky{ width: 100% !important;}
 
-.profile-pan-show {
-    width: 75% !important;
-}
-
-.profile-pan-sticky {
-    width: 100% !important;
-}
+.notification-active{background-color: rgba(0,0,0,0.1)}
 
