@@ -1,29 +1,71 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-
+{% load static%}
 
 {% block content %}
-    {#  <div class='col-sm-6 col-sm-offset-3'>#}
-    {#    <h1>{{ title }}</h1>#}
-    {#    <hr/>#}
-    {#    <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}#}
-    {#      {{ user_form|crispy }}#}
-    {#      {{ profile_form|crispy }}#}
-    {#      <input type="submit" class="btn btn-default" value="{{ title }}"/>#}
-    {#    </form>#}
-    {#  </div>#}
-    <div class='col-sm-3' style="margin-top:50px;">
-        <div class="well" style="width:200px; padding: 8px 0;">
-            <ul class="nav nav-list">
-{#                <li class="nav-header">User Menu</li>#}
-                <li><a href="index"><i class="icon-home"></i> Dashboard</a></li>
-                <li><a href="#"><i class="icon-envelope"></i> Messages <span class="badge badge-info">4</span></a></li>
-                <li><a href='{% url "books:reviews:review_lists" %}'><i class="icon-comment"></i> Reviews <span class="badge badge-info">10</span></a></li>
-                <li class="active"><a href="#"><i class="icon-user"></i> Members</a></li>
-                <li class="divider"></li>
-                <li><a href='{% url "accounts:profile-edit" %}'><i class="icon-comment"></i> Settings</a></li>
-                <li><a href="#"><i class="icon-share"></i> Logout</a></li>
-            </ul>
+    <link rel="stylesheet" href="{% static 'css/user-profile.css'%}">
+    <script src="{% static 'js/app/user-profile.js' %}" type="text/javascript"></script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col l3 m12 s12 xs12 profile-over">
+                <div class="left-user-pan card center">
+                    <div class="user-profile-picture">
+                        <img src="{% static 'images/demo-profile.jpg' %}" alt="profile-picture"/>
+                        <div class="hover-profile-image valign-wrapper">
+                            <ul>
+                                <li><a href="javascript:void(0)" id="ChangeProfilePicture">Change</a></li>
+                                <li><a href="javascript:void(0)" id="ViewProfilePicture">View</a></li>
+                            </ul>
+                            <input type="file" id="ProfilePictureUrl" accept="image/jpg, image/jpeg" hidden />
+                        </div>
+                    </div>
+                    <div class="user-name-panel ml10 mr10">
+                        <h5 class="amaranth">Jhon Doe</h5>
+                        <p class="amaranth">Owner at Creative Tim</p>
+                        <div class="about-user mt30">
+                            <label>About</label>
+                            <p class="ml10 mr10 fs-10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                        </div>
+                    </div>
+                    <div style="clear: both" class="mt30"></div>
+                    <div class="user-action-menu pt20">
+                        <ul>
+                            <li class="li-active" rel="BasicInfo">About User</li>
+                            <li rel="Readings">Readings</li>
+                            <li rel="Mailbox">Mailbox</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col l12 m12 s12 xs12 profile-body">
+                <div class="right-user-pan card">
+                    <div class="profile-page-head">
+                        <strong id="user-tab-page-title">
+                            <b>
+                                <a href="javascript:void(0)" style="color: teal; padding: 5px;" onclick="ToggleProfilePage(event)">
+                                    <i class="fas fa-bars"></i>
+                                </a>
+                            </b>
+                            <span>Profile</span>
+                        </strong>
+                        <ul>
+                            <li><a href="javascript:void(0)"><i class="far fa-bell"></i><sup></sup></a></li>
+                            <li><a href="javascript:void(0)"><i class="far fa-envelope"></i><sup></sup></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Here pages will be switched -->
+                <div id="BasicInfo">
+                    {% include 'profile-basic-info.html'%}
+                </div>
+                <div id="Readings" style="display: none;">
+                    {% include 'profile-readings.html'%}
+                </div>
+                <div id="Mailbox" style="display: none;">
+                    {% include 'profile-mailbox.html'%}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock content %}

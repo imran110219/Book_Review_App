@@ -1,0 +1,65 @@
+{% load static %}
+
+<div class="profile-basic-info card">
+    <div class="basic-info">
+        <div class="basic-info-header">
+            <p class="user-profile-title-card"><strong>Basic Information</strong></p>
+            <!-- Define this button as your form submit -->
+            <button class="submit-basic-info submit-profile" onclick="Submit(event, 'edit-basic-info')"><i class="fas fa-check fa-2x"></i></button>
+            <a href="javascript:void(0)" class="edit-basic-info"><i class="far fa-edit"></i></a>                            
+            <div style="clear: both;" class="mt20"></div>
+            
+            <div class="basic-info-container ml10 mr10">
+                <div class="row">
+                    <div class="input-field col m6 l6 s12 xs12">
+                        <input placeholder="" id="profile_first_name" type="text">
+                        <label for="profile_first_name">First Name</label>
+                    </div>
+                    <div class="input-field col m6 l6 s12 xs12">                                        
+                        <input placeholder="" id="profile_last_name" type="text">
+                        <label for="profile_last_name">Last Name</label>
+                    </div>
+                    <div class="input-field col l12 m12 s12 xs12">
+                        <textarea placeholder="" id="address" class="materialize-textarea"></textarea>
+                        <label for="address">Address</label>
+                    </div>                                    
+                    <div class="input-field col m6 l6 s12 xs12">                                                                              
+                        <input placeholder="" id="age" type="text">
+                        <label for="age">Age</label>
+                    </div>
+                    <div class="input-field col m6 l6 s12 xs12">                                      
+                        <input placeholder="" id="Occupation" type="text">
+                        <label for="Occupation">Occupation</label>                                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="profile-contact-info card">
+    <div class="contact-info">
+        <div class="contact-info-header">
+            <p class="user-profile-title-card"><strong>Contact Information</strong></p>                                
+            <!-- Define this button as your form submit -->
+            <button class="submit-contact-info submit-profile" onclick="Submit(event, 'edit-contact-info')"><i class="fas fa-check fa-2x"></i></button>
+            <a href="javascript:void(0)" class="edit-contact-info"><i class="far fa-edit"></i></a>                            
+            <div style="clear: both;" class="mt20"></div>
+            <div class="contact-info-container ml10 mr10">
+                <div class="row">
+                    <div class="input-field col m6 l6 s12 xs12">
+                        <input placeholder="" id="email" type="email">
+                        <label for="email">Email Address</label>
+                    </div>
+                    <div class="input-field col m6 l6 s12 xs12">                                        
+                        <input placeholder="" id="mobile" type="text">
+                        <label for="mobile">Mobile</label>
+                    </div>
+                    <div class="input-field col m6 l6 s12 xs12">                                        
+                        <input placeholder="" id="website" type="text">
+                        <label for="website">Website</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
