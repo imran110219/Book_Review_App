@@ -150,7 +150,8 @@ def home(request):
 @login_required
 def profile(request):
     context = {
-        'username': 'shahed'
+        'username': 'shahed',
+        'title' : 'Profile'
     }
     return render(request, "profile.html", context)
 
