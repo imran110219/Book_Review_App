@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% load static%}
+{% block title %}
+    {{ title }}
+{% endblock title %}
 
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/user-profile.css'%}">
