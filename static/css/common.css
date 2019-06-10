@@ -6,6 +6,7 @@ body {
 
 /*Site content back color*/
 .site-color{ color: #009688 !important;}
+.danger-color{color:firebrick};
 
 /*Card Shadow*/
 /* .card { box-shadow: 0px 0px 10px 2px #0005; } */

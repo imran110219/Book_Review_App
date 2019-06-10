@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% load static%}
+{% block title %}
+    {{ title }}
+{% endblock title %}
 
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/user-profile.css'%}">
@@ -8,7 +11,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col l4 m12 s12 xs12">
+            <div class="col l3 m12 s12 xs12 profile-over">
                 <div class="left-user-pan card center">
                     <div class="user-profile-picture">
                         <img src="{% static 'images/demo-profile.jpg' %}" alt="profile-picture"/>
@@ -20,37 +23,105 @@
                             <input type="file" id="ProfilePictureUrl" accept="image/jpg, image/jpeg" hidden />
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col l8 m12 s12 xs12">
-                <div class="right-user-pan card">
-                    <div class="profile-page-head">
-                        <strong>Profile</strong>
+                    <div class="user-name-panel ml10 mr10">
+                        <h5 class="amaranth">Jhon Doe</h5>
+                        <p class="amaranth">Owner at Creative Tim</p>
+                        <div class="about-user mt30">
+                            <label>About</label>
+                            <p class="ml10 mr10 fs-10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                        </div>
+                    </div>
+                    <div style="clear: both" class="mt30"></div>
+                    <div class="user-action-menu pt20">
                         <ul>
-                            <li><a href="javascript:void(0)"><i class="far fa-bell"></i><sup></sup></a></li>
-                            <li><a href="javascript:void(0)"><i class="far fa-envelope"></i><sup></sup></a></li>
+                            <li class="li-active" rel="BasicInfo">About User</li>
+                            <li rel="Readings">Readings</li>
+                            <li rel="Mailbox">Mailbox</li>
                         </ul>
                     </div>
                 </div>
-                <div class="profile-basic-info card">
-                    <div class="basic-info">
-                        <div class="basic-info-header">
-                            <p><strong>Basic Information</strong></p>
-                            <button class="submit-basic-info submit-profile" onclick="Submit(event, 'edit-basic-info')"><i class="fas fa-check fa-2x"></i></button>
-                            <a href="javascript:void(0)" class="edit-basic-info"><i class="far fa-edit"></i></a>                            
-                            <hr>
+            </div>
+            <div class="col l12 m12 s12 xs12 profile-body">
+                <div class="right-user-pan card">
+                    <div class="profile-page-head">
+                        <strong id="user-tab-page-title">
+                            <b>
+                                <a href="javascript:void(0)" style="color: teal; padding: 5px;" onclick="ToggleProfilePage(event)">
+                                    <i class="fas fa-bars"></i>
+                                </a>
+                            </b>
+                            <span>Profile</span>
+                        </strong>
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0)" class="notification-tab" onclick="ToggleNotificationPane(event, 'message')">
+                                    <i class="far fa-envelope"></i>
+                                    <sup></sup>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="notification-tab" onclick="ToggleNotificationPane(event, 'notification')">
+                                    <i class="far fa-bell"></i>
+                                    <sup class="notification-count"></sup>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="notification-pane card">
+                            <p class="notification-pane-title">Notifications</p>
+                            <ul>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="single-notification valign-wrapper">
+                                            <img src="{%static 'images/books/chariot-of-life.jpg'%}" alt="chariot-of-life">
+                                            <span>
+                                                <strong>This book is the best selling book of this time and it has the best rating also</strong>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="single-notification valign-wrapper">
+                                            <img src="{%static 'images/books/chariot-of-life.jpg'%}" alt="chariot-of-life">
+                                            <span>
+                                                <strong>This book is the best selling book of this time and it has the best rating also</strong>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="single-notification valign-wrapper">
+                                            <img src="{%static 'images/books/chariot-of-life.jpg'%}" alt="chariot-of-life">
+                                            <span>
+                                                <strong>This book is the best selling book of this time and it has the best rating also</strong>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="single-notification valign-wrapper">
+                                            <img src="{%static 'images/books/chariot-of-life.jpg'%}" alt="chariot-of-life">
+                                            <span>
+                                                <strong>This book is the best selling book of this time and it has the best rating also</strong>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                <div class="profile-contact-info card">
-                    <div class="contact-info">
-                        <div class="contact-info-header">
-                            <p><strong>Contact Information</strong></p>
-                            <button class="submit-contact-info submit-profile" onclick="Submit(event, 'edit-contact-info')"><i class="fas fa-check fa-2x"></i></button>
-                            <a href="javascript:void(0)" class="edit-contact-info"><i class="far fa-edit"></i></a>                            
-                            <hr>
-                        </div>
-                    </div>
+                <!-- Here pages will be switched -->
+                <div id="BasicInfo">
+                    {% include 'profile-basic-info.html'%}
+                </div>
+                <div id="Readings" style="display: none;">
+                    {% include 'profile-readings.html'%}
+                </div>
+                <div id="Mailbox" style="display: none;">
+                    {% include 'profile-mailbox.html'%}
                 </div>
             </div>
         </div>
