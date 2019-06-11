@@ -11,7 +11,7 @@ from .views import (
 app_name = "Account"
 
 urlpatterns = [
-    url(r'^profile/$', profile, name="profile"),
+    url(r'^profile/(?P<username>[\w.@+-]+)/$', profile, name="profile"),
     url(r'^profile/edit/$', update_profile, name="profile-edit"),
     url(r'^settings/$', settings, name='settings'),
     url(r'^settings/password/$', password, name='password'),
