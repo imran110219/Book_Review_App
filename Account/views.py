@@ -4,7 +4,7 @@ from django.contrib.auth import (
     login,
     logout,
 )
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.core.exceptions import ObjectDoesNotExist
@@ -148,9 +148,12 @@ def home(request):
 
 
 @login_required
-def profile(request):
+def profile(request, username):
+    user = get_object_or_404(User, id=request.user.id)
+    profile = Profile.objects.filter(user=user)
     context = {
-        'username': 'shahed',
+        'user': user,
+        'profile': profile,
         'title' : 'Profile'
     }
     return render(request, "profile.html", context)
