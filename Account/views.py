@@ -150,7 +150,7 @@ def home(request):
 @login_required
 def profile(request, username):
     user = get_object_or_404(User, id=request.user.id)
-    profile = Profile.objects.filter(user=user)
+    profile = get_object_or_404(Profile, user=user) #Profile.objects.filter(user=user)
     context = {
         'user': user,
         'profile': profile,

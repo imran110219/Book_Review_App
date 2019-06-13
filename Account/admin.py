@@ -27,10 +27,15 @@ class CustomUserAdmin(UserAdmin):
             return list()
         return super(CustomUserAdmin, self).get_inline_instances(request, obj)
 
+class UserBookModelAdmin(admin.ModelAdmin):
+  list_display = ["user", "book"]
+
+  class meta:
+    model = UserBook
 
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
-admin.site.register(UserBook)
+admin.site.register(UserBook, UserBookModelAdmin)
 
 
 

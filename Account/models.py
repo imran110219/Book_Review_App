@@ -42,6 +42,8 @@ class Profile(models.Model):
     def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
 
+
+
 class UserBook(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
@@ -53,4 +55,11 @@ class UserBook(models.Model):
         (3, 'read'),
     )
     status = models.PositiveSmallIntegerField(choices=STATUS_CHOICES, default=0)
+
+    class Meta:
+        unique_together = ('user', 'book')
+
+    def __unicode__(self):
+        return self.user.username + " " + self.book.name
+
 
