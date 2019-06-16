@@ -47,12 +47,18 @@ class BookCategory(models.Model):
   book = models.ForeignKey(Book, on_delete=models.CASCADE, )
   category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
+  class Meta:
+    unique_together = ('book', 'category')
+
   def __unicode__(self):
     return self.book.name + " " + self.category.name
 
 class AuthorBook(models.Model):
   author = models.ForeignKey(Author, on_delete=models.CASCADE)
   book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+  class Meta:
+    unique_together = ('author', 'book')
 
   def __unicode__(self):
     return self.book.name + " " + self.author.name
