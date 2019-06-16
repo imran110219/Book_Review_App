@@ -4,6 +4,7 @@ from .views import (
     home,
     profile,
     update_profile,
+    user_books,
     settings,
     password,
 )
@@ -11,6 +12,7 @@ from .views import (
 app_name = "Account"
 
 urlpatterns = [
+    url(r'^profiles/$', user_books, name="user_books"),
     url(r'^profile/(?P<username>[\w.@+-]+)/$', profile, name="profile"),
     url(r'^profile/edit/$', update_profile, name="profile-edit"),
     url(r'^settings/$', settings, name='settings'),

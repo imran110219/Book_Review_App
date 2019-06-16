@@ -132,16 +132,16 @@ function LoadWishlistGrid(){
         dataSource: {
             type: "odata",
             transport: {
-                read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
+                read: {
+                    url: '{% url "accounts:user_books" %}'
+                } // "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
             },
             schema: {
                 model: {
                     fields: {
                         OrderID: { type: "number" },
-                        Freight: { type: "number" },
-                        ShipName: { type: "string" },
-                        OrderDate: { type: "date" },
-                        ShipCity: { type: "string" }
+                        book: { type: "string" },
+                        status: { type: "string" }
                     }
                 }
             },
@@ -160,22 +160,14 @@ function LoadWishlistGrid(){
                 width: 100
             },
             {
-                field: "Freight",
+                field: "book",
+                title: "Book",
                 width: 150
             },
             {
-                field: "OrderDate",
-                title: "Order Date",
-                format: "{0:MM/dd/yyyy}",
-                width: 150
-            }, {
-                field: "ShipName",
-                title: "Ship Name",
+                field: "status",
+                title: "Status",
                 width: 250
-            }, {
-                field: "ShipCity",
-                title: "Ship City",
-                width: 150
             }
         ]
     });
