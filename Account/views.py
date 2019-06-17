@@ -14,7 +14,7 @@ from Book.filters import BookFilter
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from .forms import UserLoginForm, UserRegisterForm, UserForm, ProfileForm
-from .models import Profile
+from .models import Profile, UserBook
 from django.contrib import messages
 import json
 from django.contrib.auth.decorators import login_required
@@ -157,6 +157,23 @@ def profile(request, username):
         'title' : 'Profile'
     }
     return render(request, "profile.html", context)
+
+@login_required
+def user_books(request, status):
+    user = get_object_or_404(User, id=request.user.id)
+    profile = get_object_or_404(Profile, user=user) #Profile.objects.filter(user=user)
+    flag = 0
+    if status == 'wishlist':
+        flag = 1
+    elif status == 'reading':
+        flag = 2
+    elif status == 'reading':
+        flag = 3
+    else:
+        flag = 4
+    user_book = UserBook.objects.all() #filter(user=profile).filter(status=flag)
+
+    return user_book
 
 
 @login_required
