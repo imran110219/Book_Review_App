@@ -5,9 +5,10 @@ from django.contrib.auth import (
     logout,
 )
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.urls import reverse
 from django.core.exceptions import ObjectDoesNotExist
+from django.core import serializers
 from django.contrib.auth.models import User
 from Book.models import Book
 from Book.filters import BookFilter
@@ -167,13 +168,14 @@ def user_books(request, status):
         flag = 1
     elif status == 'reading':
         flag = 2
-    elif status == 'reading':
+    elif status == 'read':
         flag = 3
     else:
         flag = 4
-    user_book = UserBook.objects.all() #filter(user=profile).filter(status=flag)
+    user_book = UserBook.objects.filter(user=profile).filter(status=flag).values('id','book','book__name','book__no_of_page','status')
+    user_book_list = list(user_book)
 
-    return user_book
+    return JsonResponse(user_book_list,  safe=False)
 
 
 @login_required
@@ -235,7 +237,14 @@ def password(request):
 # Test View
 
 def test_view(request):
-    book_list = Book.objects.all()
-    book_filter = BookFilter(request.GET, queryset=book_list)
-    temp = book_filter.form
-    return render(request, 'test.html', {'filter': book_filter})
+    # book_list = Book.objects.all()
+    # book_filter = BookFilter(request.GET, queryset=book_list)
+    # temp = book_filter.form
+    return render(request, 'test.html') # , {'filter': book_filter})
+
+def test_json(request):
+    books = Book.objects.all().values('name')
+    booklist = list(books)
+    return JsonResponse(booklist,  safe=False)
+    # json = serializers.serialize('json', booklist)
+    # return HttpResponse(json, content_type='application/json')

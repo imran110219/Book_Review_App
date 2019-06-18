@@ -1,11 +1,11 @@
 'use strict'
 
 $(document).ready(function () {
-    $('.user-profile-picture img, .hover-profile-image').on('mouseover', function () { 
+    $('.user-profile-picture img, .hover-profile-image').on('mouseover', function () {
         $('.hover-profile-image').css('opacity', 1);
     });
-    
-    $('.user-profile-picture img, .hover-profile-image').on('mouseout', function(e){        
+
+    $('.user-profile-picture img, .hover-profile-image').on('mouseout', function (e) {
         $('.hover-profile-image').css('opacity', 0);
     });
 
@@ -13,44 +13,47 @@ $(document).ready(function () {
         $('#ProfilePictureUrl').trigger('click');
     });
 
-    $('.edit-basic-info').on('click', function(e){
+    $('.edit-basic-info').on('click', function (e) {
         $(this).hide();
         $('.submit-basic-info').show();
     });
-    
-    $('.edit-contact-info').on('click', function(e){
+
+    $('.edit-contact-info').on('click', function (e) {
         $(this).hide();
         $('.submit-contact-info').show();
     });
 
     //This is view switch function
-    $('.user-action-menu ul li').on('click', function(e){
+    $('.user-action-menu ul li').on('click', function (e) {
         $('.user-action-menu ul li').each(function (e) {
             $(this).removeClass('li-active');
         });
-        
+
         SwitchProfileViews($(this).attr('rel'));
         $(this).addClass('li-active');
         $('html, body').animate({
-            scrollTop: $("#user-tab-page-title").offset().top-80
+            scrollTop: $("#user-tab-page-title").offset().top - 80
         }, 700);
     });
 
     function SwitchProfileViews(view_id) {
-        if(view_id === 'BasicInfo'){ 
-            $('#Readings').hide(); $('#Mailbox').hide();
+        if (view_id === 'BasicInfo') {
+            $('#Readings').hide();
+            $('#Mailbox').hide();
             $('#BasicInfo').fadeIn(200).show();
             // $('#user-tab-page-title').text('Profile');
         }
-        else if(view_id === 'Readings'){
+        else if (view_id === 'Readings') {
             LoadReadingsGrid();
             LoadWishlistGrid();
-            $('#BasicInfo').hide(); $('#Mailbox').hide();
-            $('#Readings').fadeIn(200).show(); 
+            $('#BasicInfo').hide();
+            $('#Mailbox').hide();
+            $('#Readings').fadeIn(200).show();
             // $('#user-tab-page-title').text('Readings');
         }
-        else{
-            $('#BasicInfo').hide(); $('#Readings').hide();
+        else {
+            $('#BasicInfo').hide();
+            $('#Readings').hide();
             $('#Mailbox').fadeIn(200).show();
             // $('#user-tab-page-title').text('Mailbox');
         }
@@ -61,52 +64,52 @@ $(document).ready(function () {
 var previous_width = $(window).width();
 var previous_option = '';
 
-$(window).resize(function () { 
+$(window).resize(function () {
     ToggleProfilePage();
 });
 
 function ToggleProfilePage(e) {
     var width = $(window).width();
-    if(width < 993){
+    if (width < 993) {
         previous_width = width;
-        if($('.profile-body').hasClass('profile-pan-show')){
+        if ($('.profile-body').hasClass('profile-pan-show')) {
             $('.profile-body').removeClass('profile-pan-show');
         }
 
-        if(!$('.profile-body').hasClass('profile-pan-sticky')){
+        if (!$('.profile-body').hasClass('profile-pan-sticky')) {
             $('.profile-body').addClass('profile-pan-sticky');
         }
 
-        if(typeof(e) !== 'undefined')
+        if (typeof(e) !== 'undefined')
             $('.profile-over').slideToggle('slow');
     }
-    else {                        
-        if(typeof(e) !== 'undefined'){
-            if($('.profile-body').hasClass('profile-pan-show')){
+    else {
+        if (typeof(e) !== 'undefined') {
+            if ($('.profile-body').hasClass('profile-pan-show')) {
                 $('.profile-over').hide();
                 $('.profile-body').removeClass('profile-pan-show');
             }
-            else {            
+            else {
                 $('.profile-body').addClass('profile-pan-show');
                 $('.profile-over').slideToggle('slow');
             }
         }
         else {
-            if(previous_width < 993){
+            if (previous_width < 993) {
                 $('.profile-over').hide();
                 $('.profile-body').removeClass('profile-pan-sticky').removeClass('profile-pan-show');
                 previous_width = width;
             }
-        }   
-    }    
+        }
+    }
 }
 
-function ToggleNotificationPane(event, option){
-    $('.notification-pane-title').text(option == 'notification'? 'Notifications': 'Messages');
-    if(option !== previous_option){
+function ToggleNotificationPane(event, option) {
+    $('.notification-pane-title').text(option == 'notification' ? 'Notifications' : 'Messages');
+    if (option !== previous_option) {
         //Do your logic here to create notification pane and
         //Update content in notification-pane div
-        if($('.notification-pane').css('display') === 'none'){
+        if ($('.notification-pane').css('display') === 'none') {
             $('.notification-pane').animate({
                 opacity: 'toggle'
             });
@@ -121,46 +124,40 @@ function ToggleNotificationPane(event, option){
     previous_option = option;
 }
 
-function Submit(e, target_edit_class){
+function Submit(e, target_edit_class) {
     $('.' + target_edit_class).show();
     $(e.target).closest('button').hide();
     toastr.success('Have fun storming the castle!', 'Miracle Max Says');
 }
 
-function LoadWishlistGrid(){
+function LoadWishlistGrid() {
+    var dataSourceArguments = {
+        //pageSize: 5,
+        serverPaging: true,
+        transport: {
+            read: {
+                url: "wishlist/", //"/user/profile/wishlist/",
+                dataType: "json",
+            }
+        }
+    }
+
+    var ds = new kendo.data.DataSource(dataSourceArguments);
+
     $("#WishList").kendoGrid({
-        dataSource: {
-            type: "odata",
-            transport: {
-                read: {
-                    url: '{% url "accounts:user_books" %}'
-                } // "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
-            },
-            schema: {
-                model: {
-                    fields: {
-                        OrderID: { type: "number" },
-                        book: { type: "string" },
-                        status: { type: "string" }
-                    }
-                }
-            },
-            pageSize: 10,
-            serverPaging: true,
-            serverFiltering: true,
-            serverSorting: true
-        },
+        dataSource: ds,
         scrollable: true,
         height: 400,
         sortable: true,
         pageable: true,
-        columns: [{
-                field:"OrderID",
+        columns: [
+            {
+                field:"id",
                 filterable: false,
                 width: 100
             },
             {
-                field: "book",
+                field: "book__name",
                 title: "Book",
                 width: 150
             },
@@ -173,7 +170,7 @@ function LoadWishlistGrid(){
     });
 }
 
-function LoadReadingsGrid(){
+function LoadReadingsGrid() {
     $("#TotalReadings").kendoGrid({
         dataSource: {
             type: "odata",
@@ -183,11 +180,11 @@ function LoadReadingsGrid(){
             schema: {
                 model: {
                     fields: {
-                        OrderID: { type: "number" },
-                        Freight: { type: "number" },
-                        ShipName: { type: "string" },
-                        OrderDate: { type: "date" },
-                        ShipCity: { type: "string" }
+                        OrderID: {type: "number"},
+                        Freight: {type: "number"},
+                        ShipName: {type: "string"},
+                        OrderDate: {type: "date"},
+                        ShipCity: {type: "string"}
                     }
                 }
             },
@@ -201,10 +198,10 @@ function LoadReadingsGrid(){
         sortable: true,
         pageable: true,
         columns: [{
-                field:"OrderID",
-                filterable: false,
-                width: 100
-            },
+            field: "OrderID",
+            filterable: false,
+            width: 100
+        },
             {
                 field: "Freight",
                 width: 150

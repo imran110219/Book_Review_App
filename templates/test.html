@@ -1,77 +1,43 @@
-{% extends 'base.html' %}
-{% load widget_tweaks %}
+{% extends "base.html" %}
+{% load static %}
+
 
 {% block content %}
-
-    <form id='book-filter-form' method="get">
-        {#        {{ filter.form.as_p }}#}
-
-        <div class="row">
-            <div class="col s12">
-
-                <select name="{{ filter.form.order.name }}" id="{{ filter.form.order.auto_id }}">
-                    {% for choice in filter.form.order %}
-                        <option value="{{ choice.data.value }}">{{ choice.choice_label }}</option>
-                    {% endfor %}
-                </select>
-
-
-            </div>
-            <div class="col s4">
-                <h5>Publication</h5>
-                {% for choice in filter.form.publication %}
-
-                    <p>
-                        <label>
-                            {{ choice.tag }}
-                            <span class="max-content-width">{{ choice.choice_label }}</span>
-                        </label>
-                    </p>
-
-                {% endfor %}
-            </div>
-
-            <div class="col s4">
-                <h5>Author</h5>
-                {% for choice in filter.form.authors %}
-
-                    <p>
-                        <label>
-                            {{ choice.tag }}
-                            <span class="max-content-width">{{ choice.choice_label }}</span>
-                        </label>
-                    </p>
-
-                {% endfor %}
-            </div>
-
-            <div class="col s4">
-                <h5>Category</h5>
-                {% for choice in filter.form.categories %}
-
-                    <p>
-                        <label>
-                            {{ choice.tag }}
-                            <span class="max-content-width">{{ choice.choice_label }}</span>
-                        </label>
-                    </p>
-
-                {% endfor %}
-            </div>
-        </div>
-
-
-        <button type="submit">Search</button>
-
-        <button type="button" onclick="ShowParameter()">Show</button>
-
-    </form>
-
-
-    <ul>
-        {% for book in filter.qs %}
-            <li>{{ book.name }}</li>
-        {% endfor %}
-    </ul>
-
-{% endblock %}
+    <div id="grid"></div>
+    <script>
+        $(document).ready(function () {
+            var dataJson = "{% url 'test_json' %}";
+            console.log(dataJson);
+            $("#grid").kendoGrid({
+                dataSource: {
+                    //type: "odata",
+                    transport: {
+                        read: { //"https://demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
+                            url: '/test/book/',
+                            dataType: "json",
+                            contentType: 'application/json; charset=utf-8',
+                            type: 'GET',
+                        }
+                    },
+                    /*schema: {
+                        total: "count",
+                        data: "result",
+                    },*/
+                    pageSize: 5
+                },
+                columns: [
+                    /*{
+                        field: "id",
+                        width: 240
+                    }, */
+                    {
+                        field: "name",
+                    }
+                    /*{
+                        field: "no_of_page",
+                    }*/
+                ]
+            });
+        });
+    </script>
+{% endblock content %}
