@@ -7,13 +7,14 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
-from .models import Profile
+from .models import Profile, UserBook
 
 class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False
     verbose_name_plural = 'Profile'
     fk_name = 'user'
+
 
 class CustomUserAdmin(UserAdmin):
     inlines = (ProfileInline, )
@@ -26,7 +27,16 @@ class CustomUserAdmin(UserAdmin):
             return list()
         return super(CustomUserAdmin, self).get_inline_instances(request, obj)
 
+class UserBookModelAdmin(admin.ModelAdmin):
+  list_display = ["user", "book"]
+
+  class meta:
+    model = UserBook
+
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
+admin.site.register(UserBook, UserBookModelAdmin)
+
+
 
 # admin.site.register(Profile)

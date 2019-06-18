@@ -12,11 +12,11 @@
             <div class="basic-info-container ml10 mr10">
                 <div class="row">
                     <div class="input-field col m6 l6 s12 xs12">
-                        <input placeholder="" id="profile_first_name" type="text">
+                        <input value="{{ user.first_name }}" placeholder="" id="profile_first_name" type="text">
                         <label for="profile_first_name">First Name</label>
                     </div>
                     <div class="input-field col m6 l6 s12 xs12">                                        
-                        <input placeholder="" id="profile_last_name" type="text">
+                        <input value="{{ user.last_name }}" placeholder="" id="profile_last_name" type="text">
                         <label for="profile_last_name">Last Name</label>
                     </div>
                     <div class="input-field col l12 m12 s12 xs12">
@@ -47,15 +47,15 @@
             <div class="contact-info-container ml10 mr10">
                 <div class="row">
                     <div class="input-field col m6 l6 s12 xs12">
-                        <input placeholder="" id="email" type="email">
+                        <input value="{{ user.email }}" placeholder="" id="email" type="email">
                         <label for="email">Email Address</label>
                     </div>
                     <div class="input-field col m6 l6 s12 xs12">                                        
-                        <input placeholder="" id="mobile" type="text">
+                        <input value="{{ profile.phone }}" placeholder="" id="mobile" type="text">
                         <label for="mobile">Mobile</label>
                     </div>
                     <div class="input-field col m6 l6 s12 xs12">                                        
-                        <input placeholder="" id="website" type="text">
+                        <input value="{{ profile.website }}" placeholder="" id="website" type="text">
                         <label for="website">Website</label>
                     </div>
                 </div>

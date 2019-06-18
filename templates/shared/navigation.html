@@ -35,7 +35,7 @@
 
 <ul id="UserDropdown" class="dropdown-content" style="top: 64px !important;">
     {% if request.user.is_authenticated %}
-    <li><a href='{% url "accounts:profile" %}'>Profile</a></li>
+    <li><a href='{% url "accounts:profile" user.username %}'>Profile</a></li>
     <li><a href='{% url "logout" %}'>Logout</a></li>
     {% endif %}
 </ul>
@@ -59,7 +59,7 @@
     {% if not request.user.is_authenticated %}
     <li><a href="#AuthenticationModal" class="modal-trigger">Login</a></li>
     {% else %}
-    <li><a href='{% url "accounts:profile" %}'>Profile ({{ user.username }})</a></li>
+    <li><a href='{% url "accounts:profile" user.username %}'>Profile ({{ user.username }})</a></li>
     <li><a href='{% url "logout" %}'>Logout</a></li>
     {% endif %}
 </ul>

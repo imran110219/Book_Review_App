@@ -4,17 +4,18 @@ from django.contrib.auth import (
     login,
     logout,
 )
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.urls import reverse
 from django.core.exceptions import ObjectDoesNotExist
+from django.core import serializers
 from django.contrib.auth.models import User
 from Book.models import Book
 from Book.filters import BookFilter
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from .forms import UserLoginForm, UserRegisterForm, UserForm, ProfileForm
-from .models import Profile
+from .models import Profile, UserBook
 from django.contrib import messages
 import json
 from django.contrib.auth.decorators import login_required
@@ -148,12 +149,33 @@ def home(request):
 
 
 @login_required
-def profile(request):
+def profile(request, username):
+    user = get_object_or_404(User, id=request.user.id)
+    profile = get_object_or_404(Profile, user=user) #Profile.objects.filter(user=user)
     context = {
-        'username': 'shahed',
+        'user': user,
+        'profile': profile,
         'title' : 'Profile'
     }
     return render(request, "profile.html", context)
+
+@login_required
+def user_books(request, status):
+    user = get_object_or_404(User, id=request.user.id)
+    profile = get_object_or_404(Profile, user=user) #Profile.objects.filter(user=user)
+    flag = 0
+    if status == 'wishlist':
+        flag = 1
+    elif status == 'reading':
+        flag = 2
+    elif status == 'read':
+        flag = 3
+    else:
+        flag = 4
+    user_book = UserBook.objects.filter(user=profile).filter(status=flag).values('id','book','book__name','book__no_of_page','status')
+    user_book_list = list(user_book)
+
+    return JsonResponse(user_book_list,  safe=False)
 
 
 @login_required
@@ -215,7 +237,14 @@ def password(request):
 # Test View
 
 def test_view(request):
-    book_list = Book.objects.all()
-    book_filter = BookFilter(request.GET, queryset=book_list)
-    temp = book_filter.form
-    return render(request, 'test.html', {'filter': book_filter})
+    # book_list = Book.objects.all()
+    # book_filter = BookFilter(request.GET, queryset=book_list)
+    # temp = book_filter.form
+    return render(request, 'test.html') # , {'filter': book_filter})
+
+def test_json(request):
+    books = Book.objects.all().values('name')
+    booklist = list(books)
+    return JsonResponse(booklist,  safe=False)
+    # json = serializers.serialize('json', booklist)
+    # return HttpResponse(json, content_type='application/json')
