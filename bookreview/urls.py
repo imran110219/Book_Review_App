@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
 from rest_framework_jwt.views import obtain_jwt_token
 
-from Account.views import (login_view, register_view, logout_view, update_profile, test_view)
+from Account.views import (login_view, register_view, logout_view, update_profile, test_view, test_json)
 
 urlpatterns = [
     url(r'^', include("Book.urls", namespace='books')),
@@ -38,7 +38,8 @@ urlpatterns = [
     url(r'^publications/', include("Publication.urls", namespace='publications')),
 
     # test url
-    url(r'^test/', test_view, name='test'),
+    url(r'^test/$', test_view, name='test'),
+    url(r'^test/book/$', test_json, name='test_json'),
 
     # api url
     url(r'^api-auth/', include('rest_framework.urls')),
