@@ -160,8 +160,8 @@ def profile(request, username):
     return render(request, "profile.html", context)
 
 @login_required
-def user_books(request, status):
-    user = get_object_or_404(User, id=request.user.id)
+def user_books(request, username, status):
+    user = get_object_or_404(User, username=username)
     profile = get_object_or_404(Profile, user=user) #Profile.objects.filter(user=user)
     flag = 0
     if status == 'wishlist':

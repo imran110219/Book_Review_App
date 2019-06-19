@@ -44,8 +44,9 @@ $(document).ready(function () {
             // $('#user-tab-page-title').text('Profile');
         }
         else if (view_id === 'Readings') {
-            LoadReadingsGrid();
+            LoadReadingGrid();
             LoadWishlistGrid();
+            LoadReadGrid();
             $('#BasicInfo').hide();
             $('#Mailbox').hide();
             $('#Readings').fadeIn(200).show();
@@ -134,6 +135,8 @@ function LoadWishlistGrid() {
     var dataSourceArguments = {
         //pageSize: 5,
         serverPaging: true,
+        serverFiltering: true,
+        serverSorting: true,
         transport: {
             read: {
                 url: "wishlist/", //"/user/profile/wishlist/",
@@ -152,7 +155,7 @@ function LoadWishlistGrid() {
         pageable: true,
         columns: [
             {
-                field:"id",
+                title: "SL No",
                 filterable: false,
                 width: 100
             },
@@ -170,56 +173,140 @@ function LoadWishlistGrid() {
     });
 }
 
-function LoadReadingsGrid() {
-    $("#TotalReadings").kendoGrid({
-        dataSource: {
-            type: "odata",
-            transport: {
-                read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
-            },
-            schema: {
-                model: {
-                    fields: {
-                        OrderID: {type: "number"},
-                        Freight: {type: "number"},
-                        ShipName: {type: "string"},
-                        OrderDate: {type: "date"},
-                        ShipCity: {type: "string"}
-                    }
-                }
-            },
-            pageSize: 10,
-            serverPaging: true,
-            serverFiltering: true,
-            serverSorting: true
-        },
+function LoadReadingGrid() {
+    var dataSourceArguments = {
+        //pageSize: 5,
+        serverPaging: true,
+        serverFiltering: true,
+        serverSorting: true,
+        transport: {
+            read: {
+                url: "reading/", //"/user/profile/wishlist/",
+                dataType: "json",
+            }
+        }
+    }
+
+    var ds = new kendo.data.DataSource(dataSourceArguments);
+
+    $("#Reading").kendoGrid({
+        dataSource: ds,
         scrollable: true,
         height: 400,
         sortable: true,
         pageable: true,
-        columns: [{
-            field: "OrderID",
-            filterable: false,
-            width: 100
-        },
+        columns: [
             {
-                field: "Freight",
+                title: "SL No",
+                filterable: false,
+                width: 100
+            },
+            {
+                field: "book__name",
+                title: "Book",
                 width: 150
             },
             {
-                field: "OrderDate",
-                title: "Order Date",
-                format: "{0:MM/dd/yyyy}",
-                width: 150
-            }, {
-                field: "ShipName",
-                title: "Ship Name",
+                field: "status",
+                title: "Status",
                 width: 250
-            }, {
-                field: "ShipCity",
-                title: "Ship City",
-                width: 150
             }
         ]
     });
 }
+
+function LoadReadGrid() {
+    var dataSourceArguments = {
+        //pageSize: 5,
+        serverPaging: true,
+        serverFiltering: true,
+        serverSorting: true,
+        transport: {
+            read: {
+                url: "read/", //"/user/profile/wishlist/",
+                dataType: "json",
+            }
+        }
+    }
+
+    var ds = new kendo.data.DataSource(dataSourceArguments);
+
+    $("#Read").kendoGrid({
+        dataSource: ds,
+        scrollable: true,
+        height: 400,
+        sortable: true,
+        pageable: true,
+        columns: [
+            {
+                title: "SL No",
+                filterable: false,
+                width: 100
+            },
+            {
+                field: "book__name",
+                title: "Book",
+                width: 150
+            },
+            {
+                field: "status",
+                title: "Status",
+                width: 250
+            }
+        ]
+    });
+}
+
+// function LoadReadingsGrid() {
+//     $("#TotalReadings").kendoGrid({
+//         dataSource: {
+//             type: "odata",
+//             transport: {
+//                 read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
+//             },
+//             schema: {
+//                 model: {
+//                     fields: {
+//                         OrderID: {type: "number"},
+//                         Freight: {type: "number"},
+//                         ShipName: {type: "string"},
+//                         OrderDate: {type: "date"},
+//                         ShipCity: {type: "string"}
+//                     }
+//                 }
+//             },
+//             pageSize: 10,
+//             serverPaging: true,
+//             serverFiltering: true,
+//             serverSorting: true
+//         },
+//         scrollable: true,
+//         height: 400,
+//         sortable: true,
+//         pageable: true,
+//         columns: [{
+//             field: "OrderID",
+//             filterable: false,
+//             width: 100
+//         },
+//             {
+//                 field: "Freight",
+//                 width: 150
+//             },
+//             {
+//                 field: "OrderDate",
+//                 title: "Order Date",
+//                 format: "{0:MM/dd/yyyy}",
+//                 width: 150
+//             }, {
+//                 field: "ShipName",
+//                 title: "Ship Name",
+//                 width: 250
+//             }, {
+//                 field: "ShipCity",
+//                 title: "Ship City",
+//                 width: 150
+//             }
+//         ]
+//     });
+// }
